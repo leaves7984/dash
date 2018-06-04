@@ -4,18 +4,19 @@ import {SignUpComponent} from './user/sign-up/sign-up.component';
 import {SignInComponent} from './user/sign-in/sign-in.component';
 import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './auth/auth.guard';
-import {CategoryComponent} from "./home/category/category.component";
-import {ArticleComponent} from "./home/article/article.component";
-import {TipComponent} from "./home/tip/tip.component";
-import {CategoryPageComponent} from "./home/category/category-page/category-page.component";
-import {ArticlePageComponent} from "./home/article/article-page/article-page.component";
-import {PatchUsersComponent} from "./home/patch-users/patch-users.component";
+import {PatchUsersComponent} from './home/patch-users/patch-users.component';
+import {MainPageComponent} from './home/main-page/main-page.component';
+import {CategoryPageComponent} from './home/category/category-page/category-page.component';
+import {CategoryComponent} from './home/category/category.component';
+import {ArticleComponent} from './home/article/article.component';
+import {ArticlePageComponent} from './home/article/article-page/article-page.component';
+import {TipComponent} from './home/tip/tip.component';
 
 export const appRoutes: Routes = [
   {
     path: 'home', component: HomeComponent,
     canActivate: [AuthGuard],
-    children: [{path: '', component: SignUpComponent}]
+    children: [{path: '', component: MainPageComponent}]
   },
   {
     path: 'category-page', component: HomeComponent,

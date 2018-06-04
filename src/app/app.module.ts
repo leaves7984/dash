@@ -23,6 +23,8 @@ import { CategoryPageComponent } from './home/category/category-page/category-pa
 import { ArticlePageComponent } from './home/article/article-page/article-page.component';
 import { TipPageComponent } from './home/tip/tip-page/tip-page.component';
 import { PatchUsersComponent } from './home/patch-users/patch-users.component';
+import { MainPageComponent } from './home/main-page/main-page.component';
+import { UserDetailComponent } from './home/user-detail/user-detail.component';
 
 
 
@@ -40,7 +42,9 @@ import { PatchUsersComponent } from './home/patch-users/patch-users.component';
     CategoryPageComponent,
     ArticlePageComponent,
     TipPageComponent,
-    PatchUsersComponent
+    PatchUsersComponent,
+    MainPageComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {UserService} from "../../provider/provider-user/user.service";
-import {User} from "../../provider/provider-user/user.model";
+import {UserService} from '../../provider/provider-user/user.service';
 
 @Component({
   selector: 'app-patch-users',
