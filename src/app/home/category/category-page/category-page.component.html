@@ -1,0 +1,83 @@
+<div role = "main"
+     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h2>Article Category</h2>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a class="btn btn-sm btn-outline-secondary" routerLink='/category'>Add</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let category of categorys" class="col-lg-4 col-md-6 square card">
+      <h5 class="card-title">{{category.title}}</h5>
+      <img class="card-img-top"
+           src="{{category.picture_url}}">
+      <div class="card-body">
+        <p>{{category.description}}</p>
+        <button data-toggle="modal" data-target="#editModal">Edit</button>
+        <button data-toggle="modal" data-target="#deleteModal">Delete</button>
+      </div>
+
+      <!--Delete Modal-->
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel">Warning</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you Sure?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary"
+                      data-dismiss="modal" (click)="DelCategory(category.id)">
+                Yes, delete it!</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Edit Modal-->
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Edit</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" name="title" placeholder="{{category.title}}" #Title ngModel>
+                <label class="control-label">Select File</label>
+                <input class="form-control file" type="file"
+                       (change)="handleFileInput($event.target.files)">
+
+                <label>Description</label>
+                <textarea class="form-control" rows="5" name="description" placeholder="{{category.description}}" #Description
+                          ngModel></textarea>
+
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary"
+                      data-dismiss="modal" (click)="update(category.id, Title.value, Description.value)">
+                Update</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

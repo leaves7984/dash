@@ -1,0 +1,28 @@
+<div role="main"
+     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h2>Patch Users</h2>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a class="btn btn-sm btn-outline-secondary" routerLink='/category-page'>Back</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Input CSV File</h5>
+        <input #myFile type="file" class="form-control-file" (change)="handleFileInput($event.target.files)" required>
+        <br>
+        <button class="btn btn-primary" (click)="uploadFile()">Confirm</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <ul class="list-group">
+      <li class="list-group-item active">Users</li>
+      <li class="list-group-item" *ngFor = "let item of users">{{item.username}}</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" (click)="Logout()">Sign out</a>
+    </li>
+  </ul>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/home' routerLinkActive="true">
+              <i class="far fa-folder-open active"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/category-page' routerLinkActive="true">
+              <i class="fas fa-newspaper"></i>
+              Category
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/article-page' routerLinkActive="true">
+              <i class="far fa-newspaper"></i>
+              Article
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/tip' routerLinkActive="true">
+              <i class="fas fa-list-ul"></i>
+              Tips
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-video"></i>
+              Video
+            </a>
+          </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Setting</span>
+          <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="far fa-file-alt"></i>
+              About Us
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="far fa-file-alt"></i>
+              Contact Us
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/patch-users' routerLinkActive="true">
+              <i class="far fa-file-alt"></i>
+              Patch Users
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+<!--<form action="#" (ngSubmit)="uploadFile()" enctype="multipart/form-data">-->
+  <!--<div class="file-field input-field">-->
+    <!--<div class="btn">-->
+      <!--<span>File</span>-->
+      <!--<input type="file" (change)="handleFileInput($event.target.files)">-->
+    <!--</div>-->
+    <!--<div class="file-path-wrapper">-->
+      <!--<input class="file-path validate" type="text">-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<button type= "submit" class ="btn btn-success">Submit</button>-->
+<!--</form>-->

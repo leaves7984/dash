@@ -1,0 +1,51 @@
+import { Injectable } from '@angular/core';
+import {User} from './user.model';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  rootUrl = 'http://localhost:8787';
+  constructor(private http: HttpClient) {}
+
+  registerUser(user: User) {
+    const body: User = {
+      username: user.username,
+      password: user.password
+    };
+    const reqHeader = new HttpHeaders({'No-Auth': 'True'});
+    return this.http.post(this.rootUrl + '/dash/auth/sign-up', body, {headers: reqHeader});
+  }
+
+  userAuthentication(username, password) {
+    const body: User = {
+      username: username,
+      password: password
+    };
+    const reqHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'No-Auth': 'True'});
+    return this.http.post(this.rootUrl + '/dash/auth/login', body, { headers: reqHeader , observe: 'response'});
+
+  }
+  getUserClaims() {
+    return this.http.get(this.rootUrl + '/rest/user');
+  }
+  getAdminClaims() {
+    return this.http.get(this.rootUrl + '/rest/admin');
+  }
+
+  postFile(fileToUpload: File) {
+
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload);
+    return this.http
+      .post(this.rootUrl + '/rest/upload', formData);
+  }
+
+  getUsers() {
+    return this.http.get(this.rootUrl + '/rest/users');
+  }
+
+
+}

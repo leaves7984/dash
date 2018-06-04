@@ -1,0 +1,59 @@
+import {Routes} from '@angular/router';
+import {UserComponent} from './user/user.component';
+import {SignUpComponent} from './user/sign-up/sign-up.component';
+import {SignInComponent} from './user/sign-in/sign-in.component';
+import {HomeComponent} from './home/home.component';
+import {AuthGuard} from './auth/auth.guard';
+import {CategoryComponent} from "./home/category/category.component";
+import {ArticleComponent} from "./home/article/article.component";
+import {TipComponent} from "./home/tip/tip.component";
+import {CategoryPageComponent} from "./home/category/category-page/category-page.component";
+import {ArticlePageComponent} from "./home/article/article-page/article-page.component";
+import {PatchUsersComponent} from "./home/patch-users/patch-users.component";
+
+export const appRoutes: Routes = [
+  {
+    path: 'home', component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [{path: '', component: SignUpComponent}]
+  },
+  {
+    path: 'category-page', component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [{path: '', component: CategoryPageComponent}]
+  },
+  {
+    path: 'category', component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [{path: '', component: CategoryComponent}]
+  },
+  {
+    path: 'article', component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [{path: '', component: ArticleComponent}]
+  },
+  {
+    path: 'article-page', component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [{path: '', component: ArticlePageComponent}]
+  },
+  {
+    path: 'patch-users', component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [{path: '', component: PatchUsersComponent}]
+  },
+  {
+    path: 'tip', component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [{path: '', component: TipComponent}]
+  },
+  {
+    path: 'signup', component: UserComponent,
+  children: [{path: '', component: SignUpComponent}]
+  },
+  {
+    path: 'login', component: UserComponent,
+    children: [{path: '', component: SignInComponent}]
+  },
+  { path: '', redirectTo: '/login', pathMatch: 'full'}
+  ];
