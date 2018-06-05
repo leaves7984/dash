@@ -11,6 +11,8 @@ import {CategoryComponent} from './home/category/category.component';
 import {ArticleComponent} from './home/article/article.component';
 import {ArticlePageComponent} from './home/article/article-page/article-page.component';
 import {TipComponent} from './home/tip/tip.component';
+import {UserDetailComponent} from './home/user-detail/user-detail.component';
+import {UserInfoComponent} from './home/user-detail/user-info/user-info.component';
 
 export const appRoutes: Routes = [
   {
@@ -18,6 +20,17 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [{path: '', component: MainPageComponent}]
   },
+    {
+        path: 'detail/:userId', component: HomeComponent,
+        canActivate: [AuthGuard],
+        children: [{
+            path: '', component: UserDetailComponent,
+            canActivate: [AuthGuard],
+            children: [
+                {path: 'info/:userId', component: UserInfoComponent}
+            ]
+        }]
+    },
   {
     path: 'category-page', component: HomeComponent,
     canActivate: [AuthGuard],

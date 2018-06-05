@@ -1,3 +1,37 @@
-<p>
-  user-detail works!
-</p>
+<div role="main"
+     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+  <h2>{{userId}} Info</h2>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a class="btn btn-sm btn-outline-secondary" routerLink='/home'>Back</a>
+  </div>
+</div>
+<div>
+  <div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/info/{{userId}}' >
+          Info
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" role="tab" routerLink='#'>Wheelchair</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" role="tab" routerLink='#'>Vendor</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" role="tab" routerLink='#'>Repair</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" role="tab" routerLink='#'>GPS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" role="tab" routerLink='#'>Log</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tab-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

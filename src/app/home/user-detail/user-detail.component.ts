@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../../provider/provider-user/user.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailComponent implements OnInit {
 
-  constructor() { }
+  userId: String;
+  constructor(private route: ActivatedRoute) {
+      this.route.params.subscribe(res => {
+          console.log(res.userId + ' Detail');
+          this.userId = res.userId;
+      });
+  }
 
   ngOnInit() {
   }
+
 
 }

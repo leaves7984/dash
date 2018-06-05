@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {User} from './user.model';
+import {Info, User} from './user.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
@@ -47,5 +47,10 @@ export class UserService {
     return this.http.get(this.rootUrl + '/rest/users');
   }
 
-
+  getUserInfo(userId) {
+      return this.http.get<Info>(this.rootUrl + '/rest/infoData/' + userId);
+  }
 }
+
+
+

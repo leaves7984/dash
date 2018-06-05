@@ -27,12 +27,27 @@
       <tr>
         <th scope="row">{{item}}</th>
         <th scope="row">
-          <button class="btn btn-outline-secondary">Info</button>
-          <button class="btn btn-outline-secondary">Wheelchair</button>
-          <button class="btn btn-outline-secondary">Vendor</button>
-          <button class="btn btn-outline-secondary">Repair</button>
-          <button class="btn btn-outline-secondary">GPS</button>
-          <button class="btn btn-outline-secondary">Log</button>
+          <ul class="nav">
+            <li class="nav-item">
+              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/{{item}}/info/{{item}}'>Info
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-outline-secondary nav-link" routerLink='#'>Wheelchair</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-outline-secondary nav-link" routerLink='#'>Vendor</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-outline-secondary nav-link" routerLink='#'>Repair</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-outline-secondary nav-link" routerLink='#'>GPS</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-outline-secondary nav-link" routerLink='#'>Log</button>
+            </li>
+          </ul>
         </th>
         <th scope="row">
           <i class="fas fa-download"></i>

@@ -25,6 +25,7 @@ import { TipPageComponent } from './home/tip/tip-page/tip-page.component';
 import { PatchUsersComponent } from './home/patch-users/patch-users.component';
 import { MainPageComponent } from './home/main-page/main-page.component';
 import { UserDetailComponent } from './home/user-detail/user-detail.component';
+import { UserInfoComponent } from './home/user-detail/user-info/user-info.component';
 
 
 
@@ -44,7 +45,8 @@ import { UserDetailComponent } from './home/user-detail/user-detail.component';
     TipPageComponent,
     PatchUsersComponent,
     MainPageComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
