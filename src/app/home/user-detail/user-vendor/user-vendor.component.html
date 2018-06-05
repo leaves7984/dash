@@ -1,3 +1,81 @@
-<p>
-  user-vendor works!
-</p>
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        Vendor
+      </div>
+      <div class="list-group" *ngFor="let item of vendors">
+        <button type="button" *ngIf="item.type.toString() == 'Vendor'" class="list-group-item list-group-item-action" (click) =
+                "isShow(item)">
+          {{item?.name}}
+        </button>
+      </div>
+      <div class="card-header">
+        Contact
+      </div>
+      <div class="list-group" *ngFor="let item of vendors">
+        <button type="button" *ngIf="item.type.toString() !== 'Vendor'"
+                class="list-group-item list-group-item-action" (click) =
+                "isShow(item)">
+          {{item?.name}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-8" *ngIf="isClick">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Basic Information</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Name</th>
+        <td>{{vendor.name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Created at</th>
+        <td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Modified at</th>
+        <td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Phone Number</th>
+        <td>{{vendor.phone}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Email Address</th>
+        <td>{{vendor.email}}</td>
+      </tr>
+      </tbody>
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Address</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Street</th>
+        <td>{{vendor.street}}</td>
+      </tr>
+      <tr>
+        <th scope="row">City</th>
+        <td>{{vendor.city}}</td>
+      </tr>
+      <tr>
+        <th scope="row">State</th>
+        <td>{{vendor.state}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Zipcode</th>
+        <td>{{vendor.zipcode}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

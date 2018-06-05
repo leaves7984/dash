@@ -14,6 +14,7 @@ import {TipComponent} from './home/tip/tip.component';
 import {UserDetailComponent} from './home/user-detail/user-detail.component';
 import {UserInfoComponent} from './home/user-detail/user-info/user-info.component';
 import {UserWheelchairComponent} from './home/user-detail/user-wheelchair/user-wheelchair.component';
+import {UserVendorComponent} from './home/user-detail/user-vendor/user-vendor.component';
 
 export const appRoutes: Routes = [
   {
@@ -29,7 +30,8 @@ export const appRoutes: Routes = [
             canActivate: [AuthGuard],
             children: [
                 {path: 'info/:userId', component: UserInfoComponent},
-                {path: 'wheelchair/:userId', component: UserWheelchairComponent}
+                {path: 'wheelchair/:userId', component: UserWheelchairComponent},
+                {path: 'vendor/:userId', component: UserVendorComponent}
             ]
         }]
     },

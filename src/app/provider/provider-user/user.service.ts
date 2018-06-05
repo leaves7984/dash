@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Info, User, Wheelchair} from './user.model';
+import {Info, User, Vendor, Wheelchair} from './user.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
@@ -53,6 +53,10 @@ export class UserService {
   getWheelchair(userId) {
       return this.http.get<Wheelchair[]>(this.rootUrl + '/rest/wheelchair/' + userId);
   }
+  getVendor(userId) {
+      return this.http.get<Vendor[]>(this.rootUrl + '/rest/vendorAndContact/' + userId);
+  }
+
 }
 
 

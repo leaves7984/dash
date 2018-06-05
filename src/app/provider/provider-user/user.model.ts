@@ -47,3 +47,18 @@ export class Wheelchair {
     createdAt: String;
     modifiedAt: String;
 }
+export class Vendor {
+    id: String;
+    userId: String;
+    name: String;
+    dateOfSwitch: String;
+    type: String;
+    phone: String;
+    email: String;
+    street: String;
+    city: String;
+    state: String;
+    zipcode: String;
+    createdAt: String;
+    modifiedAt: String;
+}
