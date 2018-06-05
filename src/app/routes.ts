@@ -13,6 +13,7 @@ import {ArticlePageComponent} from './home/article/article-page/article-page.com
 import {TipComponent} from './home/tip/tip.component';
 import {UserDetailComponent} from './home/user-detail/user-detail.component';
 import {UserInfoComponent} from './home/user-detail/user-info/user-info.component';
+import {UserWheelchairComponent} from './home/user-detail/user-wheelchair/user-wheelchair.component';
 
 export const appRoutes: Routes = [
   {
@@ -27,7 +28,8 @@ export const appRoutes: Routes = [
             path: '', component: UserDetailComponent,
             canActivate: [AuthGuard],
             children: [
-                {path: 'info/:userId', component: UserInfoComponent}
+                {path: 'info/:userId', component: UserInfoComponent},
+                {path: 'wheelchair/:userId', component: UserWheelchairComponent}
             ]
         }]
     },

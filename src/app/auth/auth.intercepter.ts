@@ -24,12 +24,12 @@ export class AuthIntercepter implements HttpInterceptor {
       return next.handle(clonedreq).pipe(
         tap(event => {
           if (event instanceof HttpResponse) {
-            if (event.status === 401) {
+            if (event.status === 500) {
               this.router.navigateByUrl('/login');
             }
           }
         }, error => {
-          this.router.navigateByUrl('/login');
+          // this.router.navigateByUrl('/login');
         }));
     }
   }

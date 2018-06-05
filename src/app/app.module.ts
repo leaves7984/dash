@@ -26,6 +26,8 @@ import { PatchUsersComponent } from './home/patch-users/patch-users.component';
 import { MainPageComponent } from './home/main-page/main-page.component';
 import { UserDetailComponent } from './home/user-detail/user-detail.component';
 import { UserInfoComponent } from './home/user-detail/user-info/user-info.component';
+import { UserWheelchairComponent } from './home/user-detail/user-wheelchair/user-wheelchair.component';
+import { UserVendorComponent } from './home/user-detail/user-vendor/user-vendor.component';
 
 
 
@@ -46,7 +48,9 @@ import { UserInfoComponent } from './home/user-detail/user-info/user-info.compon
     PatchUsersComponent,
     MainPageComponent,
     UserDetailComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    UserWheelchairComponent,
+    UserVendorComponent
   ],
   imports: [
     BrowserModule,

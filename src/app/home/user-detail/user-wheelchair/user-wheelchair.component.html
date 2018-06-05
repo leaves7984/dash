@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        My Wheelchairs
+      </div>
+      <div class="list-group" *ngFor="let item of wheelchairs">
+        <button type="button" class="list-group-item list-group-item-action" (click) = "isShow(item)">
+          {{item?.name}}
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-8" *ngIf="isClick">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Basic Information</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Name</th>
+        <td>{{wheelchair.name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Created at</th>
+        <td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Modified at</th>
+        <td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Type</th>
+        <td>{{wheelchair.type}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Manufacturer</th>
+        <td>{{wheelchair.manufacturer}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Model</th>
+        <td>{{wheelchair.model}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Serial Number</th>
+        <td>{{wheelchair.serialNumber}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Age of Wheelchair</th>
+        <td>{{wheelchair.age}}</td>
+      </tr>
+      </tbody>
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Other Information</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Usage Per Day</th>
+          <td>{{wheelchair.hoursPerDay}} hours</td>
+        </tr>
+        <tr>
+          <th scope="row">Performance</th>
+          <td>{{wheelchair.performance}} of 5 stars</td>
+        </tr>
+        <tr>
+          <th scope="row">Repairs Done</th>
+          <td>{{wheelchair.repairs}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Funding by</th>
+          <td>{{wheelchair.funding}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

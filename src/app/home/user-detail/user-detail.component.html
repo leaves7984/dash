@@ -9,12 +9,14 @@
   <div>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/info/{{userId}}' >
+        <a class="nav-link" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/info/{{userId}}' >
           Info
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" role="tab" routerLink='#'>Wheelchair</a>
+        <a class="nav-link" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/wheelchair/{{userId}}'>
+          Wheelchair
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" role="tab" routerLink='#'>Vendor</a>
@@ -30,7 +32,7 @@
       </li>
     </ul>
   </div>
-
+  <br>
   <div class="tab-content">
     <router-outlet></router-outlet>
   </div>

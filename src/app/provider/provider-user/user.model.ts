@@ -28,3 +28,22 @@ export class Info {
     modifiedAt: String;
     avgDistancePerDay: String;
 }
+export class Wheelchair {
+    id: String;
+    userId: String;
+    primaryWheelchair: String;
+    type: String;
+    manufacturer: String;
+    model: String;
+    name: String;
+    manufacturerPicture: String;
+    modelPicture: String;
+    serialNumber: String;
+    age: String;
+    hoursPerDay: String;
+    performance: String;
+    repairs: String;
+    funding: String;
+    createdAt: String;
+    modifiedAt: String;
+}
