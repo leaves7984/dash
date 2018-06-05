@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Info, User, Vendor, Wheelchair} from './user.model';
+import {Info, Repair, Tracking, User, Vendor, Wheelchair} from './user.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
@@ -56,7 +56,15 @@ export class UserService {
   getVendor(userId) {
       return this.http.get<Vendor[]>(this.rootUrl + '/rest/vendorAndContact/' + userId);
   }
-
+  getRepair(userId) {
+    return this.http.get<Repair[]>(this.rootUrl + '/rest/repairData/' + userId);
+  }
+  getRepairById(Id) {
+    return this.http.get<Repair>(this.rootUrl + '/rest/repairById/' + Id);
+  }
+  getTracking(Id) {
+      return this.http.get<Tracking[]>(this.rootUrl + '/rest/repairDataTracking/' + Id);
+  }
 }
 
 

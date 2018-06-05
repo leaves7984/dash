@@ -1,0 +1,63 @@
+<div>
+  <form class="bpy">
+    <span class="bi"><i class="fas fa-search"></i></span>
+    <input class="form-control mr-sm-2 bsx" type="search" placeholder="Search.." aria-label="Search">
+    <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+  </form>
+</div>
+<br><br>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col"><input type="checkbox"></th>
+    <th scope="col">RepairNeeded Date</th>
+    <!--<th scope="col">DateRepairCompleted</th>-->
+    <th scope="col">Wheelchair</th>
+    <th scope="col">Purpose</th>
+    <!--<th scope="col">Category</th>-->
+    <!--<th scope="col">Subcategory</th>-->
+    <!--<th scope="col">Detail</th>-->
+    <th scope="col">Consequences</th>
+    <!--<th scope="col">DateVendorContacted</th>-->
+    <th scope="col">RepairCost</th>
+    <!--<th scope="col">Resource</th>-->
+    <th scope="col">IsComplete</th>
+    <!--<th scope="col">WhoComplete</th>-->
+  </tr>
+  </thead>
+  <tbody *ngFor="let item of repairs">
+  <tr (click)="goTrack(item.id)">
+    <th scope="row"><input type="checkbox"></th>
+    <td>{{item.dateRepairNeeded|date: 'MM/dd/yyyy'}}</td>
+    <td>{{item.wheelchair}}</td>
+    <td>{{item.purpose}}</td>
+    <td>{{item.consequences}}</td>
+    <td>{{item.repairCost}}</td>
+    <td>{{item.isCompleted}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">4</a></li>
+      <li class="page-item"><a class="page-link" href="#">5</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -62,3 +62,38 @@ export class Vendor {
     createdAt: String;
     modifiedAt: String;
 }
+export class Repair {
+    id: String;
+    wheelchairId: String;
+    userId: String;
+    wheelchair: String;
+    date: String;
+    category: String;
+    subCategory: String;
+    detail: String;
+    resource: String;
+    dateRepairNeeded: String;
+    dateRepairCompleted: String;
+    purpose: String;
+    reasonNotComplete: String;
+    consequences: String;
+    isCompleted: String;
+    isOngoing: String;
+    whoComplete: String;
+    repairCost: String;
+    dateVendorContacted: String;
+    dateVendorMonth: String;
+    dateVendorDay: String;
+    createdAt: String;
+    modifiedAt: String;
+}
+export class Tracking {
+    id: String;
+    userId: String;
+    repairId: String;
+    date: String;
+    updateTracking: String;
+    consequences: String;
+    createdAt: String;
+    modifiedAt: String;
+}

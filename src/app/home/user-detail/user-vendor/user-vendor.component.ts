@@ -40,7 +40,7 @@ export class UserVendorComponent implements OnInit {
         this.createdAt = new Date(parseInt(item.createdAt.toString(), 10));
         this.modifiedAt = new Date(parseInt(item.modifiedAt.toString(), 10));
         this.isClick = true;
-        this.vendor= item;
+        this.vendor = item;
     }
 
 

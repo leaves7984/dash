@@ -15,6 +15,8 @@ import {UserDetailComponent} from './home/user-detail/user-detail.component';
 import {UserInfoComponent} from './home/user-detail/user-info/user-info.component';
 import {UserWheelchairComponent} from './home/user-detail/user-wheelchair/user-wheelchair.component';
 import {UserVendorComponent} from './home/user-detail/user-vendor/user-vendor.component';
+import {UserRepairComponent} from './home/user-detail/user-repair/user-repair.component';
+import {UserTrackingComponent} from './home/user-detail/user-tracking/user-tracking.component';
 
 export const appRoutes: Routes = [
   {
@@ -31,9 +33,15 @@ export const appRoutes: Routes = [
             children: [
                 {path: 'info/:userId', component: UserInfoComponent},
                 {path: 'wheelchair/:userId', component: UserWheelchairComponent},
-                {path: 'vendor/:userId', component: UserVendorComponent}
+                {path: 'vendor/:userId', component: UserVendorComponent},
+                {path: 'repair/:userId', component: UserRepairComponent}
             ]
         }]
+    },
+    {
+        path: 'tracking/:id', component: HomeComponent,
+        canActivate: [AuthGuard],
+        children: [{path: '', component: UserTrackingComponent}]
     },
   {
     path: 'category-page', component: HomeComponent,

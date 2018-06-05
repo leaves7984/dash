@@ -1,0 +1,100 @@
+<div role="main"
+     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h2>Tracking Data</h2>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a class="btn btn-sm btn-outline-secondary" routerLink='/home'>Back</a>
+  </div>
+</div>
+<div>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Update Tracking</th>
+      <th scope="col">Consequences</th>
+      <th scope="col">CreatedAt</th>
+      <th scope="col">ModifiedAt</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let item of trackings">
+    <tr>
+      <th scope="row">1</th>
+      <td>{{item.date}}</td>
+      <td>{{item.updateTracking}}</td>
+      <td>{{item.consequences}}</td>
+      <td>{{item.createdAt |date: 'MM/dd/yyyy'}}</td>
+      <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<div class="col-8">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col" colspan="4">Repair Information</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Wheelchair</th>
+      <td colspan="3">{{repair?.wheelchair}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Created at</th>
+      <td>{{repair?.createdAt | date: 'MM/dd/yyyy'}}</td>
+      <th>Modified at</th>
+      <td>{{repair?.modifiedAt | date: 'MM/dd/yyyy'}}</td>
+    </tr>
+
+    <tr>
+      <th scope="row">IsCompleted</th>
+      <td>{{repair?.isCompleted}}</td>
+      <th>Who Complete</th>
+      <td>{{repair?.whoComplete}}</td>
+    </tr>
+    <tr>
+      <th scope="row">DateRepairNeeded</th>
+      <td>{{repair?.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>
+      <th>Date</th>
+      <td>{{repair?.date | date: 'MM/dd/yyyy'}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Category</th>
+      <td>{{repair?.category}}</td>
+      <th>SubCategory</th>
+      <td>{{repair?.subCategory}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Resource</th>
+      <td colspan="3">{{repair?.resource}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Purpose</th>
+      <td colspan="3">{{repair?.purpose}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Detail</th>
+      <td>{{repair?.detail}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Consequences</th>
+      <td colspan="3">{{repair?.consequences}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Date Vendor Contacted</th>
+      <td>{{repair?.dateVendorContacted}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Reason Not Complete</th>
+      <td colspan="3">{{repair?.reasonNotComplete}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Repair Cost</th>
+      <td>{{repair?.repairCost}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

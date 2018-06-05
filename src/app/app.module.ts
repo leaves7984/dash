@@ -28,6 +28,8 @@ import { UserDetailComponent } from './home/user-detail/user-detail.component';
 import { UserInfoComponent } from './home/user-detail/user-info/user-info.component';
 import { UserWheelchairComponent } from './home/user-detail/user-wheelchair/user-wheelchair.component';
 import { UserVendorComponent } from './home/user-detail/user-vendor/user-vendor.component';
+import { UserRepairComponent } from './home/user-detail/user-repair/user-repair.component';
+import { UserTrackingComponent } from './home/user-detail/user-tracking/user-tracking.component';
 
 
 
@@ -50,7 +52,9 @@ import { UserVendorComponent } from './home/user-detail/user-vendor/user-vendor.
     UserDetailComponent,
     UserInfoComponent,
     UserWheelchairComponent,
-    UserVendorComponent
+    UserVendorComponent,
+    UserRepairComponent,
+    UserTrackingComponent
   ],
   imports: [
     BrowserModule,
