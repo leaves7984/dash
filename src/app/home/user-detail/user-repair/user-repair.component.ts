@@ -30,6 +30,14 @@ export class UserRepairComponent implements OnInit {
         this.userService.getRepair(this.userId).subscribe(data => {
             console.log(data);
             this.repairs = data;
+            for (let i = 0; i < data.length ; i++ ) {
+                this.userService.getTracking(this.repairs[i].id).subscribe(data => {
+                    this.repairs[i].hasTracking = true;
+                }, error => {
+                    console.log(true);
+                    this.repairs[i].hasTracking = false;
+                });
+            }
         }, error => {});
     }
     goTrack(id) {

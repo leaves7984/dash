@@ -64,6 +64,7 @@ export class Vendor {
 }
 export class Repair {
     id: String;
+    hasTracking: Boolean;
     wheelchairId: String;
     userId: String;
     wheelchair: String;
@@ -94,6 +95,15 @@ export class Tracking {
     date: String;
     updateTracking: String;
     consequences: String;
+    createdAt: String;
+    modifiedAt: String;
+}
+export class GPS {
+    id: String;
+    userId: String;
+    date: String;
+    period: String;
+    distance: String;
     createdAt: String;
     modifiedAt: String;
 }

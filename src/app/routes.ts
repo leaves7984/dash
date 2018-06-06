@@ -17,6 +17,7 @@ import {UserWheelchairComponent} from './home/user-detail/user-wheelchair/user-w
 import {UserVendorComponent} from './home/user-detail/user-vendor/user-vendor.component';
 import {UserRepairComponent} from './home/user-detail/user-repair/user-repair.component';
 import {UserTrackingComponent} from './home/user-detail/user-tracking/user-tracking.component';
+import {UserGpsComponent} from './home/user-detail/user-gps/user-gps.component';
 
 export const appRoutes: Routes = [
   {
@@ -34,7 +35,8 @@ export const appRoutes: Routes = [
                 {path: 'info/:userId', component: UserInfoComponent},
                 {path: 'wheelchair/:userId', component: UserWheelchairComponent},
                 {path: 'vendor/:userId', component: UserVendorComponent},
-                {path: 'repair/:userId', component: UserRepairComponent}
+                {path: 'repair/:userId', component: UserRepairComponent},
+                {path: 'gps/:userId', component: UserGpsComponent}
             ]
         }]
     },

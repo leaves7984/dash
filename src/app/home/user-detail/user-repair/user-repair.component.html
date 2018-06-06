@@ -23,10 +23,11 @@
     <!--<th scope="col">Resource</th>-->
     <th scope="col">IsComplete</th>
     <!--<th scope="col">WhoComplete</th>-->
+    <th scope="col">More</th>
   </tr>
   </thead>
   <tbody *ngFor="let item of repairs">
-  <tr (click)="goTrack(item.id)">
+  <tr>
     <th scope="row"><input type="checkbox"></th>
     <td>{{item.dateRepairNeeded|date: 'MM/dd/yyyy'}}</td>
     <td>{{item.wheelchair}}</td>
@@ -34,9 +35,107 @@
     <td>{{item.consequences}}</td>
     <td>{{item.repairCost}}</td>
     <td>{{item.isCompleted}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+        <i class="material-icons">visibility</i>
+      </button>
+      <div *ngIf="item.hasTracking">
+        <button type="button" class="btn btn-danger" (click)="goTrack(item.id)">
+          <i class="material-icons">library_books</i>
+        </button>
+      </div>
+      <div *ngIf="!item.hasTracking">
+        <button type="button" class="btn btn-secondary" disabled>
+          <i class="material-icons">library_books</i>
+        </button>
+      </div>
+    </td>
   </tr>
+
+  <!-- Modal -->
+  <div class="modal fade  bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Repair Information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-striped">
+              <tbody>
+              <tr>
+                <th scope="row">Wheelchair</th>
+                <td colspan="3">{{item.wheelchair}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Created at</th>
+                <td>{{item.createdAt | date: 'MM/dd/yyyy'}}</td>
+                <th>Modified at</th>
+                <td>{{item.modifiedAt | date: 'MM/dd/yyyy'}}</td>
+              </tr>
+
+              <tr>
+                <th scope="row">IsCompleted</th>
+                <td>{{item.isCompleted}}</td>
+                <th>Who Complete</th>
+                <td>{{item.whoComplete}}</td>
+              </tr>
+              <tr>
+                <th scope="row">DateRepairNeeded</th>
+                <td>{{item.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>
+                <th>Date</th>
+                <td>{{item.date | date: 'MM/dd/yyyy'}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Category</th>
+                <td>{{item.category}}</td>
+                <th>SubCategory</th>
+                <td>{{item.subCategory}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Resource</th>
+                <td colspan="3">{{item.resource}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Purpose</th>
+                <td colspan="3">{{item.purpose}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Detail</th>
+                <td>{{item.detail}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Consequences</th>
+                <td colspan="3">{{item.consequences}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Date Vendor Contacted</th>
+                <td>{{item.dateVendorContacted}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Reason Not Complete</th>
+                <td colspan="3">{{item.reasonNotComplete}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Repair Cost</th>
+                <td>{{item.repairCost}}</td>
+              </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </tbody>
 </table>
+
 
 <div>
   <nav aria-label="Page navigation example">

@@ -30,6 +30,7 @@ import { UserWheelchairComponent } from './home/user-detail/user-wheelchair/user
 import { UserVendorComponent } from './home/user-detail/user-vendor/user-vendor.component';
 import { UserRepairComponent } from './home/user-detail/user-repair/user-repair.component';
 import { UserTrackingComponent } from './home/user-detail/user-tracking/user-tracking.component';
+import { UserGpsComponent } from './home/user-detail/user-gps/user-gps.component';
 
 
 
@@ -54,7 +55,8 @@ import { UserTrackingComponent } from './home/user-detail/user-tracking/user-tra
     UserWheelchairComponent,
     UserVendorComponent,
     UserRepairComponent,
-    UserTrackingComponent
+    UserTrackingComponent,
+    UserGpsComponent
   ],
   imports: [
     BrowserModule,

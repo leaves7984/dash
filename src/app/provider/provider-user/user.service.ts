@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Info, Repair, Tracking, User, Vendor, Wheelchair} from './user.model';
+import {GPS, Info, Repair, Tracking, User, Vendor, Wheelchair} from './user.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
@@ -64,6 +64,9 @@ export class UserService {
   }
   getTracking(Id) {
       return this.http.get<Tracking[]>(this.rootUrl + '/rest/repairDataTracking/' + Id);
+  }
+  getGPS(userId) {
+      return this.http.get<GPS[]>(this.rootUrl + '/rest/gpsTrackingData/' + userId);
   }
 }
 
