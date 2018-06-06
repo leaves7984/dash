@@ -107,3 +107,13 @@ export class GPS {
     createdAt: String;
     modifiedAt: String;
 }
+export class Log {
+    userId: String;
+    id: String;
+    logTitle: String;
+    oldValue: String;
+    newValue: String;
+    description: String;
+    createdAt: String;
+    modifiedAt: String;
+}
