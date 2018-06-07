@@ -40,7 +40,8 @@
         <i class="material-icons">visibility</i>
       </button>
       <div *ngIf="item.hasTracking">
-        <button type="button" class="btn btn-danger" (click)="goTrack(item.id)">
+        <button type="button" class="btn btn-danger" routerLink='/tracking/{{item.id}}'
+                [queryParams] = "{userId: userId, state: 'repair'}">
           <i class="material-icons">library_books</i>
         </button>
       </div>

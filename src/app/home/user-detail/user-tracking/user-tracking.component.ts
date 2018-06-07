@@ -13,11 +13,18 @@ export class UserTrackingComponent implements OnInit {
   trackingId: String;
   repair: Repair;
   trackings: Tracking[];
+  userId: String;
+  state: String;
   constructor(private route: ActivatedRoute,
               private userService: UserService) {
       this.route.params.subscribe(res => {
           console.log(res.id + ' Tracking ID');
           this.trackingId = res.id;
+      });
+      this.route.queryParams.subscribe(res => {
+          console.log(res);
+          this.userId = res.userId;
+          this.state = res.state;
       });
   }
 

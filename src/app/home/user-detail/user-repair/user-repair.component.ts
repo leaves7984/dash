@@ -17,7 +17,7 @@ export class UserRepairComponent implements OnInit {
     constructor(private route: ActivatedRoute,
                 private userService: UserService,
                 private router: Router) {
-        this.route.params.subscribe(res => {
+        this.route.queryParams.subscribe(res => {
             console.log(res.userId + ' Detail');
             this.userId = res.userId;
         });
@@ -39,8 +39,5 @@ export class UserRepairComponent implements OnInit {
                 });
             }
         }, error => {});
-    }
-    goTrack(id) {
-        this.router.navigate(['/tracking/' + id]);
     }
 }
