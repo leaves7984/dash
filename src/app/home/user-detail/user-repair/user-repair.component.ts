@@ -12,8 +12,7 @@ export class UserRepairComponent implements OnInit {
 
     repairs: Repair[];
     userId: String;
-    createdAt: Date;
-    modifiedAt: Date;
+    isShow: Boolean;
     constructor(private route: ActivatedRoute,
                 private userService: UserService,
                 private router: Router) {
@@ -38,6 +37,9 @@ export class UserRepairComponent implements OnInit {
                     this.repairs[i].hasTracking = false;
                 });
             }
-        }, error => {});
+            this.isShow = false;
+        }, error => {
+            this.isShow = true;
+        });
     }
 }

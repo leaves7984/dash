@@ -13,17 +13,12 @@ export class UserVendorComponent implements OnInit {
     vendors: Vendor[];
     vendor: Vendor;
     userId: String;
-    isClick: Boolean;
-    createdAt: Date;
-    modifiedAt: Date;
+    isShow: Boolean;
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
         this.route.params.subscribe(res => {
             console.log(res.userId + ' Detail');
             this.userId = res.userId;
-            this.isClick = false;
-            this.createdAt = null;
-            this.modifiedAt = null;
         });
     }
 
@@ -34,14 +29,17 @@ export class UserVendorComponent implements OnInit {
         this.userService.getVendor(this.userId).subscribe(data => {
             console.log(data);
             this.vendors = data;
-        }, error => {});
+            this.isShow = false;
+        }, error => {
+            this.isShow = true;
+        });
     }
-    isShow(item) {
-        this.createdAt = new Date(parseInt(item.createdAt.toString(), 10));
-        this.modifiedAt = new Date(parseInt(item.modifiedAt.toString(), 10));
-        this.isClick = true;
-        this.vendor = item;
-    }
+    // isShow(item) {
+    //     this.createdAt = new Date(parseInt(item.createdAt.toString(), 10));
+    //     this.modifiedAt = new Date(parseInt(item.modifiedAt.toString(), 10));
+    //     this.isClick = true;
+    //     this.vendor = item;
+    // }
 
 
 }

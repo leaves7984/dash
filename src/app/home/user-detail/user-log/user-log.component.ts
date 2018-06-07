@@ -12,6 +12,7 @@ export class UserLogComponent implements OnInit {
 
     loggers: Log[];
     userId: String;
+    isShow: Boolean;
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
         this.route.params.subscribe(res => {
@@ -27,6 +28,9 @@ export class UserLogComponent implements OnInit {
         this.userService.getLog(this.userId).subscribe(data => {
             console.log(data);
             this.loggers = data;
-        }, error => {});
+            this.isShow = false;
+        }, error => {
+            this.isShow = true;
+        });
     }
 }

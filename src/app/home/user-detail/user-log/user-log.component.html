@@ -1,33 +1,50 @@
-<div>
-  <form class="bpy">
-    <span class="bi"><i class="fas fa-search"></i></span>
-    <input class="form-control mr-sm-2 bsx" type="search" placeholder="Search.." aria-label="Search">
-    <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-  </form>
+<div class="row justify-content-md-center" *ngIf="isShow">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        Warning
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">No data available</h5>
+        <p class="card-text">Please check other data!</p>
+        <button class="btn btn-primary">Go somewhere</button>
+      </div>
+    </div>
+  </div>
 </div>
-<br><br>
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col"><input type="checkbox"></th>
-    <th scope="col">CreatedAt</th>
-    <th scope="col">ModifiedAt</th>
-    <th scope="col">LogTitle</th>
-    <th scope="col">Description</th>
-    <th scope="col">NewValue</th>
-    <th scope="col">OldValue</th>
-  </tr>
-  </thead>
-  <tbody *ngFor="let item of loggers">
-  <tr>
-    <th scope="row"><input type="checkbox"></th>
-    <td>{{item.createdAt|date: 'MM/dd/yyyy'}}</td>
-    <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>
-    <td>{{item.logTitle}}</td>
-    <td>{{item.description}}</td>
-    <td>{{item.newValue}}</td>
-    <td>{{item.oldValue}}</td>
 
-  </tr>
-  </tbody>
-</table>
+<div *ngIf="!isShow">
+  <div>
+    <form class="bpy">
+      <span class="bi"><i class="fas fa-search"></i></span>
+      <input class="form-control mr-sm-2 bsx" type="search" placeholder="Search.." aria-label="Search">
+      <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+    </form>
+  </div>
+  <br><br>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"><input type="checkbox"></th>
+      <th scope="col">CreatedAt</th>
+      <th scope="col">ModifiedAt</th>
+      <th scope="col">LogTitle</th>
+      <th scope="col">Description</th>
+      <th scope="col">NewValue</th>
+      <th scope="col">OldValue</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let item of loggers">
+    <tr>
+      <th scope="row"><input type="checkbox"></th>
+      <td>{{item.createdAt|date: 'MM/dd/yyyy'}}</td>
+      <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>
+      <td>{{item.logTitle}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.newValue}}</td>
+      <td>{{item.oldValue}}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

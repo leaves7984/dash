@@ -13,13 +13,12 @@ export class UserWheelchairComponent implements OnInit {
     wheelchairs: Wheelchair[];
     wheelchair: Wheelchair;
     userId: String;
-    isClick: Boolean;
+    isShow: Boolean;
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
         this.route.params.subscribe(res => {
             console.log(res.userId + ' Detail');
             this.userId = res.userId;
-            this.isClick = false;
         });
     }
 
@@ -30,14 +29,10 @@ export class UserWheelchairComponent implements OnInit {
         this.userService.getWheelchair(this.userId).subscribe(data => {
             console.log(data);
             this.wheelchairs = data;
-        }, error => {});
+            this.isShow = false;
+        }, error => {
+            this.isShow = true;
+        });
     }
-
-    // isShow(item) {
-    //   this.createdAt = new Date(parseInt(item.createdAt.toString(), 10));
-    //   this.modifiedAt = new Date(parseInt(item.modifiedAt.toString(), 10));
-    //   this.isClick = true;
-    //   this.wheelchair = item;
-    // }
 
 }
