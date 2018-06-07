@@ -10,9 +10,11 @@ import {UserService} from '../../provider/provider-user/user.service';
 export class UserDetailComponent implements OnInit {
 
   userId: String;
+  state: String;
   constructor(private route: ActivatedRoute) {
-      this.route.params.subscribe(res => {
-          console.log(res.userId + ' Detail');
+      this.route.queryParams.subscribe(res => {
+          console.log(res);
+          this.state = res.state;
           this.userId = res.userId;
       });
   }

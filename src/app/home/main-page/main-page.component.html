@@ -29,28 +29,34 @@
         <th scope="row">
           <ul class="nav">
             <li class="nav-item">
-              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/{{item}}/info/{{item}}'>
+              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/info/{{item}}'
+                      [queryParams] = "{userId: item, state: 'info'}">
                 Info
               </button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/{{item}}/wheelchair/{{item}}'>
+              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/wheelchair/{{item}}'
+                      [queryParams] = "{userId: item, state: 'wheelchair'}">
                 Wheelchair
               </button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/{{item}}/vendor/{{item}}'>
+              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/vendor/{{item}}'
+                      [queryParams] = "{userId: item, state: 'vendor'}">
                 Vendor</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/{{item}}/repair/{{item}}'>Repair
+              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/repair/{{item}}'
+                      [queryParams] = "{userId: item, state: 'repair'}">Repair
               </button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/{{item}}/gps/{{item}}'>GPS</button>
+              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/gps/{{item}}'
+                      [queryParams] = "{userId: item, state: 'gps'}">GPS</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-secondary nav-link" routerLink='#'>Log</button>
+              <button class="btn btn-outline-secondary nav-link" routerLink='/detail/log/{{item}}'
+                      [queryParams] = "{userId: item, state: 'log'}">Log</button>
             </li>
           </ul>
         </th>

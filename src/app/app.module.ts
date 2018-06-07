@@ -31,6 +31,7 @@ import { UserVendorComponent } from './home/user-detail/user-vendor/user-vendor.
 import { UserRepairComponent } from './home/user-detail/user-repair/user-repair.component';
 import { UserTrackingComponent } from './home/user-detail/user-tracking/user-tracking.component';
 import { UserGpsComponent } from './home/user-detail/user-gps/user-gps.component';
+import { UserLogComponent } from './home/user-detail/user-log/user-log.component';
 
 
 
@@ -56,7 +57,8 @@ import { UserGpsComponent } from './home/user-detail/user-gps/user-gps.component
     UserVendorComponent,
     UserRepairComponent,
     UserTrackingComponent,
-    UserGpsComponent
+    UserGpsComponent,
+    UserLogComponent
   ],
   imports: [
     BrowserModule,

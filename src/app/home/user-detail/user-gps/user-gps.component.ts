@@ -25,7 +25,7 @@ export class UserGpsComponent implements OnInit {
             console.log(res.userId + ' Detail');
             this.userId = res.userId;
         });
-        this.dayData = [0, 0, 1, 2, 0, 0, 0, 0];
+        this.dayData = [0, 0, 0, 0, 0, 0, 0, 0];
         this.dayLabel = ['12AM-3AM', '3AM-6AM', '6AM-9AM', '9AM-12PM', '12PM-3PM', '3PM-6PM', '6PM-9PM', '9PM-12AM'];
         this.weekData = [0, 0, 0, 0, 0, 0, 0];
         this.weekLabel = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -78,17 +78,20 @@ export class UserGpsComponent implements OnInit {
         });
     }
     fetchData() {
+        const ctx1 = this.elementRef.nativeElement.querySelector('#dayChart').getContext('2d');
+        const ctx2 = this.elementRef.nativeElement.querySelector('#weekChart').getContext('2d');
         this.userService.getGPS(this.userId).subscribe(data => {
             console.log('--Log gps data--');
             console.log(data);
             this.dayData = this.getDayData(data, null);
             this.weekData = this.getWeekData(data);
-            const ctx1 = this.elementRef.nativeElement.querySelector('#dayChart').getContext('2d');
-            const ctx2 = this.elementRef.nativeElement.querySelector('#weekChart').getContext('2d');
             this.drawChart(ctx1, this.dayData, this.dayLabel);
             this.drawChart(ctx2, this.weekData, this.weekLabel);
             this.gps = data;
-        }, error => {});
+        }, error => {
+            this.drawChart(ctx1, this.dayData, this.dayLabel);
+            this.drawChart(ctx2, this.weekData, this.weekLabel);
+        });
     }
 
     getWeekData(data) {

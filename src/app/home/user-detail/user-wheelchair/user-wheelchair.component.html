@@ -1,83 +1,236 @@
-<div class="row">
-  <div class="col-4">
-    <div class="card">
-      <div class="card-header">
-        My Wheelchairs
-      </div>
-      <div class="list-group" *ngFor="let item of wheelchairs">
-        <button type="button" class="list-group-item list-group-item-action" (click) = "isShow(item)">
-          {{item?.name}}
-        </button>
-      </div>
+<div>
+  <form class="bpy">
+    <span class="bi"><i class="fas fa-search"></i></span>
+    <input class="form-control mr-sm-2 bsx" type="search" placeholder="Search.." aria-label="Search">
+    <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+  </form>
+</div>
+<br><br>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col"><input type="checkbox"></th>
+    <th scope="col">CreatedAt</th>
+    <th scope="col">Name</th>
+    <th scope="col">Type</th>
+    <th scope="col">Manufacturer</th>
+    <th scope="col">Model</th>
+    <th scope="col">SerialNumber</th>
+    <th scope="col">Age</th>
+    <th scope="col">More</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let item of wheelchairs">
+  <tr>
+    <th scope="row"><input type="checkbox"></th>
+    <td>{{item.createdAt|date: 'MM/dd/yyyy '}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.type}}</td>
+    <td>{{item.manufacturer}}</td>
+    <td>{{item.model}}</td>
+    <td>{{item.serialNumber}}</td>
+    <td>{{item.age}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+        <i class="material-icons">visibility</i>
+      </button>
+    </td>
+  </tr>
 
+  <!-- Modal -->
+  <div class="modal fade  bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Repair Information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Basic Information</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Name</th>
+              <td>{{item.name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Created at</th>
+              <td>{{item.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Modified at</th>
+              <td>{{item.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Type</th>
+              <td>{{item.type}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Manufacturer</th>
+              <td>{{item.manufacturer}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Model</th>
+              <td>{{item.model}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Serial Number</th>
+              <td>{{item.serialNumber}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Age of Wheelchair</th>
+              <td>{{item.age}}</td>
+            </tr>
+            </tbody>
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Other Information</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Usage Per Day</th>
+              <td>{{item.hoursPerDay}} hours</td>
+            </tr>
+            <tr>
+              <th scope="row">Performance</th>
+              <td>{{item.performance}} of 5 stars</td>
+            </tr>
+            <tr>
+              <th scope="row">Repairs Done</th>
+              <td>{{item.repairs}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Funding by</th>
+              <td>{{item.funding}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-8" *ngIf="isClick">
-    <table class="table table-striped">
-      <thead class="thead-dark">
-      <tr>
-        <th scope="col">Basic Information</th>
-        <th scope="col"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">Name</th>
-        <td>{{wheelchair.name}}</td>
-      </tr>
-      <tr>
-        <th scope="row">Created at</th>
-        <td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
-      </tr>
-      <tr>
-        <th scope="row">Modified at</th>
-        <td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
-      </tr>
-      <tr>
-        <th scope="row">Type</th>
-        <td>{{wheelchair.type}}</td>
-      </tr>
-      <tr>
-        <th scope="row">Manufacturer</th>
-        <td>{{wheelchair.manufacturer}}</td>
-      </tr>
-      <tr>
-        <th scope="row">Model</th>
-        <td>{{wheelchair.model}}</td>
-      </tr>
-      <tr>
-        <th scope="row">Serial Number</th>
-        <td>{{wheelchair.serialNumber}}</td>
-      </tr>
-      <tr>
-        <th scope="row">Age of Wheelchair</th>
-        <td>{{wheelchair.age}}</td>
-      </tr>
-      </tbody>
-      <thead class="thead-dark">
-      <tr>
-        <th scope="col">Other Information</th>
-        <th scope="col"></th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Usage Per Day</th>
-          <td>{{wheelchair.hoursPerDay}} hours</td>
-        </tr>
-        <tr>
-          <th scope="row">Performance</th>
-          <td>{{wheelchair.performance}} of 5 stars</td>
-        </tr>
-        <tr>
-          <th scope="row">Repairs Done</th>
-          <td>{{wheelchair.repairs}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Funding by</th>
-          <td>{{wheelchair.funding}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+  </tbody>
+</table>
+
+
+<div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">4</a></li>
+      <li class="page-item"><a class="page-link" href="#">5</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
+
+<!--<div class="row">-->
+  <!--<div class="col-4">-->
+    <!--<div class="card">-->
+      <!--<div class="card-header">-->
+        <!--My Wheelchairs-->
+      <!--</div>-->
+      <!--<div class="list-group" *ngFor="let item of wheelchairs">-->
+        <!--<button type="button" class="list-group-item list-group-item-action" (click) = "isShow(item)">-->
+          <!--{{item?.name}}-->
+        <!--</button>-->
+      <!--</div>-->
+
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-8" *ngIf="isClick">-->
+    <!--<table class="table table-striped">-->
+      <!--<thead class="thead-dark">-->
+      <!--<tr>-->
+        <!--<th scope="col">Basic Information</th>-->
+        <!--<th scope="col"></th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<th scope="row">Name</th>-->
+        <!--<td>{{item.name}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th scope="row">Created at</th>-->
+        <!--<td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th scope="row">Modified at</th>-->
+        <!--<td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th scope="row">Type</th>-->
+        <!--<td>{{item.type}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th scope="row">Manufacturer</th>-->
+        <!--<td>{{item.manufacturer}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th scope="row">Model</th>-->
+        <!--<td>{{item.model}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th scope="row">Serial Number</th>-->
+        <!--<td>{{item.serialNumber}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<th scope="row">Age of Wheelchair</th>-->
+        <!--<td>{{item.age}}</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+      <!--<thead class="thead-dark">-->
+      <!--<tr>-->
+        <!--<th scope="col">Other Information</th>-->
+        <!--<th scope="col"></th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+      <!--<tbody>-->
+        <!--<tr>-->
+          <!--<th scope="row">Usage Per Day</th>-->
+          <!--<td>{{item.hoursPerDay}} hours</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<th scope="row">Performance</th>-->
+          <!--<td>{{item.performance}} of 5 stars</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<th scope="row">Repairs Done</th>-->
+          <!--<td>{{item.repairs}}</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<th scope="row">Funding by</th>-->
+          <!--<td>{{item.funding}}</td>-->
+        <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>-->
+<!--</div>-->

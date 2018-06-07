@@ -18,6 +18,7 @@ import {UserVendorComponent} from './home/user-detail/user-vendor/user-vendor.co
 import {UserRepairComponent} from './home/user-detail/user-repair/user-repair.component';
 import {UserTrackingComponent} from './home/user-detail/user-tracking/user-tracking.component';
 import {UserGpsComponent} from './home/user-detail/user-gps/user-gps.component';
+import {UserLogComponent} from './home/user-detail/user-log/user-log.component';
 
 export const appRoutes: Routes = [
   {
@@ -26,7 +27,7 @@ export const appRoutes: Routes = [
     children: [{path: '', component: MainPageComponent}]
   },
     {
-        path: 'detail/:userId', component: HomeComponent,
+        path: 'detail', component: HomeComponent,
         canActivate: [AuthGuard],
         children: [{
             path: '', component: UserDetailComponent,
@@ -36,7 +37,8 @@ export const appRoutes: Routes = [
                 {path: 'wheelchair/:userId', component: UserWheelchairComponent},
                 {path: 'vendor/:userId', component: UserVendorComponent},
                 {path: 'repair/:userId', component: UserRepairComponent},
-                {path: 'gps/:userId', component: UserGpsComponent}
+                {path: 'gps/:userId', component: UserGpsComponent},
+                {path: 'log/:userId', component: UserLogComponent}
             ]
         }]
     },
@@ -75,13 +77,12 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [{path: '', component: TipComponent}]
   },
-  {
-    path: 'signup', component: UserComponent,
-  children: [{path: '', component: SignUpComponent}]
-  },
-  {
-    path: 'login', component: UserComponent,
-    children: [{path: '', component: SignInComponent}]
-  },
+    {
+        path: 'auth', component: UserComponent,
+        children: [
+            {path: 'signup', component: SignUpComponent},
+            {path: 'signin', component: SignInComponent}
+            ]
+    },
   { path: '', redirectTo: '/login', pathMatch: 'full'}
   ];

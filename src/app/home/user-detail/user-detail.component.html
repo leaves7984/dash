@@ -9,32 +9,40 @@
   <div>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/info/{{userId}}' >
+        <a class="nav-link" [ngClass]="{'active':state === 'info'}" data-toggle="tab" role="tab"
+           routerLink='/detail/info/{{userId}}' [queryParams] = "{userId: userId, state: 'info'}">
           Info
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/wheelchair/{{userId}}'>
+        <a class="nav-link" [ngClass]="{'active':state === 'wheelchair'}" data-toggle="tab" role="tab"
+           routerLink='/detail/wheelchair/{{userId}}' [queryParams] = "{userId: userId, state: 'wheelchair'}">
           Wheelchair
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/vendor/{{userId}}'>
+        <a class="nav-link" [ngClass]="{'active':state === 'vendor'}" data-toggle="tab" role="tab"
+           routerLink='/detail/vendor/{{userId}}' [queryParams] = "{userId: userId, state: 'vendor'}">
           Vendor
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/repair/{{userId}}'>
+        <a class="nav-link" [ngClass]="{'active':state === 'repair'}" data-toggle="tab" role="tab"
+           routerLink='/detail/repair/{{userId}}' [queryParams] = "{userId: userId, state: 'repair'}">
           Repair
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" role="tab" routerLink='/detail/{{userId}}/gps/{{userId}}'>
+        <a class="nav-link" [ngClass]="{'active':state === 'gps'}" data-toggle="tab" role="tab"
+           routerLink='/detail/gps/{{userId}}' [queryParams] = "{userId: userId, state: 'gps'}">
           GPS
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" role="tab" routerLink='#'>Log</a>
+        <a class="nav-link" [ngClass]="{'active':state === 'log'}" data-toggle="tab" role="tab"
+           routerLink='/detail/log/{{userId}}' [queryParams] = "{userId: userId, state: 'log'}">
+          Log
+        </a>
       </li>
     </ul>
   </div>

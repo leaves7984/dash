@@ -13,7 +13,7 @@
     <div class="form-group">
       <i class="material-icons prefix">vpn_key</i>
       <label>Password</label>
-      <input type="text" name="password" class="form-control" #Password= "ngModel" [(ngModel)] = "user.password"
+      <input type="password" name="password" class="form-control" #Password= "ngModel" [(ngModel)] = "user.password"
              placeholder="Password" required>
     </div>
     <button type="submit" [disabled]="!RegisterForm.valid" class="btn btn-primary">Register</button>
