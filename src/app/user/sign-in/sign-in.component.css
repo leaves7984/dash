@@ -1,3 +1,6 @@
 button[type=submit] {
   width: 100%;
 }
+.wup p{
+  color: red;
+}

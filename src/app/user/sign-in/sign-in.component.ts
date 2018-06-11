@@ -10,6 +10,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class SignInComponent implements OnInit {
   isLoginError = false;
+  show = false;
   constructor(private userService: UserService, private router: Router ) { }
 
   ngOnInit() {
@@ -25,7 +26,10 @@ export class SignInComponent implements OnInit {
       },
       (err: HttpErrorResponse) => {
         this.isLoginError = true;
+        this.show = true;
       });
   }
-
+  reType() {
+    this.show = false;
+  }
 }
