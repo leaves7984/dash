@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService} from '../../provider/provider-user/user.service';
 import { Angular5Csv} from 'angular5-csv/Angular5-csv';
+import * as alasql from 'alasql';
+import {Info, Repair, Tracking} from '../../provider/provider-user/user.model';
 
 @Component({
   selector: 'app-main-page',
@@ -10,7 +12,8 @@ import { Angular5Csv} from 'angular5-csv/Angular5-csv';
 export class MainPageComponent implements OnInit {
   users: Object;
   data: Object;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
       this.fetchData();
@@ -23,47 +26,47 @@ export class MainPageComponent implements OnInit {
       }, error => {});
   }
   downloadOne(userId) {
-
-      let data = [
-          {
-              name: "Test 1",
-              age: 13,
-              average: 8.2,
-              approved: true,
-              description: "using 'Content here, content here' "
-          },
-          {
-              name: 'Test 2',
-              age: 11,
-              average: 8.2,
-              approved: true,
-              description: "using 'Content here, content here' "
-          },
-          {
-              name: 'Test 4',
-              age: 10,
-              average: 8.2,
-              approved: true,
-              description: "using 'Content here, content here' "
-          },
-      ];
-      let options = {
-          fieldSeparator: ',',
-          quoteStrings: '"',
-          decimalseparator: '.',
-          showLabels: true,
-          showTitle: true,
-          title: 'Your title',
-          useBom: true,
-          headers: ['Name', 'Age', 'Average', 'Approved', 'Description']};
-
       this.userService.getAll(userId).subscribe(res => {
           console.log(res);
-          this.data = res;
-          // new Angular5Csv(this.data, 'My Report', options);
+          let info = [{value: 'null'}];
+          let trackings = [{value: 'null'}];
+          let repairs = [{value: 'null'}];
+          let logger = [{value: 'null'}];
+          let repairTrackings = [{value: 'null'}];
+          let vendors = [{value: 'null'}];
+          let wheelchairs = [{value: 'null'}];
+          if (res.gpsTracking != null) {
+              trackings = res.gpsTracking;
+          }
+          if (res.repairData != null) {
+              repairs = res.repairData;
+          }
+          if (res.infoData != null) {
+              info = [res.infoData];
+          }
+          if (res.logData != null) {
+              logger = res.logData;
+          }
+          if (res.repairTrackings != null) {
+              repairTrackings = res.repairTrackings;
+          }
+          if (res.vendorAndContact != null) {
+              vendors = res.vendorAndContact;
+          }
+          if (res.wheelchairData != null) {
+              wheelchairs = res.wheelchairData;
+          }
+          const opts = [
+                            {sheetid: 'InfoData', header: true},
+                            {sheetid: 'LogData', header: false},
+                            {sheetid: 'WheelchairData', header: false},
+                            {sheetid: 'VendorAndContact', header: false},
+                            {sheetid: 'RepairTrackings', header: false},
+                            {sheetid: 'GPSTracking', header: false},
+                            {sheetid: 'RepairData', header: false}
+                        ];
+          const report = alasql('SELECT INTO XLSX("user_' + userId + '.xlsx",?) FROM ?',
+              [opts, [info, logger, wheelchairs, vendors, repairTrackings, trackings, repairs]]);
       });
-      // new Angular5Csv(res.gpsTracking, 'My Report', options);
-
-      // new Angular5Csv(data, 'My Report', options);
   }
 }
