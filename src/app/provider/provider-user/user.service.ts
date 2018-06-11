@@ -7,7 +7,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class UserService {
 
-  rootUrl = 'http://localhost:8787';
+  rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
   constructor(private http: HttpClient) {}
 
   registerUser(user: User) {
@@ -70,6 +70,10 @@ export class UserService {
   }
   getLog(userId) {
     return this.http.get<Log[]>(this.rootUrl + '/rest/logger/' + userId);
+  }
+
+  getAll(userId) {
+    return this.http.get(this.rootUrl + '/rest/getData/' + userId);
   }
 }
 

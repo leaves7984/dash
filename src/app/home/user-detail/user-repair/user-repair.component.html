@@ -51,7 +51,8 @@
       <td>{{item.repairCost}}</td>
       <td>{{item.isCompleted}}</td>
       <td>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+                (click)="getRepair(item)">
           <i class="material-icons">visibility</i>
         </button>
         <div *ngIf="item.hasTracking">
@@ -84,60 +85,60 @@
               <tbody>
               <tr>
                 <th scope="row">Wheelchair</th>
-                <td colspan="3">{{item.wheelchair}}</td>
+                <td colspan="3">{{repair?.wheelchair}}</td>
               </tr>
               <tr>
                 <th scope="row">Created at</th>
-                <td>{{item.createdAt | date: 'MM/dd/yyyy'}}</td>
+                <td>{{repair?.createdAt | date: 'MM/dd/yyyy'}}</td>
                 <th>Modified at</th>
-                <td>{{item.modifiedAt | date: 'MM/dd/yyyy'}}</td>
+                <td>{{repair?.modifiedAt | date: 'MM/dd/yyyy'}}</td>
               </tr>
 
               <tr>
                 <th scope="row">IsCompleted</th>
-                <td>{{item.isCompleted}}</td>
+                <td>{{repair?.isCompleted}}</td>
                 <th>Who Complete</th>
-                <td>{{item.whoComplete}}</td>
+                <td>{{repair?.whoComplete}}</td>
               </tr>
               <tr>
                 <th scope="row">DateRepairNeeded</th>
-                <td>{{item.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>
+                <td>{{repair?.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>
                 <th>Date</th>
-                <td>{{item.date | date: 'MM/dd/yyyy'}}</td>
+                <td>{{repair?.date | date: 'MM/dd/yyyy'}}</td>
               </tr>
               <tr>
                 <th scope="row">Category</th>
-                <td>{{item.category}}</td>
+                <td>{{repair?.category}}</td>
                 <th>SubCategory</th>
-                <td>{{item.subCategory}}</td>
+                <td>{{repair?.subCategory}}</td>
               </tr>
               <tr>
                 <th scope="row">Resource</th>
-                <td colspan="3">{{item.resource}}</td>
+                <td colspan="3">{{repair?.resource}}</td>
               </tr>
               <tr>
                 <th scope="row">Purpose</th>
-                <td colspan="3">{{item.purpose}}</td>
+                <td colspan="3">{{repair?.purpose}}</td>
               </tr>
               <tr>
                 <th scope="row">Detail</th>
-                <td>{{item.detail}}</td>
+                <td>{{repair?.detail}}</td>
               </tr>
               <tr>
                 <th scope="row">Consequences</th>
-                <td colspan="3">{{item.consequences}}</td>
+                <td colspan="3">{{repair?.consequences}}</td>
               </tr>
               <tr>
                 <th scope="row">Date Vendor Contacted</th>
-                <td>{{item.dateVendorContacted}}</td>
+                <td>{{repair?.dateVendorContacted}}</td>
               </tr>
               <tr>
                 <th scope="row">Reason Not Complete</th>
-                <td colspan="3">{{item.reasonNotComplete}}</td>
+                <td colspan="3">{{repair?.reasonNotComplete}}</td>
               </tr>
               <tr>
                 <th scope="row">Repair Cost</th>
-                <td>{{item.repairCost}}</td>
+                <td>{{repair?.repairCost}}</td>
               </tr>
               </tbody>
             </table>

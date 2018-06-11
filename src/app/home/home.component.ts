@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../provider/provider-user/user.service';
-import {HttpErrorResponse} from "@angular/common/http";
-import {Observable} from "rxjs/internal/Observable";
+// import {HttpErrorResponse} from "@angular/common/http";
+// import {Observable} from "rxjs/internal/Observable";
 
 @Component({
   selector: 'app-home',
@@ -35,6 +35,6 @@ export class HomeComponent implements OnInit {
 
   Logout() {
     localStorage.removeItem('userToken');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/signin']);
   }
 }

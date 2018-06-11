@@ -47,7 +47,8 @@
       <td>{{item.serialNumber}}</td>
       <td>{{item.age}}</td>
       <td>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+                (click)="getWheelchair(item)">
           <i class="material-icons">visibility</i>
         </button>
       </td>
@@ -75,35 +76,35 @@
               <tbody>
               <tr>
                 <th scope="row">Name</th>
-                <td>{{item.name}}</td>
+                <td>{{wheelchair?.name}}</td>
               </tr>
               <tr>
                 <th scope="row">Created at</th>
-                <td>{{item.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+                <td>{{wheelchair?.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
               </tr>
               <tr>
                 <th scope="row">Modified at</th>
-                <td>{{item.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+                <td>{{wheelchair?.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
               </tr>
               <tr>
                 <th scope="row">Type</th>
-                <td>{{item.type}}</td>
+                <td>{{wheelchair?.type}}</td>
               </tr>
               <tr>
                 <th scope="row">Manufacturer</th>
-                <td>{{item.manufacturer}}</td>
+                <td>{{wheelchair?.manufacturer}}</td>
               </tr>
               <tr>
                 <th scope="row">Model</th>
-                <td>{{item.model}}</td>
+                <td>{{wheelchair?.model}}</td>
               </tr>
               <tr>
                 <th scope="row">Serial Number</th>
-                <td>{{item.serialNumber}}</td>
+                <td>{{wheelchair?.serialNumber}}</td>
               </tr>
               <tr>
                 <th scope="row">Age of Wheelchair</th>
-                <td>{{item.age}}</td>
+                <td>{{wheelchair?.age}}</td>
               </tr>
               </tbody>
               <thead class="thead-dark">
@@ -115,19 +116,19 @@
               <tbody>
               <tr>
                 <th scope="row">Usage Per Day</th>
-                <td>{{item.hoursPerDay}} hours</td>
+                <td>{{wheelchair?.hoursPerDay}} hours</td>
               </tr>
               <tr>
                 <th scope="row">Performance</th>
-                <td>{{item.performance}} of 5 stars</td>
+                <td>{{wheelchair?.performance}} of 5 stars</td>
               </tr>
               <tr>
                 <th scope="row">Repairs Done</th>
-                <td>{{item.repairs}}</td>
+                <td>{{wheelchair?.repairs}}</td>
               </tr>
               <tr>
                 <th scope="row">Funding by</th>
-                <td>{{item.funding}}</td>
+                <td>{{wheelchair?.funding}}</td>
               </tr>
               </tbody>
             </table>

@@ -34,12 +34,8 @@ export class UserVendorComponent implements OnInit {
             this.isShow = true;
         });
     }
-    // isShow(item) {
-    //     this.createdAt = new Date(parseInt(item.createdAt.toString(), 10));
-    //     this.modifiedAt = new Date(parseInt(item.modifiedAt.toString(), 10));
-    //     this.isClick = true;
-    //     this.vendor = item;
-    // }
-
+    getVendor(item) {
+        this.vendor = item;
+    }
 
 }

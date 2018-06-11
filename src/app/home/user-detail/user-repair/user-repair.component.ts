@@ -11,6 +11,7 @@ import {UserService} from '../../../provider/provider-user/user.service';
 export class UserRepairComponent implements OnInit {
 
     repairs: Repair[];
+    repair: Repair;
     userId: String;
     isShow: Boolean;
     constructor(private route: ActivatedRoute,
@@ -41,5 +42,8 @@ export class UserRepairComponent implements OnInit {
         }, error => {
             this.isShow = true;
         });
+    }
+    getRepair(item) {
+        this.repair = item;
     }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Info, Wheelchair} from '../../../provider/provider-user/user.model';
+import { Wheelchair} from '../../../provider/provider-user/user.model';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 
@@ -33,6 +33,9 @@ export class UserWheelchairComponent implements OnInit {
         }, error => {
             this.isShow = true;
         });
+    }
+    getWheelchair(item) {
+        this.wheelchair = item;
     }
 
 }

@@ -84,5 +84,5 @@ export const appRoutes: Routes = [
             {path: 'signin', component: SignInComponent}
             ]
     },
-  { path: '', redirectTo: '/login', pathMatch: 'full'}
+  { path: '', redirectTo: '/auth/signin', pathMatch: 'full'}
   ];
