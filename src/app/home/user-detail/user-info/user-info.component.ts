@@ -26,7 +26,9 @@ export class UserInfoComponent implements OnInit {
       this.userService.getUserInfo(this.userId).subscribe(data => {
           console.log(data);
           this.info = data;
-          this.info.wheelchairUsage = JSON.parse(JSON.parse(data.wheelchairUsage.toString()));
+          if (data.wheelchairUsage != null){
+              this.info.wheelchairUsage = JSON.parse(JSON.parse(data.wheelchairUsage.toString()));
+          }
       }, error => {});
   }
 }

@@ -1,0 +1,14 @@
+.bsx {
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+.bpy {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+}
+.bi {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+}

@@ -10,9 +10,18 @@ import {Info, Repair, Tracking} from '../../provider/provider-user/user.model';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  users: Object;
-  data: Object;
-  items = [];
+    pages: Array<Number>;
+    page: Number = 0;
+    setNum: number;
+    len: number;
+    index1: number;
+    index2: number;
+
+    data: Object;
+    users = [];
+    userRep = [];
+
+    items = [];
     info = [];
     trackings = [];
     repairs = [];
@@ -22,82 +31,127 @@ export class MainPageComponent implements OnInit {
     wheelchairs = [];
 
   constructor(private userService: UserService) {
+      this.setNum = 10;
   }
 
   ngOnInit() {
       this.fetchData();
   }
-
-
-
+  _initPage(data) {
+      this.userRep = data;
+      this.len = this.userRep.length;
+      this.index1 = 1;
+      if (this.len < this.setNum) {
+          this.index2 = this.len;
+      }
+      console.log(Math.ceil(this.len / this.setNum));
+      this.pages = new Array(Math.ceil(this.len / this.setNum));
+      if ( this.len < this.setNum) {
+          this.users = this.userRep;
+      } else {
+          this.users = this.userRep.slice(0, this.setNum);
+      }
+  }
   fetchData() {
       this.userService.getUsers().subscribe(data => {
-          console.log(data);
-          this.users = data;
+          this._initPage(data);
+          // const setNum = this.setNum;
+          // console.log(data);
+          // Array.prototype.push.apply(this.userRep, data);
+          // this.len = this.userRep.length;
+          // this.index1 = 1;
+          // if (this.len < this.setNum) {
+          //     this.index2 = this.len;
+          // }
+          // const len = this.len;
+          // console.log(Math.ceil(len / setNum));
+          // this.pages = new Array(Math.ceil(len / setNum));
+          // if ( len < setNum) {
+          //     this.users = this.userRep;
+          // } else {
+          //     this.users = this.userRep.slice(0, setNum);
+          // }
       }, error => {});
+  }
+  setPage(i) {
+      this.page = i;
+      this.index1 = i * this.setNum + 1;
+      this.index2 = (i + 1) * this.setNum;
+      if (this.index2 > this.len) {
+          this.index2 = this.len;
+      }
+      const setNum = this.setNum;
+      this.users = this.userRep.slice(i * setNum, i * setNum + setNum);
   }
 
   _getData(userId, i, len) {
       return this.userService.getAll(userId)
           .subscribe(res => {
-              if (res.gpsTracking != null) {
+              if (res['gpsTracking'] != null) {
                   // if (this.trackings.length === 1) {
                   //     this.trackings = res.gpsTracking;
                   // } else {
                   //     this.trackings.push(res.gpsTracking);
                   //     console.log(res.gpsTracking);
                   // }
-                  Array.prototype.push.apply(this.trackings, res.gpsTracking);
+                  Array.prototype.push.apply(this.trackings, res['gpsTracking']);
                   console.log(this.trackings);
               }
-              if (res.repairData != null) {
+              if (res['repairData'] != null) {
                   // if (this.repairs.length === 1) {
                   //     this.repairs = res.repairData;
                   // } else {
                   //     this.repairs.push(res.repairData);
                   // }
-                  Array.prototype.push.apply(this.repairs, res.repairData);
+                  Array.prototype.push.apply(this.repairs, res['repairData']);
               }
-              if (res.infoData != null) {
+              if (res['infoData'] != null) {
                   // if (this.info.length === 1) {
                   //     this.info = [res.infoData];
                   // } else {
                   //     this.info.push([res.infoData]);
                   // }
-                  Array.prototype.push.apply(this.info, [res.infoData]);
+                  Array.prototype.push.apply(this.info, [res['infoData']]);
               }
-              if (res.logData != null) {
+              if (res['logData'] != null) {
                   // if (this.logger.length === 1) {
                   //     this.logger = res.logData;
                   // } else {
                   //     this.logger.push(res.logData);
                   // }
-                  Array.prototype.push.apply(this.logger, res.logData);
+                  Array.prototype.push.apply(this.logger, res['logData'] );
               }
-              if (res.repairTrackings != null) {
+              if (res['repairTrackings'] != null) {
                   // if (this.repairTrackings.length === 1) {
                   //     this.repairTrackings = res.repairTrackings;
                   // } else {
                   //     this.repairTrackings.push(res.repairTrackings);
                   // }
-                  Array.prototype.push.apply(this.repairTrackings, res.repairTrackings);
+                  Array.prototype.push.apply(this.repairTrackings, res['repairTrackings']);
               }
-              if (res.vendorAndContact != null) {
+              if (res['vendorAndContact'] != null) {
                   // if (this.vendors.length === 1) {
                   //     this.vendors = res.vendorAndContact;
                   // } else {
                   //     this.vendors.push(res.vendorAndContact);
                   // }
-                  Array.prototype.push.apply(this.vendors, res.vendorAndContact);
+                  Array.prototype.push.apply(this.vendors, res['vendorAndContact']);
               }
-              if (res.wheelchairData != null) {
+              if (res['wheelchairData'] != null) {
                   // if (this.wheelchairs.length === 1) {
                   //     this.wheelchairs = res.wheelchairData;
                   // } else {
                   //     this.wheelchairs.push(res.wheelchairData);
                   // }
-                  Array.prototype.push.apply(this.wheelchairs, res.wheelchairData);
+                  Array.prototype.push.apply(this.wheelchairs, res['wheelchairData']);
               }
+              i++;
+              if (i >= len || len === 1) {
+                  this._downloadAll();
+              } else {
+                  this._getData(this.items[i], i, len);
+              }
+          }, err => {
               i++;
               if (i >= len || len === 1) {
                   this._downloadAll();
@@ -108,7 +162,7 @@ export class MainPageComponent implements OnInit {
   }
   getAlldata() {
       const len = this.items.length;
-      let i = 0;
+      const i = 0;
       if (i < len) {
           this._getData(this.items[i], i, len);
       }
@@ -123,7 +177,7 @@ export class MainPageComponent implements OnInit {
       this.wheelchairs = [];
   }
   _downloadAll() {
-      let end = [{value: 'null'}];
+      const end = [{value: 'null'}];
       Array.prototype.push.apply(this.info, end);
       Array.prototype.push.apply(this.trackings, end);
       Array.prototype.push.apply(this.repairs, end);

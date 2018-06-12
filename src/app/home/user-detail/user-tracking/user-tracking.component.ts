@@ -41,4 +41,6 @@ export class UserTrackingComponent implements OnInit {
           this.trackings = data;
       }, error => {});
   }
+    getAlldata() {
+    }
 }
