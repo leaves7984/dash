@@ -1,19 +1,22 @@
 <div role="main"
      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
   <h2>Display Users</h2>
-  <div class="btn-toolbar mb-2 mb-md-0">
-    <a class="btn btn-sm btn-outline-secondary" routerLink='#'>Back</a>
-  </div>
+
 </div>
 <div>
-  <div>
-    <form class="bpy">
-      <span class="bi"><i class="fas fa-search"></i></span>
-      <input class="form-control mr-sm-2 bsx" type="search" placeholder="Search.." aria-label="Search">
-      <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-    </form>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
+    <div>
+      <form class="bpy">
+        <span class="bi"><i class="fas fa-search"></i></span>
+        <input class="form-control mr-sm-2 bsx" type="search" placeholder="Search.." aria-label="Search">
+        <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+      </form>
+    </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <button class="btn btn-sm btn-outline-secondary" (click)="getAlldata()" >Download</button>
+    </div>
   </div>
-  <br><br>
+  <br>
   <div>
     <table class="table">
       <thead class="thead-dark">
@@ -26,7 +29,7 @@
       </thead>
       <tbody *ngFor = "let item of users">
       <tr>
-        <th scope="row"><input type="checkbox"></th>
+        <th scope="row"><input type="checkbox" (click)="updateSelection(item)"></th>
         <th scope="row">{{item}}</th>
         <th scope="row">
           <ul class="nav">
