@@ -11,6 +11,7 @@ import {Info} from '../../../provider/provider-user/user.model';
 export class UserInfoComponent implements OnInit {
   info: Info;
   userId: String;
+  usages = [];
   constructor(private route: ActivatedRoute,
               private userService: UserService) {
       this.route.params.subscribe(res => {
@@ -26,8 +27,9 @@ export class UserInfoComponent implements OnInit {
       this.userService.getUserInfo(this.userId).subscribe(data => {
           console.log(data);
           this.info = data;
-          if (data.wheelchairUsage != null){
-              this.info.wheelchairUsage = JSON.parse(JSON.parse(data.wheelchairUsage.toString()));
+          // this.usages = data.wheelchairUsage;
+          if (data.wheelchairUsage != null) {
+              this.usages = JSON.parse(JSON.parse(data.wheelchairUsage.toString()));
           }
       }, error => {});
   }

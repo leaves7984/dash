@@ -16,6 +16,7 @@ export class MainPageComponent implements OnInit {
     len: number;
     index1: number;
     index2: number;
+    searchText: string;
 
     data: Object;
     users = [];
@@ -32,6 +33,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(private userService: UserService) {
       this.setNum = 10;
+      this.searchText = '';
   }
 
   ngOnInit() {

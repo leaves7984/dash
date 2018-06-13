@@ -10,11 +10,11 @@
 </div>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
   <div>
-    <form class="bpy">
+    <div class="bpy">
       <span class="bi"><i class="fas fa-search"></i></span>
-      <input class="form-control mr-sm-2 bsx" type="search" placeholder="Search.." aria-label="Search">
+      <input class="form-control mr-sm-2 bsx" type= "search" placeholder="Search.." [(ngModel)]="searchText">
       <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-    </form>
+    </div>
   </div>
   <div class="btn-toolbar mb-2 mb-md-0">
     <button class="btn btn-sm btn-outline-secondary" (click)="getAlldata()" >Download</button>
@@ -33,108 +33,49 @@
       <th scope="col">ModifiedAt</th>
     </tr>
     </thead>
-    <tbody *ngFor="let item of trackings">
+    <tbody *ngFor="let item of trackings | filter : searchText">
     <tr>
-      <th scope="row"><input type="checkbox"></th>
+      <th scope="row"><input type="checkbox" (click)="updateSelection(item)"></th>
       <td>{{item.date}}</td>
       <td>{{item.updateTracking}}</td>
-      <td>{{item.consequences}}</td>
+      <td>
+        <li *ngFor="let consequence of item.consequncesArray">
+          {{consequence}}
+        </li>
+      </td>
       <td>{{item.createdAt |date: 'MM/dd/yyyy'}}</td>
       <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>
     </tr>
     </tbody>
   </table>
-</div>
-<div>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item">
-        <button class="page-link" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </button>
-      </li>
-      <!--<li class="page-item" *ngFor="let p of pages; let i=index">-->
-        <!--<button class="page-link" (click)="setPage(i)" >{{i+1}}</button>-->
-      <!--</li>-->
-      <!--<li class="page-item"><a class="page-link" href="#">2</a></li>-->
-      <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
-      <!--<li class="page-item"><a class="page-link" href="#">4</a></li>-->
-      <!--<li class="page-item"><a class="page-link" href="#">5</a></li>-->
-      <li class="page-item">
-        <button class="page-link" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </button>
-      </li>
-    </ul>
-  </nav>
-</div>
-<!--<div class="col-8">-->
-  <!--<table class="table table-striped">-->
-    <!--<thead class="thead-dark">-->
-    <!--<tr>-->
-      <!--<th scope="col" colspan="4">Repair Information</th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-    <!--<tbody>-->
-    <!--<tr>-->
-      <!--<th scope="row">Wheelchair</th>-->
-      <!--<td colspan="3">{{repair?.wheelchair}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Created at</th>-->
-      <!--<td>{{repair?.createdAt | date: 'MM/dd/yyyy'}}</td>-->
-      <!--<th>Modified at</th>-->
-      <!--<td>{{repair?.modifiedAt | date: 'MM/dd/yyyy'}}</td>-->
-    <!--</tr>-->
 
-    <!--<tr>-->
-      <!--<th scope="row">IsCompleted</th>-->
-      <!--<td>{{repair?.isCompleted}}</td>-->
-      <!--<th>Who Complete</th>-->
-      <!--<td>{{repair?.whoComplete}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">DateRepairNeeded</th>-->
-      <!--<td>{{repair?.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>-->
-      <!--<th>Date</th>-->
-      <!--<td>{{repair?.date | date: 'MM/dd/yyyy'}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Category</th>-->
-      <!--<td>{{repair?.category}}</td>-->
-      <!--<th>SubCategory</th>-->
-      <!--<td>{{repair?.subCategory}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Resource</th>-->
-      <!--<td colspan="3">{{repair?.resource}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Purpose</th>-->
-      <!--<td colspan="3">{{repair?.purpose}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Detail</th>-->
-      <!--<td>{{repair?.detail}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Consequences</th>-->
-      <!--<td colspan="3">{{repair?.consequences}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Date Vendor Contacted</th>-->
-      <!--<td>{{repair?.dateVendorContacted}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Reason Not Complete</th>-->
-      <!--<td colspan="3">{{repair?.reasonNotComplete}}</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-      <!--<th scope="row">Repair Cost</th>-->
-      <!--<td>{{repair?.repairCost}}</td>-->
-    <!--</tr>-->
-    <!--</tbody>-->
-  <!--</table>-->
-<!--</div>-->
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
+    <div>
+      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>
+    </div>
+    <div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <button class="page-link" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </button>
+          </li>
+          <li class="page-item" *ngFor="let p of pages; let i=index">
+            <button class="page-link" (click)="setPage(i)" >{{i+1}}</button>
+          </li>
+          <li class="page-item">
+            <button class="page-link" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+

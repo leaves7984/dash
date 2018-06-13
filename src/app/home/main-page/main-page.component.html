@@ -6,12 +6,13 @@
 <div>
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
     <div>
-      <form class="bpy">
+      <div class="bpy">
         <span class="bi"><i class="fas fa-search"></i></span>
-        <input class="form-control mr-sm-2 bsx" type="search" placeholder="Search.." aria-label="Search">
+        <input class="form-control mr-sm-2 bsx" type= "search" placeholder="Search.." [(ngModel)]="searchText">
         <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-      </form>
+      </div>
     </div>
+
     <div class="btn-toolbar mb-2 mb-md-0">
       <button class="btn btn-sm btn-outline-secondary" (click)="getAlldata()" >Download</button>
     </div>
@@ -27,7 +28,7 @@
         <th scope="col">Download</th>
       </tr>
       </thead>
-      <tbody *ngFor = "let item of users">
+      <tbody *ngFor = "let item of users | filter: searchText" >
       <tr>
         <th scope="row"><input type="checkbox" (click)="updateSelection(item)"></th>
         <th scope="row">{{item}}</th>
@@ -75,7 +76,7 @@
     </table>
   </div>
 </div>
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap ">
   <div>
     <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>
   </div>

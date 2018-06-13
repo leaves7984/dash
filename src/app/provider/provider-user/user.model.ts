@@ -65,6 +65,7 @@ export class Vendor {
 export class Repair {
     id: String;
     hasTracking: Boolean;
+    consequncesArray: Array<String>;
     wheelchairId: String;
     userId: String;
     wheelchair: String;
@@ -91,6 +92,7 @@ export class Repair {
 export class Tracking {
     id: String;
     userId: String;
+    consequncesArray: Array<String>;
     repairId: String;
     date: String;
     updateTracking: String;

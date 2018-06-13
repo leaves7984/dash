@@ -24,6 +24,9 @@ export class UserVendorComponent implements OnInit {
     index1: number;
     index2: number;
     setNum: number;
+
+    searchText: string;
+
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
         this.route.params.subscribe(res => {
@@ -32,6 +35,7 @@ export class UserVendorComponent implements OnInit {
         });
 
         this.setNum = 10;
+        this.searchText = '';
     }
 
     ngOnInit() {

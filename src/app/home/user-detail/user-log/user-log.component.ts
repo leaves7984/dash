@@ -23,6 +23,8 @@ export class UserLogComponent implements OnInit {
     index1: number;
     index2: number;
     setNum: number;
+
+    searchText: string;
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
         this.route.params.subscribe(res => {
@@ -30,6 +32,7 @@ export class UserLogComponent implements OnInit {
             this.userId = res.userId;
         });
         this.setNum = 10;
+        this.searchText = '';
     }
 
     ngOnInit() {

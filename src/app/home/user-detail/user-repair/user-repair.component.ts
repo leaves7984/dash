@@ -24,6 +24,8 @@ export class UserRepairComponent implements OnInit {
     index1: number;
     index2: number;
     setNum: number;
+
+    searchText: string;
     constructor(private route: ActivatedRoute,
                 private userService: UserService,
                 private router: Router) {
@@ -32,6 +34,7 @@ export class UserRepairComponent implements OnInit {
             this.userId = res.userId;
         });
         this.setNum = 10;
+        this.searchText = '';
     }
 
     ngOnInit() {
@@ -39,7 +42,6 @@ export class UserRepairComponent implements OnInit {
     }
     _initPage(data) {
         console.log(data);
-        this.repairsRep = data;
         this.len = this.repairsRep.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
@@ -55,8 +57,10 @@ export class UserRepairComponent implements OnInit {
     }
     fetchData() {
         this.userService.getRepair(this.userId).subscribe(data => {
-            this._initPage(data);
+            this.repairsRep = data;
             for (let i = 0; i < data.length ; i++ ) {
+                this.repairsRep[i].consequncesArray = JSON.parse(this.repairsRep[i].consequences.toString());
+                console.log(this.repairsRep[i].consequncesArray);
                 this.userService.getTracking(this.repairsRep[i].id).subscribe(res => {
                     this.repairsRep[i].hasTracking = true;
                 }, error => {
@@ -64,6 +68,7 @@ export class UserRepairComponent implements OnInit {
                     this.repairsRep[i].hasTracking = false;
                 });
             }
+            this._initPage(data);
             this.isShow = false;
         }, error => {
             this.isShow = true;

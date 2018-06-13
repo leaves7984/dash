@@ -41,7 +41,11 @@
         </tr>
         <tr>
           <th scope="row">Wheelchair Usage</th>
-          <td>{{info?.wheelchairUsage}}</td>
+          <td>
+            <li *ngFor="let usage of usages">
+              {{usage}}
+            </li>
+          </td>
         </tr>
         <tr>
           <th scope="row">Negotiate soft</th>
