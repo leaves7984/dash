@@ -42,8 +42,11 @@ export class PatchUsersComponent implements OnInit {
       this.fileToUpload = null;
       this.reset();
       this.fetchData();
-    }, error => {
-      console.log(error);
+    }, err => {
+      console.log(err);
+      if (err.error.status === 403) {
+        console.log('Unauthorized user');
+      }
     });
   }
 }

@@ -16,12 +16,6 @@ import { appRoutes} from './routes';
 import { HomeComponent } from './home/home.component';
 import {AuthGuard} from './auth/auth.guard';
 import {AuthIntercepter} from './auth/auth.intercepter';
-import { CategoryComponent } from './home/category/category.component';
-import { ArticleComponent } from './home/article/article.component';
-import { TipComponent } from './home/tip/tip.component';
-import { CategoryPageComponent } from './home/category/category-page/category-page.component';
-import { ArticlePageComponent } from './home/article/article-page/article-page.component';
-import { TipPageComponent } from './home/tip/tip-page/tip-page.component';
 import { PatchUsersComponent } from './home/patch-users/patch-users.component';
 import { MainPageComponent } from './home/main-page/main-page.component';
 import { UserDetailComponent } from './home/user-detail/user-detail.component';
@@ -42,12 +36,6 @@ import { FilterPipe} from './home/filter.pipe';
     UserComponent,
     SignInComponent,
     HomeComponent,
-    CategoryComponent,
-    ArticleComponent,
-    TipComponent,
-    CategoryPageComponent,
-    ArticlePageComponent,
-    TipPageComponent,
     PatchUsersComponent,
     MainPageComponent,
     UserDetailComponent,

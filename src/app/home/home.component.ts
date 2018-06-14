@@ -10,26 +10,23 @@ import {UserService} from '../provider/provider-user/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  user: any;
-  admin: any;
-  fileToUpload: File = null;
-
+  isShow: Boolean;
   constructor(private router: Router,
               private userService: UserService) {
 
   }
 
   ngOnInit() {
-   this.userService.getUserClaims().subscribe((data: any) => {
-     this.user = data;
-     console.log(data);
-   });
-    // this.userService.getAdminClaims().subscribe((data: any) => {
-    //   this.admin = data;
-    //   console.log(data);
-    // }, (err: HttpErrorResponse) => {
-    // });
+    this.userService.getAdminClaims().subscribe((data: any) => {
+      console.log(data);
+      this.isShow = true;
+    }, (err) => {
+      console.log(err);
+      if (err.error.status === 403) {
+        console.log('Unauthorized user');
+        this.isShow = false;
+      }
+    });
   }
 
 

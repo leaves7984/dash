@@ -23,57 +23,36 @@
               User Info
             </a>
           </li>
-          <!--<li class="nav-item">-->
-            <!--<a class="nav-link" routerLink='/category-page' routerLinkActive="true">-->
-              <!--<i class="fas fa-newspaper"></i>-->
-              <!--Category-->
-            <!--</a>-->
-          <!--</li>-->
-          <!--<li class="nav-item">-->
-            <!--<a class="nav-link" routerLink='/article-page' routerLinkActive="true">-->
-              <!--<i class="far fa-newspaper"></i>-->
-              <!--Article-->
-            <!--</a>-->
-          <!--</li>-->
-          <!--<li class="nav-item">-->
-            <!--<a class="nav-link" routerLink='/tip' routerLinkActive="true">-->
-              <!--<i class="fas fa-list-ul"></i>-->
-              <!--Tips-->
-            <!--</a>-->
-          <!--</li>-->
-          <!--<li class="nav-item">-->
-            <!--<a class="nav-link" href="#">-->
-              <!--<i class="fas fa-video"></i>-->
-              <!--Video-->
-            <!--</a>-->
-          <!--</li>-->
         </ul>
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Setting</span>
-          <a class="d-flex align-items-center text-muted" href="#">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <!--<li class="nav-item">-->
-            <!--<a class="nav-link" href="#">-->
-              <!--<i class="far fa-file-alt"></i>-->
-              <!--About Us-->
-            <!--</a>-->
-          <!--</li>-->
-          <!--<li class="nav-item">-->
-            <!--<a class="nav-link" href="#">-->
-              <!--<i class="far fa-file-alt"></i>-->
-              <!--Contact Us-->
-            <!--</a>-->
-          <!--</li>-->
-          <li class="nav-item">
-            <a class="nav-link" routerLink='/patch-users' routerLinkActive="true">
-              <i class="far fa-file-alt"></i>
-              Patch Users
+        <div *ngIf="isShow">
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Setting</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+              <span data-feather="plus-circle"></span>
             </a>
-          </li>
-        </ul>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="#">-->
+            <!--<i class="far fa-file-alt"></i>-->
+            <!--About Us-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="#">-->
+            <!--<i class="far fa-file-alt"></i>-->
+            <!--Contact Us-->
+            <!--</a>-->
+            <!--</li>-->
+            <li class="nav-item">
+              <a class="nav-link" routerLink='/patch-users' routerLinkActive="true">
+                <i class="far fa-file-alt"></i>
+                Patch Users
+              </a>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </nav>
     <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">

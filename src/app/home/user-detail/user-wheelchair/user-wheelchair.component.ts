@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Wheelchair} from '../../../provider/provider-user/user.model';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
-import * as alasql from "alasql";
+import * as alasql from 'alasql';
 
 @Component({
   selector: 'app-user-wheelchair',

@@ -2145,11 +2145,13 @@ var UserLogComponent = /** @class */ (function () {
     };
     UserLogComponent.prototype._downloadAll = function () {
         var end = [{ value: 'null' }];
-        Array.prototype.push.apply(this.items, end);
-        var opts = [
-            { sheetid: 'VendorData', header: true },
-        ];
-        var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_loggers.xlsx",?) FROM ?', [opts, [this.items]]);
+        if (this.items.length > 0) {
+            var opts = [
+                { sheetid: 'VendorData', header: true },
+            ];
+            var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_loggers.xlsx",?) FROM ?', [opts, [this.items]]);
+        }
+        // Array.prototype.push.apply(this.items, end);
     };
     UserLogComponent.prototype.getAlldata = function () {
         this._downloadAll();
@@ -2201,7 +2203,7 @@ module.exports = ".bsx {\n    padding-left: 30px;\n    margin-bottom: 15px;\n}\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\"></th>\n      <th scope=\"col\">RepairNeeded Date</th>\n      <!--<th scope=\"col\">DateRepairCompleted</th>-->\n      <th scope=\"col\">Wheelchair</th>\n      <th scope=\"col\">Purpose</th>\n      <!--<th scope=\"col\">Category</th>-->\n      <!--<th scope=\"col\">Subcategory</th>-->\n      <!--<th scope=\"col\">Detail</th>-->\n      <th scope=\"col\">Consequences</th>\n      <!--<th scope=\"col\">DateVendorContacted</th>-->\n      <th scope=\"col\">RepairCost</th>\n      <!--<th scope=\"col\">Resource</th>-->\n      <th scope=\"col\">IsComplete</th>\n      <!--<th scope=\"col\">WhoComplete</th>-->\n      <th scope=\"col\">More</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of repairs | filter : searchText\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\"></th>\n      <td>{{item.dateRepairNeeded|date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.wheelchair}}</td>\n      <td>{{item.purpose}}</td>\n      <td>\n        <li *ngFor=\"let consequence of item.consequncesArray\">\n          {{consequence}}\n        </li>\n      </td>\n      <td>{{item.repairCost}}</td>\n      <td>{{item.isCompleted}}</td>\n      <td>\n        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\"\n                (click)=\"getRepair(item)\">\n          <i class=\"material-icons\">visibility</i>\n        </button>\n        <div *ngIf=\"item.hasTracking\">\n          <button type=\"button\" class=\"btn btn-danger\" routerLink='/tracking/{{item.id}}'\n                  [queryParams] = \"{userId: userId, state: 'repair'}\">\n            <i class=\"material-icons\">library_books</i>\n          </button>\n        </div>\n        <div *ngIf=\"!item.hasTracking\">\n          <button type=\"button\" class=\"btn btn-secondary\" disabled>\n            <i class=\"material-icons\">library_books</i>\n          </button>\n        </div>\n      </td>\n    </tr>\n\n    <!-- Modal -->\n    <div class=\"modal fade  bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n         aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-lg\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Repair Information</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            <table class=\"table table-striped\">\n              <tbody>\n              <tr>\n                <th scope=\"row\">Wheelchair</th>\n                <td colspan=\"3\">{{repair?.wheelchair}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Created at</th>\n                <td>{{repair?.createdAt | date: 'MM/dd/yyyy'}}</td>\n                <th>Modified at</th>\n                <td>{{repair?.modifiedAt | date: 'MM/dd/yyyy'}}</td>\n              </tr>\n\n              <tr>\n                <th scope=\"row\">IsCompleted</th>\n                <td>{{repair?.isCompleted}}</td>\n                <th>Who Complete</th>\n                <td>{{repair?.whoComplete}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">DateRepairNeeded</th>\n                <td>{{repair?.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>\n                <th>Date</th>\n                <td>{{repair?.date | date: 'MM/dd/yyyy'}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Category</th>\n                <td>{{repair?.category}}</td>\n                <th>SubCategory</th>\n                <td>{{repair?.subCategory}}</td>\n              </tr>\n              <tr>\n              <th scope=\"row\">Detail</th>\n              <td>{{repair?.detail}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Resource</th>\n                <td colspan=\"3\">{{repair?.resource}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Purpose</th>\n                <td colspan=\"3\">{{repair?.purpose}}</td>\n              </tr>\n\n              <tr>\n                <th scope=\"row\">Consequences</th>\n                <td colspan=\"3\">\n                  <li *ngFor=\"let consequence of repair?.consequncesArray\">\n                    {{consequence}}\n                  </li>\n                </td>\n                <!--<td colspan=\"3\">{{repair?.consequences}}</td>-->\n              </tr>\n              <tr>\n                <th scope=\"row\">Date Vendor Contacted</th>\n                <td>{{repair?.dateVendorContacted}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Reason Not Complete</th>\n                <td colspan=\"3\">{{repair?.reasonNotComplete}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Repair Cost</th>\n                <td>{{repair?.repairCost}}</td>\n              </tr>\n              </tbody>\n            </table>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    </tbody>\n  </table>\n\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\"></th>\n      <th scope=\"col\">RepairNeeded Date</th>\n      <!--<th scope=\"col\">DateRepairCompleted</th>-->\n      <th scope=\"col\">Wheelchair</th>\n      <th scope=\"col\">Purpose</th>\n      <!--<th scope=\"col\">Category</th>-->\n      <!--<th scope=\"col\">Subcategory</th>-->\n      <!--<th scope=\"col\">Detail</th>-->\n      <th scope=\"col\">Consequences</th>\n      <!--<th scope=\"col\">DateVendorContacted</th>-->\n      <th scope=\"col\">RepairCost</th>\n      <!--<th scope=\"col\">Resource</th>-->\n      <th scope=\"col\">IsComplete</th>\n      <!--<th scope=\"col\">WhoComplete</th>-->\n      <th scope=\"col\">More</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of repairs | filter : searchText\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\"></th>\n      <td>{{item.dateRepairNeeded|date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.wheelchair}}</td>\n      <td>{{item.purpose}}</td>\n      <td>\n        <li *ngFor=\"let consequence of item.consequncesArray\">\n          {{consequence}}\n        </li>\n      </td>\n      <td>{{item.repairCost}}</td>\n      <td>{{item.isCompleted}}</td>\n      <td>\n        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\"\n                (click)=\"getRepair(item)\">\n          <i class=\"material-icons\">visibility</i>\n        </button>\n        <div *ngIf=\"item.hasTracking\">\n          <button type=\"button\" class=\"btn btn-danger\" routerLink='/tracking/{{item.id}}'\n                  [queryParams] = \"{userId: userId, state: 'repair'}\">\n            <i class=\"material-icons\">library_books</i>\n          </button>\n        </div>\n        <div *ngIf=\"!item.hasTracking\">\n          <button type=\"button\" class=\"btn btn-secondary\" disabled>\n            <i class=\"material-icons\">library_books</i>\n          </button>\n        </div>\n      </td>\n    </tr>\n\n    <!-- Modal -->\n    <div class=\"modal fade  bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n         aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-lg\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Repair Information</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            <table class=\"table table-striped\">\n              <tbody>\n              <tr>\n                <th scope=\"row\">Wheelchair</th>\n                <td colspan=\"3\">{{repair?.wheelchair}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Created at</th>\n                <td>{{repair?.createdAt | date: 'MM/dd/yyyy'}}</td>\n                <th>Modified at</th>\n                <td>{{repair?.modifiedAt | date: 'MM/dd/yyyy'}}</td>\n              </tr>\n\n              <tr>\n                <th scope=\"row\">IsCompleted</th>\n                <td>{{repair?.isCompleted}}</td>\n                <th>Who Complete</th>\n                <td>{{repair?.whoComplete}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">DateRepairNeeded</th>\n                <td>{{repair?.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>\n                <th>Date</th>\n                <td>{{repair?.date | date: 'MM/dd/yyyy'}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Category</th>\n                <td>{{repair?.category}}</td>\n                <th>SubCategory</th>\n                <td>{{repair?.subCategory}}</td>\n              </tr>\n              <tr>\n              <th scope=\"row\">Detail</th>\n              <td>{{repair?.detail}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Resource</th>\n                <td colspan=\"3\">{{repair?.resource}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Purpose</th>\n                <td colspan=\"3\">{{repair?.purpose}}</td>\n              </tr>\n\n              <tr>\n                <th scope=\"row\">Consequences</th>\n                <td colspan=\"3\">\n                  <li *ngFor=\"let consequence of repair?.consequncesArray\">\n                    {{consequence}}\n                  </li>\n                </td>\n                <!--<td colspan=\"3\">{{repair?.consequences}}</td>-->\n              </tr>\n              <tr>\n                <th scope=\"row\">Date Vendor Contacted</th>\n                <td>{{repair?.dateVendorContacted}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Reason Not Complete</th>\n                <td colspan=\"3\">{{repair?.reasonNotComplete}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Repair Cost</th>\n                <td>{{repair?.repairCost}}</td>\n              </tr>\n              </tbody>\n            </table>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    </tbody>\n  </table>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2269,11 +2271,36 @@ var UserRepairComponent = /** @class */ (function () {
     };
     UserRepairComponent.prototype.fetchData = function () {
         var _this = this;
+        var idx;
+        var idx2;
+        var idx3;
+        var categories = [];
+        this.userService.getCategories().subscribe(function (data) {
+            console.log('---categories---');
+            console.log(data);
+            categories = data;
+        }, function (err) {
+            console.log(err);
+        });
         this.userService.getRepair(this.userId).subscribe(function (data) {
             _this.repairsRep = data;
             var _loop_1 = function (i) {
                 _this.repairsRep[i].consequncesArray = JSON.parse(_this.repairsRep[i].consequences.toString());
                 console.log(_this.repairsRep[i].consequncesArray);
+                if (_this.repairsRep[i].category != null) {
+                    idx = parseInt(_this.repairsRep[i].category, 10);
+                    _this.repairsRep[i].category = categories[idx - 1].label;
+                }
+                if (_this.repairsRep[i].subCategory != null) {
+                    idx2 = parseInt(_this.repairsRep[i].subCategory, 10);
+                    console.log('idx ' + idx + 'idx2' + idx2);
+                    _this.repairsRep[i].subCategory = categories[idx - 1].subCategory[idx2 - 1].label;
+                }
+                if (_this.repairsRep[i].detail != null) {
+                    idx3 = parseInt(_this.repairsRep[i].detail, 10);
+                    console.log(idx3 + 'idx3' + idx2 + 'idx2' + idx);
+                    _this.repairsRep[i].detail = categories[idx - 1].subCategory[idx2 - 1].subCategory[idx3 - 1].label;
+                }
                 _this.userService.getTracking(_this.repairsRep[i].id).subscribe(function (res) {
                     _this.repairsRep[i].hasTracking = true;
                 }, function (error) {
@@ -2305,11 +2332,13 @@ var UserRepairComponent = /** @class */ (function () {
     };
     UserRepairComponent.prototype._downloadAll = function () {
         var end = [{ value: 'null' }];
-        Array.prototype.push.apply(this.items, end);
-        var opts = [
-            { sheetid: 'VendorData', header: true },
-        ];
-        var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_repairs.xlsx",?) FROM ?', [opts, [this.items]]);
+        if (this.items.length > 0) {
+            // Array.prototype.push.apply(this.items, end);
+            var opts = [
+                { sheetid: 'RepairData', header: true },
+            ];
+            var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_repairs.xlsx",?) FROM ?', [opts, [this.items]]);
+        }
     };
     UserRepairComponent.prototype.getAlldata = function () {
         this._downloadAll();
@@ -2459,11 +2488,13 @@ var UserTrackingComponent = /** @class */ (function () {
     };
     UserTrackingComponent.prototype._downloadAll = function () {
         var end = [{ value: 'null' }];
-        Array.prototype.push.apply(this.items, end);
-        var opts = [
-            { sheetid: 'RepairTracking Data', header: true },
-        ];
-        var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_repairsTracking.xlsx",?) FROM ?', [opts, [this.items]]);
+        // Array.prototype.push.apply(this.items, end);
+        if (this.items.length > 0) {
+            var opts = [
+                { sheetid: 'RepairTracking Data', header: true },
+            ];
+            var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_repairsTracking.xlsx",?) FROM ?', [opts, [this.items]]);
+        }
     };
     UserTrackingComponent.prototype.getAlldata = function () {
         this._downloadAll();
@@ -2605,11 +2636,13 @@ var UserVendorComponent = /** @class */ (function () {
     };
     UserVendorComponent.prototype._downloadAll = function () {
         var end = [{ value: 'null' }];
-        Array.prototype.push.apply(this.items, end);
-        var opts = [
-            { sheetid: 'VendorData', header: true },
-        ];
-        var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_vendors.xlsx",?) FROM ?', [opts, [this.items]]);
+        // Array.prototype.push.apply(this.items, end);
+        if (this.items.length > 0) {
+            var opts = [
+                { sheetid: 'VendorData', header: true },
+            ];
+            var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_vendors.xlsx",?) FROM ?', [opts, [this.items]]);
+        }
     };
     UserVendorComponent.prototype.getAlldata = function () {
         this._downloadAll();
@@ -2754,11 +2787,13 @@ var UserWheelchairComponent = /** @class */ (function () {
     };
     UserWheelchairComponent.prototype._downloadAll = function () {
         var end = [{ value: 'null' }];
-        Array.prototype.push.apply(this.items, end);
-        var opts = [
-            { sheetid: 'WheelchairData', header: true },
-        ];
-        var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_wheelchair.xlsx",?) FROM ?', [opts, [this.items]]);
+        if (this.items.length > 0) {
+            var opts = [
+                { sheetid: 'WheelchairData', header: true },
+            ];
+            var report = alasql__WEBPACK_IMPORTED_MODULE_3__('SELECT INTO XLSX("' + this.userId + '_wheelchair.xlsx",?) FROM ?', [opts, [this.items]]);
+        }
+        // Array.prototype.push.apply(this.items, end);
     };
     UserWheelchairComponent.prototype.getAlldata = function () {
         this._downloadAll();
@@ -2964,6 +2999,9 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.getAll = function (userId) {
         return this.http.get(this.rootUrl + '/rest/getData/' + userId);
+    };
+    UserService.prototype.getCategories = function () {
+        return this.http.get('../../assets/repair_categories.json');
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

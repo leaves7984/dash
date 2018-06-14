@@ -6,11 +6,6 @@ import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './auth/auth.guard';
 import {PatchUsersComponent} from './home/patch-users/patch-users.component';
 import {MainPageComponent} from './home/main-page/main-page.component';
-import {CategoryPageComponent} from './home/category/category-page/category-page.component';
-import {CategoryComponent} from './home/category/category.component';
-import {ArticleComponent} from './home/article/article.component';
-import {ArticlePageComponent} from './home/article/article-page/article-page.component';
-import {TipComponent} from './home/tip/tip.component';
 import {UserDetailComponent} from './home/user-detail/user-detail.component';
 import {UserInfoComponent} from './home/user-detail/user-info/user-info.component';
 import {UserWheelchairComponent} from './home/user-detail/user-wheelchair/user-wheelchair.component';
@@ -48,34 +43,9 @@ export const appRoutes: Routes = [
         children: [{path: '', component: UserTrackingComponent}]
     },
   {
-    path: 'category-page', component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [{path: '', component: CategoryPageComponent}]
-  },
-  {
-    path: 'category', component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [{path: '', component: CategoryComponent}]
-  },
-  {
-    path: 'article', component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [{path: '', component: ArticleComponent}]
-  },
-  {
-    path: 'article-page', component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [{path: '', component: ArticlePageComponent}]
-  },
-  {
     path: 'patch-users', component: HomeComponent,
     canActivate: [AuthGuard],
     children: [{path: '', component: PatchUsersComponent}]
-  },
-  {
-    path: 'tip', component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [{path: '', component: TipComponent}]
   },
     {
         path: 'auth', component: UserComponent,
