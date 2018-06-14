@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Repair, Vendor} from '../../../provider/provider-user/user.model';
 import {UserService} from '../../../provider/provider-user/user.service';
 import * as alasql from "alasql";
+import {FilterPipe} from '../../filter.pipe';
 
 @Component({
   selector: 'app-user-repair',
@@ -26,6 +27,7 @@ export class UserRepairComponent implements OnInit {
     setNum: number;
 
     searchText: string;
+    filter: FilterPipe = new FilterPipe();
     constructor(private route: ActivatedRoute,
                 private userService: UserService,
                 private router: Router) {
@@ -42,7 +44,7 @@ export class UserRepairComponent implements OnInit {
     }
     _initPage(data) {
         console.log(data);
-        this.len = this.repairsRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
@@ -50,10 +52,15 @@ export class UserRepairComponent implements OnInit {
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if ( this.len < this.setNum) {
-            this.repairs = this.repairsRep ;
+            this.repairs = data ;
         } else {
-            this.repairs = this.repairsRep .slice(0, this.setNum);
+            this.repairs = data.slice(0, this.setNum);
         }
+    }
+    search() {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.repairsRep, this.searchText));
     }
     fetchData() {
         let idx;
@@ -95,7 +102,7 @@ export class UserRepairComponent implements OnInit {
                     this.repairsRep[i].hasTracking = false;
                 });
             }
-            this._initPage(data);
+            this._initPage(this.repairsRep);
             this.isShow = false;
         }, error => {
             this.isShow = true;

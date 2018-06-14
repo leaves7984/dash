@@ -18,7 +18,8 @@
     <div>
       <div class="bpy">
         <span class="bi"><i class="fas fa-search"></i></span>
-        <input class="form-control mr-sm-2 bsx" type= "search" placeholder="Search.." [(ngModel)]="searchText">
+        <input class="form-control mr-sm-2 bsx" type= "search" placeholder="Search.." [(ngModel)]="searchText"
+               (keyup)="search()">
         <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
       </div>
     </div>
@@ -42,7 +43,7 @@
       <th scope="col">More</th>
     </tr>
     </thead>
-    <tbody *ngFor="let item of vendors | filter : searchText">
+    <tbody *ngFor="let item of vendors">
     <tr>
       <th scope="row"><input type="checkbox" (click)="updateSelection(item)"></th>
       <td>{{item.createdAt|date: 'MM/dd/yyyy '}}</td>

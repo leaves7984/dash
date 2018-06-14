@@ -386,35 +386,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
 /* harmony import */ var _auth_auth_intercepter__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./auth/auth.intercepter */ "./src/app/auth/auth.intercepter.ts");
-/* harmony import */ var _home_category_category_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./home/category/category.component */ "./src/app/home/category/category.component.ts");
-/* harmony import */ var _home_article_article_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./home/article/article.component */ "./src/app/home/article/article.component.ts");
-/* harmony import */ var _home_tip_tip_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./home/tip/tip.component */ "./src/app/home/tip/tip.component.ts");
-/* harmony import */ var _home_category_category_page_category_page_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./home/category/category-page/category-page.component */ "./src/app/home/category/category-page/category-page.component.ts");
-/* harmony import */ var _home_article_article_page_article_page_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./home/article/article-page/article-page.component */ "./src/app/home/article/article-page/article-page.component.ts");
-/* harmony import */ var _home_tip_tip_page_tip_page_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./home/tip/tip-page/tip-page.component */ "./src/app/home/tip/tip-page/tip-page.component.ts");
-/* harmony import */ var _home_patch_users_patch_users_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./home/patch-users/patch-users.component */ "./src/app/home/patch-users/patch-users.component.ts");
-/* harmony import */ var _home_main_page_main_page_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./home/main-page/main-page.component */ "./src/app/home/main-page/main-page.component.ts");
-/* harmony import */ var _home_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./home/user-detail/user-detail.component */ "./src/app/home/user-detail/user-detail.component.ts");
-/* harmony import */ var _home_user_detail_user_info_user_info_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./home/user-detail/user-info/user-info.component */ "./src/app/home/user-detail/user-info/user-info.component.ts");
-/* harmony import */ var _home_user_detail_user_wheelchair_user_wheelchair_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./home/user-detail/user-wheelchair/user-wheelchair.component */ "./src/app/home/user-detail/user-wheelchair/user-wheelchair.component.ts");
-/* harmony import */ var _home_user_detail_user_vendor_user_vendor_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./home/user-detail/user-vendor/user-vendor.component */ "./src/app/home/user-detail/user-vendor/user-vendor.component.ts");
-/* harmony import */ var _home_user_detail_user_repair_user_repair_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./home/user-detail/user-repair/user-repair.component */ "./src/app/home/user-detail/user-repair/user-repair.component.ts");
-/* harmony import */ var _home_user_detail_user_tracking_user_tracking_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./home/user-detail/user-tracking/user-tracking.component */ "./src/app/home/user-detail/user-tracking/user-tracking.component.ts");
-/* harmony import */ var _home_user_detail_user_gps_user_gps_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./home/user-detail/user-gps/user-gps.component */ "./src/app/home/user-detail/user-gps/user-gps.component.ts");
-/* harmony import */ var _home_user_detail_user_log_user_log_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./home/user-detail/user-log/user-log.component */ "./src/app/home/user-detail/user-log/user-log.component.ts");
-/* harmony import */ var _home_filter_pipe__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./home/filter.pipe */ "./src/app/home/filter.pipe.ts");
+/* harmony import */ var _home_patch_users_patch_users_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./home/patch-users/patch-users.component */ "./src/app/home/patch-users/patch-users.component.ts");
+/* harmony import */ var _home_main_page_main_page_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./home/main-page/main-page.component */ "./src/app/home/main-page/main-page.component.ts");
+/* harmony import */ var _home_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./home/user-detail/user-detail.component */ "./src/app/home/user-detail/user-detail.component.ts");
+/* harmony import */ var _home_user_detail_user_info_user_info_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./home/user-detail/user-info/user-info.component */ "./src/app/home/user-detail/user-info/user-info.component.ts");
+/* harmony import */ var _home_user_detail_user_wheelchair_user_wheelchair_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./home/user-detail/user-wheelchair/user-wheelchair.component */ "./src/app/home/user-detail/user-wheelchair/user-wheelchair.component.ts");
+/* harmony import */ var _home_user_detail_user_vendor_user_vendor_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./home/user-detail/user-vendor/user-vendor.component */ "./src/app/home/user-detail/user-vendor/user-vendor.component.ts");
+/* harmony import */ var _home_user_detail_user_repair_user_repair_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./home/user-detail/user-repair/user-repair.component */ "./src/app/home/user-detail/user-repair/user-repair.component.ts");
+/* harmony import */ var _home_user_detail_user_tracking_user_tracking_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./home/user-detail/user-tracking/user-tracking.component */ "./src/app/home/user-detail/user-tracking/user-tracking.component.ts");
+/* harmony import */ var _home_user_detail_user_gps_user_gps_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./home/user-detail/user-gps/user-gps.component */ "./src/app/home/user-detail/user-gps/user-gps.component.ts");
+/* harmony import */ var _home_user_detail_user_log_user_log_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./home/user-detail/user-log/user-log.component */ "./src/app/home/user-detail/user-log/user-log.component.ts");
+/* harmony import */ var _home_filter_pipe__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./home/filter.pipe */ "./src/app/home/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
-
-
-
 
 
 
@@ -452,23 +440,17 @@ var AppModule = /** @class */ (function () {
                 _user_user_component__WEBPACK_IMPORTED_MODULE_8__["UserComponent"],
                 _user_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_9__["SignInComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"],
-                _home_category_category_component__WEBPACK_IMPORTED_MODULE_15__["CategoryComponent"],
-                _home_article_article_component__WEBPACK_IMPORTED_MODULE_16__["ArticleComponent"],
-                _home_tip_tip_component__WEBPACK_IMPORTED_MODULE_17__["TipComponent"],
-                _home_category_category_page_category_page_component__WEBPACK_IMPORTED_MODULE_18__["CategoryPageComponent"],
-                _home_article_article_page_article_page_component__WEBPACK_IMPORTED_MODULE_19__["ArticlePageComponent"],
-                _home_tip_tip_page_tip_page_component__WEBPACK_IMPORTED_MODULE_20__["TipPageComponent"],
-                _home_patch_users_patch_users_component__WEBPACK_IMPORTED_MODULE_21__["PatchUsersComponent"],
-                _home_main_page_main_page_component__WEBPACK_IMPORTED_MODULE_22__["MainPageComponent"],
-                _home_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_23__["UserDetailComponent"],
-                _home_user_detail_user_info_user_info_component__WEBPACK_IMPORTED_MODULE_24__["UserInfoComponent"],
-                _home_user_detail_user_wheelchair_user_wheelchair_component__WEBPACK_IMPORTED_MODULE_25__["UserWheelchairComponent"],
-                _home_user_detail_user_vendor_user_vendor_component__WEBPACK_IMPORTED_MODULE_26__["UserVendorComponent"],
-                _home_user_detail_user_repair_user_repair_component__WEBPACK_IMPORTED_MODULE_27__["UserRepairComponent"],
-                _home_user_detail_user_tracking_user_tracking_component__WEBPACK_IMPORTED_MODULE_28__["UserTrackingComponent"],
-                _home_user_detail_user_gps_user_gps_component__WEBPACK_IMPORTED_MODULE_29__["UserGpsComponent"],
-                _home_user_detail_user_log_user_log_component__WEBPACK_IMPORTED_MODULE_30__["UserLogComponent"],
-                _home_filter_pipe__WEBPACK_IMPORTED_MODULE_31__["FilterPipe"]
+                _home_patch_users_patch_users_component__WEBPACK_IMPORTED_MODULE_15__["PatchUsersComponent"],
+                _home_main_page_main_page_component__WEBPACK_IMPORTED_MODULE_16__["MainPageComponent"],
+                _home_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_17__["UserDetailComponent"],
+                _home_user_detail_user_info_user_info_component__WEBPACK_IMPORTED_MODULE_18__["UserInfoComponent"],
+                _home_user_detail_user_wheelchair_user_wheelchair_component__WEBPACK_IMPORTED_MODULE_19__["UserWheelchairComponent"],
+                _home_user_detail_user_vendor_user_vendor_component__WEBPACK_IMPORTED_MODULE_20__["UserVendorComponent"],
+                _home_user_detail_user_repair_user_repair_component__WEBPACK_IMPORTED_MODULE_21__["UserRepairComponent"],
+                _home_user_detail_user_tracking_user_tracking_component__WEBPACK_IMPORTED_MODULE_22__["UserTrackingComponent"],
+                _home_user_detail_user_gps_user_gps_component__WEBPACK_IMPORTED_MODULE_23__["UserGpsComponent"],
+                _home_user_detail_user_log_user_log_component__WEBPACK_IMPORTED_MODULE_24__["UserLogComponent"],
+                _home_filter_pipe__WEBPACK_IMPORTED_MODULE_25__["FilterPipe"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -604,391 +586,6 @@ var AuthIntercepter = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/home/article/article-page/article-page.component.css":
-/*!**********************************************************************!*\
-  !*** ./src/app/home/article/article-page/article-page.component.css ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/home/article/article-page/article-page.component.html":
-/*!***********************************************************************!*\
-  !*** ./src/app/home/article/article-page/article-page.component.html ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div role=\"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Add New Article</h2>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <a class=\"btn btn-sm btn-outline-secondary\" routerLink='/article'>Add</a>\n  </div>\n</div>\n\n<div class=\"form-row\">\n  <div class=\"form-group col-sm-8\"></div>\n  <div class=\"form-group col-sm-4\">\n    <select class=\"custom-select\" id=\"inputGroupSelect01\">\n      <option selected>Choose Category</option>\n      <option *ngFor=\"let category of categories\">{{category.title}}</option>\n    </select>\n  </div>\n</div>\n<div class=\"container\">\n  <div class=\"row\">\n    <div *ngFor=\"let category of categories\">\n      <div  *ngFor=\"let item of category.articles\" class=\"col-lg-4 col-md-6 square card\">\n        <h5 class=\"card-title ellipses\">{{item.title}}</h5>\n        <img class=\"card-img-top\"\n             src=\"{{item.picture_url}}\">\n        <div class=\"card-body\">\n          <p class=\"ellipses\">{{item.description}}</p>\n          <a href=\"#\" class=\"card-link\" data-toggle=\"modal\" data-target=\"#viewModal\">View</a>\n          <a href=\"#\" class=\"card-link\" routerLink='/article'>Edit</a>\n          <a href=\"#\" class=\"card-link\" data-toggle=\"modal\" data-target=\"#tipModal\">Tips</a>\n          <a href=\"#\" class=\"card-link\" data-toggle=\"modal\" data-target=\"#deleteModal\" >Delete</a>\n        </div>\n        <!--Tip Modal-->\n        <div class=\"modal fade\" id=\"tipModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"tipModalLabel\"\n             aria-hidden=\"true\">\n          <div class=\"modal-dialog\" role=\"document\">\n            <div class=\"modal-content\">\n              <div class=\"modal-header\">\n                <h5 class=\"modal-title\" id=\"tipModalLabel\">Add New Tips</h5>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                  <span aria-hidden=\"true\">&times;</span>\n                </button>\n              </div>\n              <div class=\"modal-body\">\n                <div class=\"form-group\">\n                  <label>Topic</label>\n                  <input type=\"text\" class=\"form-control\" name=\"topic\" #Topic ngModel>\n                  <label>Content</label>\n                  <textarea class=\"form-control\" rows=\"5\" name=\"content\" #Content ngModel></textarea>\n\n                </div>\n\n              </div>\n              <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-primary\"\n                        data-dismiss=\"modal\" (click)=\"addTip(category.id, item.id, Topic.value, Content.value)\">\n                  Update</button>\n                <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel</button>\n              </div>\n            </div>\n          </div>\n        </div>\n        <!--Delete Modal-->\n        <div class=\"modal fade\" id=\"deleteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n             aria-hidden=\"true\">\n          <div class=\"modal-dialog\" role=\"document\">\n            <div class=\"modal-content\">\n              <div class=\"modal-header\">\n                <h5 class=\"modal-title\" id=\"exampleModalLabel\">Warning</h5>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                  <span aria-hidden=\"true\">&times;</span>\n                </button>\n              </div>\n              <div class=\"modal-body\">\n                Are you Sure?\n              </div>\n              <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"DeleteSleep(category.id,item.id)\"\n                        data-dismiss=\"modal\">\n                  Yes, delete it!</button>\n                <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel</button>\n              </div>\n            </div>\n          </div>\n        </div>\n        <!-- View Modal -->\n        <div class=\"modal fade\" id=\"viewModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n             aria-hidden=\"true\">\n          <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n            <div class=\"modal-content\">\n              <div class=\"modal-header\">\n                <h4 class=\"modal-title\" id=\"exampleModalLongTitle\">{{item.title}}</h4>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                  <span aria-hidden=\"true\">&times;</span>\n                </button>\n              </div>\n              <img class=\"card-img-top\"\n                   src=\"{{item.picture_url}}\">\n              <div class=\"modal-body\">{{item.article}}</div>\n              <div class=\"list-group list-group-flush\">\n                <li class=\"list-group-item list-group-item-secondary\"></li>\n                <div *ngFor=\"let tip of item.tips\">\n\n                  <div class=\"list-group\">\n                    <li class=\"list-group-item w-100 d-flex justify-content-between align-items-center\">\n                      {{tip.topic}}\n                      <div>\n                        <button class=\"btn-primary\" data-toggle=\"collapse\" data-target=\"#collapseExample\"\n                                aria-expanded=\"false\" aria-controls=\"collapseExample\">\n                          View\n                        </button>\n                        <button class=\"btn-danger\" (click)=\"delTip(item.id, tip.tips_id)\" data-dismiss=\"modal\">\n                          Delete\n                        </button>\n                      </div>\n\n\n                    </li>\n                    <div class=\"collapse\" id=\"collapseExample\">\n                      <div class=\"card card-body\">\n                        {{tip.content}}\n                      </div>\n                    </div>\n                  </div>\n\n                </div>\n              </div>\n              <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/home/article/article-page/article-page.component.ts":
-/*!*********************************************************************!*\
-  !*** ./src/app/home/article/article-page/article-page.component.ts ***!
-  \*********************************************************************/
-/*! exports provided: ArticlePageComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArticlePageComponent", function() { return ArticlePageComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../provider/provider-create/create.service */ "./src/app/provider/provider-create/create.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var ArticlePageComponent = /** @class */ (function () {
-    function ArticlePageComponent(createService, router) {
-        this.createService = createService;
-        this.router = router;
-        this.isCollapsed = false;
-    }
-    ArticlePageComponent.prototype.ngOnInit = function () {
-        this.fetchData();
-    };
-    ArticlePageComponent.prototype.fetchData = function () {
-        var _this = this;
-        var i, j;
-        this.createService.getSleep().subscribe(function (data) {
-            console.log(data);
-            _this.categories = data;
-            for (i = 0; i < data.length; i++) {
-                for (j = 0; j < data[i].articles.length; j++) {
-                    _this.categories[i].articles[j].picture_url = 'https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_1280.jpg';
-                }
-                // file = new Blob([ data[i].picture_url ], {
-                //   type : 'image/jpeg'
-                // });
-                // this.categorys[i].picture_url = URL.createObjectURL([ data[i].picture_url ]);
-            }
-        }, function (error) { });
-    };
-    ArticlePageComponent.prototype.DeleteSleep = function (category_id, sleep_id) {
-        var _this = this;
-        this.createService.deleteSleep(category_id, sleep_id).subscribe(function (data) {
-            console.log(data);
-            _this.fetchData();
-        }, function (error) { });
-    };
-    ArticlePageComponent.prototype.addTip = function (category_id, sleep_id, topic, content) {
-        var _this = this;
-        this.createService.createTip(category_id, sleep_id, topic, content)
-            .subscribe(function (data) {
-            console.log(data);
-            _this.fetchData();
-        }, function (error) { });
-    };
-    ArticlePageComponent.prototype.delTip = function (sleep_id, tip_id) {
-        var _this = this;
-        this.createService.deleteTip(sleep_id, tip_id).subscribe(function (data) {
-            console.log(data);
-            _this.fetchData();
-        });
-    };
-    ArticlePageComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-article-page',
-            template: __webpack_require__(/*! ./article-page.component.html */ "./src/app/home/article/article-page/article-page.component.html"),
-            styles: [__webpack_require__(/*! ./article-page.component.css */ "./src/app/home/article/article-page/article-page.component.css")]
-        }),
-        __metadata("design:paramtypes", [_provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__["CreateService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-    ], ArticlePageComponent);
-    return ArticlePageComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/home/article/article.component.css":
-/*!****************************************************!*\
-  !*** ./src/app/home/article/article.component.css ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/home/article/article.component.html":
-/*!*****************************************************!*\
-  !*** ./src/app/home/article/article.component.html ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div role=\"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Add New Article</h2>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <a class=\"btn btn-sm btn-outline-secondary\" routerLink='/article-page'>Back</a>\n  </div>\n</div>\n<form #UploadSleep=\"ngForm\" (ngSubmit) = \"OnSubmit(selectedTitle.value,title.value, description.value, article.value)\">\n  <div class=\"form-group\">\n    <label>Category</label>\n\n    <select class=\"form-control\" name=\"selectedTitle\" #selectedTitle ngModel>\n      <option value=\"default\">Select a category</option>\n      <option *ngFor=\"let category of categories\" value=\"{{category.id}}\">{{category.title}}</option>\n    </select>\n    <label>Title</label>\n    <input type=\"text\" class=\"form-control\" name=\"Title\" #title ngModel>\n    <label>Description</label>\n    <input type=\"text\" class=\"form-control\" name=\"Description\" #description ngModel>\n\n    <label class=\"control-label\">Select File</label>\n    <input class=\"form-control file\" type=\"file\"\n           (change)=\"handleFileInput($event.target.files)\">\n    <label >Article</label>\n    <textarea rows=\"10\" class=\"form-control\" name=\"Article\" #article ngModel></textarea>\n  </div>\n\n  <input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" />\n\n</form>\n"
-
-/***/ }),
-
-/***/ "./src/app/home/article/article.component.ts":
-/*!***************************************************!*\
-  !*** ./src/app/home/article/article.component.ts ***!
-  \***************************************************/
-/*! exports provided: ArticleComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArticleComponent", function() { return ArticleComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../provider/provider-create/create.service */ "./src/app/provider/provider-create/create.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var ArticleComponent = /** @class */ (function () {
-    function ArticleComponent(createService, router) {
-        var _this = this;
-        this.createService = createService;
-        this.router = router;
-        this.fileToUpload = null;
-        this.createService.getCategory().subscribe(function (data) {
-            _this.categories = data;
-        }, function (error) { });
-    }
-    ArticleComponent.prototype.ngOnInit = function () {
-    };
-    ArticleComponent.prototype.handleFileInput = function (files) {
-        this.fileToUpload = files.item(0);
-    };
-    ArticleComponent.prototype.OnSubmit = function (category_id, title, description, article) {
-        var _this = this;
-        this.createService.createSleep(category_id, title, description, article, this.fileToUpload)
-            .subscribe(function (data) {
-            console.log(data);
-            _this.router.navigateByUrl('/article-page');
-        }, function (error) { });
-    };
-    ArticleComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-article',
-            template: __webpack_require__(/*! ./article.component.html */ "./src/app/home/article/article.component.html"),
-            styles: [__webpack_require__(/*! ./article.component.css */ "./src/app/home/article/article.component.css")]
-        }),
-        __metadata("design:paramtypes", [_provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__["CreateService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-    ], ArticleComponent);
-    return ArticleComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/home/category/category-page/category-page.component.css":
-/*!*************************************************************************!*\
-  !*** ./src/app/home/category/category-page/category-page.component.css ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/home/category/category-page/category-page.component.html":
-/*!**************************************************************************!*\
-  !*** ./src/app/home/category/category-page/category-page.component.html ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div role = \"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Article Category</h2>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <a class=\"btn btn-sm btn-outline-secondary\" routerLink='/category'>Add</a>\n  </div>\n</div>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <div *ngFor=\"let category of categorys\" class=\"col-lg-4 col-md-6 square card\">\n      <h5 class=\"card-title\">{{category.title}}</h5>\n      <img class=\"card-img-top\"\n           src=\"{{category.picture_url}}\">\n      <div class=\"card-body\">\n        <p>{{category.description}}</p>\n        <button data-toggle=\"modal\" data-target=\"#editModal\">Edit</button>\n        <button data-toggle=\"modal\" data-target=\"#deleteModal\">Delete</button>\n      </div>\n\n      <!--Delete Modal-->\n      <div class=\"modal fade\" id=\"deleteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"deleteModalLabel\"\n           aria-hidden=\"true\">\n        <div class=\"modal-dialog\" role=\"document\">\n          <div class=\"modal-content\">\n            <div class=\"modal-header\">\n              <h5 class=\"modal-title\" id=\"deleteModalLabel\">Warning</h5>\n              <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span aria-hidden=\"true\">&times;</span>\n              </button>\n            </div>\n            <div class=\"modal-body\">\n              Are you Sure?\n            </div>\n            <div class=\"modal-footer\">\n              <button type=\"button\" class=\"btn btn-primary\"\n                      data-dismiss=\"modal\" (click)=\"DelCategory(category.id)\">\n                Yes, delete it!</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel</button>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--Edit Modal-->\n      <div class=\"modal fade\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"editModalLabel\"\n           aria-hidden=\"true\">\n        <div class=\"modal-dialog\" role=\"document\">\n          <div class=\"modal-content\">\n            <div class=\"modal-header\">\n              <h5 class=\"modal-title\" id=\"editModalLabel\">Edit</h5>\n              <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span aria-hidden=\"true\">&times;</span>\n              </button>\n            </div>\n            <div class=\"modal-body\">\n              <div class=\"form-group\">\n                <label>Title</label>\n                <input type=\"text\" class=\"form-control\" name=\"title\" placeholder=\"{{category.title}}\" #Title ngModel>\n                <label class=\"control-label\">Select File</label>\n                <input class=\"form-control file\" type=\"file\"\n                       (change)=\"handleFileInput($event.target.files)\">\n\n                <label>Description</label>\n                <textarea class=\"form-control\" rows=\"5\" name=\"description\" placeholder=\"{{category.description}}\" #Description\n                          ngModel></textarea>\n\n              </div>\n\n            </div>\n            <div class=\"modal-footer\">\n              <button type=\"button\" class=\"btn btn-primary\"\n                      data-dismiss=\"modal\" (click)=\"update(category.id, Title.value, Description.value)\">\n                Update</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel</button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n"
-
-/***/ }),
-
-/***/ "./src/app/home/category/category-page/category-page.component.ts":
-/*!************************************************************************!*\
-  !*** ./src/app/home/category/category-page/category-page.component.ts ***!
-  \************************************************************************/
-/*! exports provided: CategoryPageComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryPageComponent", function() { return CategoryPageComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../provider/provider-create/create.service */ "./src/app/provider/provider-create/create.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var CategoryPageComponent = /** @class */ (function () {
-    function CategoryPageComponent(createService, router) {
-        this.createService = createService;
-        this.router = router;
-        this.fileToUpload = null;
-    }
-    CategoryPageComponent.prototype.ngOnInit = function () {
-        this.fetchData();
-    };
-    CategoryPageComponent.prototype.fetchData = function () {
-        var _this = this;
-        this.createService.getCategory().subscribe(function (data) {
-            var i;
-            _this.categorys = data;
-            for (i = 0; i < data.length; i++) {
-                // file = new Blob([ data[i].picture_url ], {
-                //   type : 'image/jpeg'
-                // });
-                // this.categorys[i].picture_url = URL.createObjectURL([ data[i].picture_url ]);
-                _this.categorys[i].picture_url = 'https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_1280.jpg';
-            }
-            console.log(_this.categorys);
-        }, function (error) {
-        });
-    };
-    CategoryPageComponent.prototype.handleFileInput = function (files) {
-        this.fileToUpload = files.item(0);
-    };
-    CategoryPageComponent.prototype.DelCategory = function (id) {
-        var _this = this;
-        this.createService.deleteCategory(id)
-            .subscribe(function (data) {
-            _this.fetchData();
-        }, function (error) { });
-    };
-    CategoryPageComponent.prototype.update = function (id, title, description) {
-        var _this = this;
-        this.createService.updateSleep(id, title, description, this.fileToUpload).subscribe(function (data) {
-            console.log(data);
-            _this.fetchData();
-        }, function (error) { });
-    };
-    CategoryPageComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-category-page',
-            template: __webpack_require__(/*! ./category-page.component.html */ "./src/app/home/category/category-page/category-page.component.html"),
-            styles: [__webpack_require__(/*! ./category-page.component.css */ "./src/app/home/category/category-page/category-page.component.css")]
-        }),
-        __metadata("design:paramtypes", [_provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__["CreateService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-    ], CategoryPageComponent);
-    return CategoryPageComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/home/category/category.component.css":
-/*!******************************************************!*\
-  !*** ./src/app/home/category/category.component.css ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/home/category/category.component.html":
-/*!*******************************************************!*\
-  !*** ./src/app/home/category/category.component.html ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n<div role=\"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Article Category</h2>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <a class=\"btn btn-sm btn-outline-secondary\" routerLink='/category-page'>Back</a>\n  </div>\n</div>\n<form  #UploadCategory=\"ngForm\" (ngSubmit) = \"OnSubmit(Title.value, Description.value)\" >\n  <div class=\"form-group\">\n    <label>Title</label>\n    <input type=\"text\" class=\"form-control\" name=\"title\" #Title ngModel>\n    <label class=\"control-label\">Select File</label>\n    <input class=\"form-control file\" type=\"file\"\n           (change)=\"handleFileInput($event.target.files)\">\n    <label>Description</label>\n\n    <textarea class=\"form-control\" rows=\"5\" name=\"description\" #Description ngModel></textarea>\n\n  </div>\n  <input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" />\n</form>\n\n\n"
-
-/***/ }),
-
-/***/ "./src/app/home/category/category.component.ts":
-/*!*****************************************************!*\
-  !*** ./src/app/home/category/category.component.ts ***!
-  \*****************************************************/
-/*! exports provided: CategoryComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryComponent", function() { return CategoryComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../provider/provider-create/create.service */ "./src/app/provider/provider-create/create.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var CategoryComponent = /** @class */ (function () {
-    function CategoryComponent(createService, router) {
-        this.createService = createService;
-        this.router = router;
-        this.fileToUpload = null;
-    }
-    CategoryComponent.prototype.ngOnInit = function () {
-    };
-    CategoryComponent.prototype.handleFileInput = function (files) {
-        this.fileToUpload = files.item(0);
-    };
-    CategoryComponent.prototype.OnSubmit = function (title, description) {
-        var _this = this;
-        console.log(title + ' ' + description);
-        this.createService.createCategory(title, description, this.fileToUpload)
-            .subscribe(function (data) {
-            console.log(data);
-            _this.router.navigate(['/category-page']);
-        }, function (error) {
-        });
-    };
-    CategoryComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-category',
-            template: __webpack_require__(/*! ./category.component.html */ "./src/app/home/category/category.component.html"),
-            styles: [__webpack_require__(/*! ./category.component.css */ "./src/app/home/category/category.component.css")]
-        }),
-        __metadata("design:paramtypes", [_provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__["CreateService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-    ], CategoryComponent);
-    return CategoryComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/home/filter.pipe.ts":
 /*!*************************************!*\
   !*** ./src/app/home/filter.pipe.ts ***!
@@ -1053,7 +650,7 @@ module.exports = ".sidebar {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  lef
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">Company name</a>\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <a class=\"nav-link\" (click)=\"Logout()\">Sign out</a>\n    </li>\n  </ul>\n</nav>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <nav class=\"col-md-2 d-none d-md-block bg-light sidebar\">\n      <div class=\"sidebar-sticky\">\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Dashboard</span>\n          <a class=\"d-flex align-items-center text-muted\" href=\"#\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink='/home' routerLinkActive=\"true\">\n              <i class=\"far fa-folder-open active\"></i>\n              User Info\n            </a>\n          </li>\n          <!--<li class=\"nav-item\">-->\n            <!--<a class=\"nav-link\" routerLink='/category-page' routerLinkActive=\"true\">-->\n              <!--<i class=\"fas fa-newspaper\"></i>-->\n              <!--Category-->\n            <!--</a>-->\n          <!--</li>-->\n          <!--<li class=\"nav-item\">-->\n            <!--<a class=\"nav-link\" routerLink='/article-page' routerLinkActive=\"true\">-->\n              <!--<i class=\"far fa-newspaper\"></i>-->\n              <!--Article-->\n            <!--</a>-->\n          <!--</li>-->\n          <!--<li class=\"nav-item\">-->\n            <!--<a class=\"nav-link\" routerLink='/tip' routerLinkActive=\"true\">-->\n              <!--<i class=\"fas fa-list-ul\"></i>-->\n              <!--Tips-->\n            <!--</a>-->\n          <!--</li>-->\n          <!--<li class=\"nav-item\">-->\n            <!--<a class=\"nav-link\" href=\"#\">-->\n              <!--<i class=\"fas fa-video\"></i>-->\n              <!--Video-->\n            <!--</a>-->\n          <!--</li>-->\n        </ul>\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Setting</span>\n          <a class=\"d-flex align-items-center text-muted\" href=\"#\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column mb-2\">\n          <!--<li class=\"nav-item\">-->\n            <!--<a class=\"nav-link\" href=\"#\">-->\n              <!--<i class=\"far fa-file-alt\"></i>-->\n              <!--About Us-->\n            <!--</a>-->\n          <!--</li>-->\n          <!--<li class=\"nav-item\">-->\n            <!--<a class=\"nav-link\" href=\"#\">-->\n              <!--<i class=\"far fa-file-alt\"></i>-->\n              <!--Contact Us-->\n            <!--</a>-->\n          <!--</li>-->\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink='/patch-users' routerLinkActive=\"true\">\n              <i class=\"far fa-file-alt\"></i>\n              Patch Users\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n    <main class=\"col-md-9 ml-sm-auto col-lg-10 pt-3 px-4\">\n      <router-outlet></router-outlet>\n    </main>\n  </div>\n</div>\n\n<!--<form action=\"#\" (ngSubmit)=\"uploadFile()\" enctype=\"multipart/form-data\">-->\n  <!--<div class=\"file-field input-field\">-->\n    <!--<div class=\"btn\">-->\n      <!--<span>File</span>-->\n      <!--<input type=\"file\" (change)=\"handleFileInput($event.target.files)\">-->\n    <!--</div>-->\n    <!--<div class=\"file-path-wrapper\">-->\n      <!--<input class=\"file-path validate\" type=\"text\">-->\n    <!--</div>-->\n  <!--</div>-->\n  <!--<button type= \"submit\" class =\"btn btn-success\">Submit</button>-->\n<!--</form>-->\n"
+module.exports = "<nav class=\"navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">Company name</a>\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <a class=\"nav-link\" (click)=\"Logout()\">Sign out</a>\n    </li>\n  </ul>\n</nav>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <nav class=\"col-md-2 d-none d-md-block bg-light sidebar\">\n      <div class=\"sidebar-sticky\">\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Dashboard</span>\n          <a class=\"d-flex align-items-center text-muted\" href=\"#\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" routerLink='/home' routerLinkActive=\"true\">\n              <i class=\"far fa-folder-open active\"></i>\n              User Info\n            </a>\n          </li>\n        </ul>\n        <div *ngIf=\"isShow\">\n          <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n            <span>Setting</span>\n            <a class=\"d-flex align-items-center text-muted\" href=\"#\">\n              <span data-feather=\"plus-circle\"></span>\n            </a>\n          </h6>\n          <ul class=\"nav flex-column mb-2\">\n            <!--<li class=\"nav-item\">-->\n            <!--<a class=\"nav-link\" href=\"#\">-->\n            <!--<i class=\"far fa-file-alt\"></i>-->\n            <!--About Us-->\n            <!--</a>-->\n            <!--</li>-->\n            <!--<li class=\"nav-item\">-->\n            <!--<a class=\"nav-link\" href=\"#\">-->\n            <!--<i class=\"far fa-file-alt\"></i>-->\n            <!--Contact Us-->\n            <!--</a>-->\n            <!--</li>-->\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLink='/patch-users' routerLinkActive=\"true\">\n                <i class=\"far fa-file-alt\"></i>\n                Patch Users\n              </a>\n            </li>\n          </ul>\n        </div>\n\n      </div>\n    </nav>\n    <main class=\"col-md-9 ml-sm-auto col-lg-10 pt-3 px-4\">\n      <router-outlet></router-outlet>\n    </main>\n  </div>\n</div>\n\n<!--<form action=\"#\" (ngSubmit)=\"uploadFile()\" enctype=\"multipart/form-data\">-->\n  <!--<div class=\"file-field input-field\">-->\n    <!--<div class=\"btn\">-->\n      <!--<span>File</span>-->\n      <!--<input type=\"file\" (change)=\"handleFileInput($event.target.files)\">-->\n    <!--</div>-->\n    <!--<div class=\"file-path-wrapper\">-->\n      <!--<input class=\"file-path validate\" type=\"text\">-->\n    <!--</div>-->\n  <!--</div>-->\n  <!--<button type= \"submit\" class =\"btn btn-success\">Submit</button>-->\n<!--</form>-->\n"
 
 /***/ }),
 
@@ -1088,19 +685,19 @@ var HomeComponent = /** @class */ (function () {
     function HomeComponent(router, userService) {
         this.router = router;
         this.userService = userService;
-        this.fileToUpload = null;
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userService.getUserClaims().subscribe(function (data) {
-            _this.user = data;
+        this.userService.getAdminClaims().subscribe(function (data) {
             console.log(data);
+            _this.isShow = true;
+        }, function (err) {
+            console.log(err);
+            if (err.error.status === 403) {
+                console.log('Unauthorized user');
+                _this.isShow = false;
+            }
         });
-        // this.userService.getAdminClaims().subscribe((data: any) => {
-        //   this.admin = data;
-        //   console.log(data);
-        // }, (err: HttpErrorResponse) => {
-        // });
     };
     HomeComponent.prototype.Logout = function () {
         localStorage.removeItem('userToken');
@@ -1460,8 +1057,11 @@ var PatchUsersComponent = /** @class */ (function () {
             _this.fileToUpload = null;
             _this.reset();
             _this.fetchData();
-        }, function (error) {
-            console.log(error);
+        }, function (err) {
+            console.log(err);
+            if (err.error.status === 403) {
+                console.log('Unauthorized user');
+            }
         });
     };
     __decorate([
@@ -1477,150 +1077,6 @@ var PatchUsersComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_provider_provider_user_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
     ], PatchUsersComponent);
     return PatchUsersComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/home/tip/tip-page/tip-page.component.css":
-/*!**********************************************************!*\
-  !*** ./src/app/home/tip/tip-page/tip-page.component.css ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/home/tip/tip-page/tip-page.component.html":
-/*!***********************************************************!*\
-  !*** ./src/app/home/tip/tip-page/tip-page.component.html ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  tip-page works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/home/tip/tip-page/tip-page.component.ts":
-/*!*********************************************************!*\
-  !*** ./src/app/home/tip/tip-page/tip-page.component.ts ***!
-  \*********************************************************/
-/*! exports provided: TipPageComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TipPageComponent", function() { return TipPageComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var TipPageComponent = /** @class */ (function () {
-    function TipPageComponent() {
-    }
-    TipPageComponent.prototype.ngOnInit = function () {
-    };
-    TipPageComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-tip-page',
-            template: __webpack_require__(/*! ./tip-page.component.html */ "./src/app/home/tip/tip-page/tip-page.component.html"),
-            styles: [__webpack_require__(/*! ./tip-page.component.css */ "./src/app/home/tip/tip-page/tip-page.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], TipPageComponent);
-    return TipPageComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/home/tip/tip.component.css":
-/*!********************************************!*\
-  !*** ./src/app/home/tip/tip.component.css ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/home/tip/tip.component.html":
-/*!*********************************************!*\
-  !*** ./src/app/home/tip/tip.component.html ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div role=\"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Tips</h2>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <button class=\"btn btn-sm btn-outline-secondary\">Back</button>\n  </div>\n</div>\n<form #UploadTip=\"ngForm\" (ngSubmit) = \"OnSubmit(Category.value, Title.value, Topic.value, Article.value)\">\n  <div class=\"form-group\">\n    <label>Category</label>\n    <select class=\"form-control\" name=\"selectedCategory\"\n            (change)=\"getCategory($event.target.value)\" #Category ngModel>\n      <!--<option value=\"default\">Select a category</option>-->\n      <option *ngFor = \"let category of categories; let i = index\" [attr.data-index]=\"i\" name=\"categorySelected\"\n              value={{i}}>\n        {{category.title}}</option>\n    </select>\n    <label>Title</label>\n    <select class=\"form-control\" name=\"selectedTitle\" #Title ngModel>\n      <option value=\"-1\">Select a Title</option>\n      <option *ngFor=\"let item of selectOne\" value=\"{{item.id}}\">{{item.article}}</option>\n    </select>\n\n    <label>Topic</label>\n    <input type=\"text\" class=\"form-control\" name=\"topic\" #Topic ngModel>\n    <label>Content</label>\n    <textarea class=\"form-control\"  id=\"article\" rows=\"5\" name=\"article\" #Article ngModel></textarea>\n\n\n  </div>\n  <input class=\"btn btn-primary\" type=\"submit\" value=\"Submit\" />\n\n</form>\n"
-
-/***/ }),
-
-/***/ "./src/app/home/tip/tip.component.ts":
-/*!*******************************************!*\
-  !*** ./src/app/home/tip/tip.component.ts ***!
-  \*******************************************/
-/*! exports provided: TipComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TipComponent", function() { return TipComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../provider/provider-create/create.service */ "./src/app/provider/provider-create/create.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var TipComponent = /** @class */ (function () {
-    function TipComponent(createService) {
-        this.createService = createService;
-    }
-    TipComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.createService.getCategory().subscribe(function (data) {
-            _this.categories = data;
-        }, function (error) { });
-    };
-    TipComponent.prototype.getCategory = function (index) {
-        console.log(index);
-        this.selectOne = this.categories[index].articles;
-    };
-    TipComponent.prototype.OnSubmit = function (index, sleep_id, topic, content) {
-        var category_id = this.categories[index].id;
-        this.createService.createTip(category_id, sleep_id, topic, content)
-            .subscribe(function (data) {
-            console.log(data);
-        }, function (error) { });
-    };
-    TipComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-tip',
-            template: __webpack_require__(/*! ./tip.component.html */ "./src/app/home/tip/tip.component.html"),
-            styles: [__webpack_require__(/*! ./tip.component.css */ "./src/app/home/tip/tip.component.css")]
-        }),
-        __metadata("design:paramtypes", [_provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_1__["CreateService"]])
-    ], TipComponent);
-    return TipComponent;
 }());
 
 
@@ -2962,7 +2418,7 @@ var UserService = /** @class */ (function () {
         return this.http.get(this.rootUrl + '/rest/user');
     };
     UserService.prototype.getAdminClaims = function () {
-        return this.http.get(this.rootUrl + '/rest/admin');
+        return this.http.get(this.rootUrl + '/rest/isadmin');
     };
     UserService.prototype.postFile = function (fileToUpload) {
         var formData = new FormData();
@@ -3033,24 +2489,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
 /* harmony import */ var _home_patch_users_patch_users_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home/patch-users/patch-users.component */ "./src/app/home/patch-users/patch-users.component.ts");
 /* harmony import */ var _home_main_page_main_page_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/main-page/main-page.component */ "./src/app/home/main-page/main-page.component.ts");
-/* harmony import */ var _home_category_category_page_category_page_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/category/category-page/category-page.component */ "./src/app/home/category/category-page/category-page.component.ts");
-/* harmony import */ var _home_category_category_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/category/category.component */ "./src/app/home/category/category.component.ts");
-/* harmony import */ var _home_article_article_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/article/article.component */ "./src/app/home/article/article.component.ts");
-/* harmony import */ var _home_article_article_page_article_page_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/article/article-page/article-page.component */ "./src/app/home/article/article-page/article-page.component.ts");
-/* harmony import */ var _home_tip_tip_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/tip/tip.component */ "./src/app/home/tip/tip.component.ts");
-/* harmony import */ var _home_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/user-detail/user-detail.component */ "./src/app/home/user-detail/user-detail.component.ts");
-/* harmony import */ var _home_user_detail_user_info_user_info_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./home/user-detail/user-info/user-info.component */ "./src/app/home/user-detail/user-info/user-info.component.ts");
-/* harmony import */ var _home_user_detail_user_wheelchair_user_wheelchair_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./home/user-detail/user-wheelchair/user-wheelchair.component */ "./src/app/home/user-detail/user-wheelchair/user-wheelchair.component.ts");
-/* harmony import */ var _home_user_detail_user_vendor_user_vendor_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./home/user-detail/user-vendor/user-vendor.component */ "./src/app/home/user-detail/user-vendor/user-vendor.component.ts");
-/* harmony import */ var _home_user_detail_user_repair_user_repair_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./home/user-detail/user-repair/user-repair.component */ "./src/app/home/user-detail/user-repair/user-repair.component.ts");
-/* harmony import */ var _home_user_detail_user_tracking_user_tracking_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./home/user-detail/user-tracking/user-tracking.component */ "./src/app/home/user-detail/user-tracking/user-tracking.component.ts");
-/* harmony import */ var _home_user_detail_user_gps_user_gps_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./home/user-detail/user-gps/user-gps.component */ "./src/app/home/user-detail/user-gps/user-gps.component.ts");
-/* harmony import */ var _home_user_detail_user_log_user_log_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./home/user-detail/user-log/user-log.component */ "./src/app/home/user-detail/user-log/user-log.component.ts");
-
-
-
-
-
+/* harmony import */ var _home_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/user-detail/user-detail.component */ "./src/app/home/user-detail/user-detail.component.ts");
+/* harmony import */ var _home_user_detail_user_info_user_info_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/user-detail/user-info/user-info.component */ "./src/app/home/user-detail/user-info/user-info.component.ts");
+/* harmony import */ var _home_user_detail_user_wheelchair_user_wheelchair_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/user-detail/user-wheelchair/user-wheelchair.component */ "./src/app/home/user-detail/user-wheelchair/user-wheelchair.component.ts");
+/* harmony import */ var _home_user_detail_user_vendor_user_vendor_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/user-detail/user-vendor/user-vendor.component */ "./src/app/home/user-detail/user-vendor/user-vendor.component.ts");
+/* harmony import */ var _home_user_detail_user_repair_user_repair_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/user-detail/user-repair/user-repair.component */ "./src/app/home/user-detail/user-repair/user-repair.component.ts");
+/* harmony import */ var _home_user_detail_user_tracking_user_tracking_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/user-detail/user-tracking/user-tracking.component */ "./src/app/home/user-detail/user-tracking/user-tracking.component.ts");
+/* harmony import */ var _home_user_detail_user_gps_user_gps_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./home/user-detail/user-gps/user-gps.component */ "./src/app/home/user-detail/user-gps/user-gps.component.ts");
+/* harmony import */ var _home_user_detail_user_log_user_log_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./home/user-detail/user-log/user-log.component */ "./src/app/home/user-detail/user-log/user-log.component.ts");
 
 
 
@@ -3076,52 +2522,27 @@ var appRoutes = [
         path: 'detail', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
         canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
         children: [{
-                path: '', component: _home_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_12__["UserDetailComponent"],
+                path: '', component: _home_user_detail_user_detail_component__WEBPACK_IMPORTED_MODULE_7__["UserDetailComponent"],
                 canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
                 children: [
-                    { path: 'info/:userId', component: _home_user_detail_user_info_user_info_component__WEBPACK_IMPORTED_MODULE_13__["UserInfoComponent"] },
-                    { path: 'wheelchair/:userId', component: _home_user_detail_user_wheelchair_user_wheelchair_component__WEBPACK_IMPORTED_MODULE_14__["UserWheelchairComponent"] },
-                    { path: 'vendor/:userId', component: _home_user_detail_user_vendor_user_vendor_component__WEBPACK_IMPORTED_MODULE_15__["UserVendorComponent"] },
-                    { path: 'repair/:userId', component: _home_user_detail_user_repair_user_repair_component__WEBPACK_IMPORTED_MODULE_16__["UserRepairComponent"] },
-                    { path: 'gps/:userId', component: _home_user_detail_user_gps_user_gps_component__WEBPACK_IMPORTED_MODULE_18__["UserGpsComponent"] },
-                    { path: 'log/:userId', component: _home_user_detail_user_log_user_log_component__WEBPACK_IMPORTED_MODULE_19__["UserLogComponent"] }
+                    { path: 'info/:userId', component: _home_user_detail_user_info_user_info_component__WEBPACK_IMPORTED_MODULE_8__["UserInfoComponent"] },
+                    { path: 'wheelchair/:userId', component: _home_user_detail_user_wheelchair_user_wheelchair_component__WEBPACK_IMPORTED_MODULE_9__["UserWheelchairComponent"] },
+                    { path: 'vendor/:userId', component: _home_user_detail_user_vendor_user_vendor_component__WEBPACK_IMPORTED_MODULE_10__["UserVendorComponent"] },
+                    { path: 'repair/:userId', component: _home_user_detail_user_repair_user_repair_component__WEBPACK_IMPORTED_MODULE_11__["UserRepairComponent"] },
+                    { path: 'gps/:userId', component: _home_user_detail_user_gps_user_gps_component__WEBPACK_IMPORTED_MODULE_13__["UserGpsComponent"] },
+                    { path: 'log/:userId', component: _home_user_detail_user_log_user_log_component__WEBPACK_IMPORTED_MODULE_14__["UserLogComponent"] }
                 ]
             }]
     },
     {
         path: 'tracking/:id', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
         canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
-        children: [{ path: '', component: _home_user_detail_user_tracking_user_tracking_component__WEBPACK_IMPORTED_MODULE_17__["UserTrackingComponent"] }]
-    },
-    {
-        path: 'category-page', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
-        children: [{ path: '', component: _home_category_category_page_category_page_component__WEBPACK_IMPORTED_MODULE_7__["CategoryPageComponent"] }]
-    },
-    {
-        path: 'category', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
-        children: [{ path: '', component: _home_category_category_component__WEBPACK_IMPORTED_MODULE_8__["CategoryComponent"] }]
-    },
-    {
-        path: 'article', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
-        children: [{ path: '', component: _home_article_article_component__WEBPACK_IMPORTED_MODULE_9__["ArticleComponent"] }]
-    },
-    {
-        path: 'article-page', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
-        children: [{ path: '', component: _home_article_article_page_article_page_component__WEBPACK_IMPORTED_MODULE_10__["ArticlePageComponent"] }]
+        children: [{ path: '', component: _home_user_detail_user_tracking_user_tracking_component__WEBPACK_IMPORTED_MODULE_12__["UserTrackingComponent"] }]
     },
     {
         path: 'patch-users', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
         canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
         children: [{ path: '', component: _home_patch_users_patch_users_component__WEBPACK_IMPORTED_MODULE_5__["PatchUsersComponent"] }]
-    },
-    {
-        path: 'tip', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]],
-        children: [{ path: '', component: _home_tip_tip_component__WEBPACK_IMPORTED_MODULE_11__["TipComponent"] }]
     },
     {
         path: 'auth', component: _user_user_component__WEBPACK_IMPORTED_MODULE_0__["UserComponent"],

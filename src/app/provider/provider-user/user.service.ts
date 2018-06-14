@@ -8,8 +8,8 @@ import { Observable} from 'rxjs/internal/Observable';
 })
 export class UserService {
 
-  // rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
-  rootUrl = 'http://localhost:8787';
+  rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
+  // rootUrl = 'http://localhost:8787';
   constructor(private http: HttpClient) {}
 
   registerUser(user: User) {

@@ -3,6 +3,7 @@ import { Wheelchair} from '../../../provider/provider-user/user.model';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 import * as alasql from 'alasql';
+import { FilterPipe} from '../../filter.pipe';
 
 @Component({
   selector: 'app-user-wheelchair',
@@ -26,6 +27,7 @@ export class UserWheelchairComponent implements OnInit {
     setNum: number;
 
     searchText: string;
+    filter: FilterPipe = new FilterPipe();
 
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
@@ -41,8 +43,7 @@ export class UserWheelchairComponent implements OnInit {
         this.fetchData();
     }
     _initPage(data) {
-        this.wheelchairsRep = data;
-        this.len = this.wheelchairsRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
@@ -50,15 +51,21 @@ export class UserWheelchairComponent implements OnInit {
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if ( this.len < this.setNum) {
-            this.wheelchairs = this.wheelchairsRep;
+            this.wheelchairs = data;
         } else {
-            this.wheelchairs = this.wheelchairsRep.slice(0, this.setNum);
+            this.wheelchairs = data.slice(0, this.setNum);
         }
+    }
+    search() {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.wheelchairsRep, this.searchText));
     }
     fetchData() {
         this.userService.getWheelchair(this.userId).subscribe(data => {
             console.log(data);
-            this._initPage(data);
+            this.wheelchairsRep = data;
+            this._initPage(this.wheelchairsRep);
             this.isShow = false;
         }, error => {
             this.isShow = true;

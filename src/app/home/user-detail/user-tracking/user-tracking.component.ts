@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 import {Repair, Tracking} from '../../../provider/provider-user/user.model';
 import * as alasql from "alasql";
+import {FilterPipe} from '../../filter.pipe';
 
 @Component({
   selector: 'app-user-tracking',
@@ -27,6 +28,7 @@ export class UserTrackingComponent implements OnInit {
     setNum: number;
 
     searchText: string;
+    filter: FilterPipe = new FilterPipe();
   constructor(private route: ActivatedRoute,
               private userService: UserService) {
       this.route.params.subscribe(res => {
@@ -49,7 +51,7 @@ export class UserTrackingComponent implements OnInit {
 
     _initPage(data) {
         console.log(data);
-        this.len = this.trackingsRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
@@ -57,10 +59,15 @@ export class UserTrackingComponent implements OnInit {
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if ( this.len < this.setNum) {
-            this.trackings = this.trackingsRep ;
+            this.trackings = data ;
         } else {
-            this.trackings = this.trackingsRep .slice(0, this.setNum);
+            this.trackings = data.slice(0, this.setNum);
         }
+    }
+    search() {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.trackingsRep, this.searchText));
     }
   fetchData() {
       this.userService.getRepairById(this.trackingId).subscribe(data => {
@@ -73,7 +80,7 @@ export class UserTrackingComponent implements OnInit {
               this.trackingsRep[i].consequncesArray = JSON.parse(this.trackingsRep[i].consequences.toString());
               console.log(this.trackingsRep[i].consequncesArray);
           }
-          this._initPage(data);
+          this._initPage(this.trackingsRep);
       }, error => {});
   }
     setPage(i) {

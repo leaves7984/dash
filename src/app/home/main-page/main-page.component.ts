@@ -3,6 +3,7 @@ import { UserService} from '../../provider/provider-user/user.service';
 import { Angular5Csv} from 'angular5-csv/Angular5-csv';
 import * as alasql from 'alasql';
 import {Info, Repair, Tracking} from '../../provider/provider-user/user.model';
+import {FilterPipe} from '../filter.pipe';
 
 @Component({
   selector: 'app-main-page',
@@ -17,8 +18,9 @@ export class MainPageComponent implements OnInit {
     index1: number;
     index2: number;
     searchText: string;
+    filter: FilterPipe = new FilterPipe();
 
-    data: Object;
+    // data: Object;
     users = [];
     userRep = [];
 
@@ -40,8 +42,7 @@ export class MainPageComponent implements OnInit {
       this.fetchData();
   }
   _initPage(data) {
-      this.userRep = data;
-      this.len = this.userRep.length;
+      this.len = data.length;
       this.index1 = 1;
       if (this.len < this.setNum) {
           this.index2 = this.len;
@@ -49,14 +50,21 @@ export class MainPageComponent implements OnInit {
       console.log(Math.ceil(this.len / this.setNum));
       this.pages = new Array(Math.ceil(this.len / this.setNum));
       if ( this.len < this.setNum) {
-          this.users = this.userRep;
+          this.users = data;
       } else {
-          this.users = this.userRep.slice(0, this.setNum);
+          this.users = data.slice(0, this.setNum);
       }
   }
+    search() {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.userRep, this.searchText));
+    }
   fetchData() {
       this.userService.getUsers().subscribe(data => {
-          this._initPage(data);
+          console.log(data);
+          Array.prototype.push.apply(this.userRep, data);
+          this._initPage(this.userRep);
           // const setNum = this.setNum;
           // console.log(data);
           // Array.prototype.push.apply(this.userRep, data);

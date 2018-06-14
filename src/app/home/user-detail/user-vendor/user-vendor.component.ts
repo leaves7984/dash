@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 import {Vendor} from '../../../provider/provider-user/user.model';
 import * as alasql from "alasql";
+import {FilterPipe} from '../../filter.pipe';
 
 @Component({
   selector: 'app-user-vendor',
@@ -26,6 +27,7 @@ export class UserVendorComponent implements OnInit {
     setNum: number;
 
     searchText: string;
+    filter: FilterPipe = new FilterPipe();
 
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
@@ -43,8 +45,7 @@ export class UserVendorComponent implements OnInit {
     }
     _initPage(data) {
         console.log(data);
-        this.vendorsRep = data;
-        this.len = this.vendorsRep .length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
@@ -52,14 +53,20 @@ export class UserVendorComponent implements OnInit {
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if ( this.len < this.setNum) {
-            this.vendors = this.vendorsRep ;
+            this.vendors = data ;
         } else {
-            this.vendors = this.vendorsRep .slice(0, this.setNum);
+            this.vendors = data.slice(0, this.setNum);
         }
+    }
+    search() {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.vendorsRep, this.searchText));
     }
     fetchData() {
         this.userService.getVendor(this.userId).subscribe(data => {
-            this._initPage(data);
+            this.vendorsRep = data;
+            this._initPage(this.vendorsRep);
             this.isShow = false;
         }, error => {
             this.isShow = true;
