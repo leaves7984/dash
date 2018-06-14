@@ -33,7 +33,7 @@
     <table class="table">
       <thead class="thead-dark">
       <tr>
-        <th scope="col"><input type="checkbox"></th>
+        <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
         <th scope="col">Name</th>
         <th scope="col">Operations</th>
         <th scope="col">Download</th>
@@ -41,7 +41,7 @@
       </thead>
       <tbody *ngFor = "let item of users" >
       <tr>
-        <th scope="row"><input type="checkbox" (click)="updateSelection(item)"></th>
+        <th scope="row"><input type="checkbox" [checked]="selectAll" (click)="updateSelection(item)"></th>
         <th scope="row">{{item}}</th>
         <th scope="row">
           <ul class="nav">

@@ -28,6 +28,8 @@ export class UserRepairComponent implements OnInit {
 
     searchText: string;
     filter: FilterPipe = new FilterPipe();
+    selectAll: Boolean = false;
+
     constructor(private route: ActivatedRoute,
                 private userService: UserService,
                 private router: Router) {
@@ -156,5 +158,16 @@ export class UserRepairComponent implements OnInit {
         console.log(value);
         this.setNum = value;
         this._initPage(this.repairsRep);
+    }
+
+    selectAllboxes() {
+        let i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.repairs.length; i ++) {
+                this.updateSelection(this.repairs[i]);
+            }
+        }
     }
 }

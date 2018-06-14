@@ -18,6 +18,7 @@ export class MainPageComponent implements OnInit {
     index1: number;
     index2: number;
     searchText: string;
+    selectAll: Boolean = false;
     filter: FilterPipe = new FilterPipe();
 
     // data: Object;
@@ -231,5 +232,15 @@ export class MainPageComponent implements OnInit {
         console.log(value);
         this.setNum = value;
         this._initPage(this.userRep);
+    }
+    selectAllboxes() {
+      let i;
+      this.selectAll = !this.selectAll;
+      this.items = [];
+      if (this.selectAll) {
+          for (i = 0; i < this.users.length; i ++) {
+              this.updateSelection(this.users[i]);
+          }
+      }
     }
 }

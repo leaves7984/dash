@@ -29,6 +29,8 @@ export class UserTrackingComponent implements OnInit {
 
     searchText: string;
     filter: FilterPipe = new FilterPipe();
+    selectAll: Boolean = false;
+
   constructor(private route: ActivatedRoute,
               private userService: UserService) {
       this.route.params.subscribe(res => {
@@ -128,5 +130,15 @@ export class UserTrackingComponent implements OnInit {
         console.log(value);
         this.setNum = value;
         this._initPage(this.trackingsRep);
+    }
+    selectAllboxes() {
+        let i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.trackings.length; i ++) {
+                this.updateSelection(this.trackings[i]);
+            }
+        }
     }
 }

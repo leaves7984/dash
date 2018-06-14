@@ -29,6 +29,7 @@ export class UserWheelchairComponent implements OnInit {
 
     searchText: string;
     filter: FilterPipe = new FilterPipe();
+    selectAll: Boolean = false;
 
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
@@ -119,5 +120,15 @@ export class UserWheelchairComponent implements OnInit {
         console.log(value);
         this.setNum = value;
         this._initPage(this.wheelchairsRep);
+    }
+    selectAllboxes() {
+        let i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.wheelchairs.length; i ++) {
+                this.updateSelection(this.wheelchairs[i]);
+            }
+        }
     }
 }

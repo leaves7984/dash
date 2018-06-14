@@ -27,6 +27,8 @@ export class UserLogComponent implements OnInit {
 
     searchText: string;
     filter: FilterPipe = new FilterPipe();
+    selectAll: Boolean = false;
+
     constructor(private route: ActivatedRoute,
                 private userService: UserService) {
         this.route.params.subscribe(res => {
@@ -115,5 +117,15 @@ export class UserLogComponent implements OnInit {
         console.log(value);
         this.setNum = value;
         this._initPage(this.loggersRep);
+    }
+    selectAllboxes() {
+        let i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.loggers.length; i ++) {
+                this.updateSelection(this.loggers[i]);
+            }
+        }
     }
 }

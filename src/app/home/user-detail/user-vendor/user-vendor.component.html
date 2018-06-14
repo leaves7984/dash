@@ -41,7 +41,7 @@
   <table class="table">
     <thead class="thead-dark">
     <tr>
-      <th scope="col"><input type="checkbox"></th>
+      <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
       <th scope="col">CreatedAt</th>
       <th scope="col">Name</th>
       <th scope="col">Phone</th>
@@ -55,7 +55,7 @@
     </thead>
     <tbody *ngFor="let item of vendors">
     <tr>
-      <th scope="row"><input type="checkbox" (click)="updateSelection(item)"></th>
+      <th scope="row"><input type="checkbox" (click)="updateSelection(item)" [checked]="selectAll"></th>
       <td>{{item.createdAt|date: 'MM/dd/yyyy '}}</td>
       <td>{{item.name}}</td>
       <td>{{item.phone}}</td>

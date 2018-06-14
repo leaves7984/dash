@@ -40,7 +40,7 @@
   <table class="table">
     <thead class="thead-dark">
     <tr>
-      <th scope="col"><input type="checkbox"></th>
+      <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
       <th scope="col">RepairNeeded Date</th>
       <!--<th scope="col">DateRepairCompleted</th>-->
       <th scope="col">Wheelchair</th>
@@ -59,7 +59,7 @@
     </thead>
     <tbody *ngFor="let item of repairs">
     <tr>
-      <th scope="row"><input type="checkbox" (click)="updateSelection(item)"></th>
+      <th scope="row"><input type="checkbox" (click)="updateSelection(item)" [checked]="selectAll"></th>
       <td>{{item.dateRepairNeeded|date: 'MM/dd/yyyy'}}</td>
       <td>{{item.wheelchair}}</td>
       <td>{{item.purpose}}</td>

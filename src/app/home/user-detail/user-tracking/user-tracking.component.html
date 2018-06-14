@@ -36,7 +36,7 @@
   <table class="table">
     <thead class="thead-dark">
     <tr>
-      <th scope="col"><input type="checkbox"></th>
+      <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()" ></th>
       <th scope="col">Date</th>
       <th scope="col">Update Tracking</th>
       <th scope="col">Consequences</th>
@@ -46,7 +46,7 @@
     </thead>
     <tbody *ngFor="let item of trackings">
     <tr>
-      <th scope="row"><input type="checkbox" (click)="updateSelection(item)"></th>
+      <th scope="row"><input type="checkbox" (click)="updateSelection(item)" [checked]="selectAll"></th>
       <td>{{item.date}}</td>
       <td>{{item.updateTracking}}</td>
       <td>
