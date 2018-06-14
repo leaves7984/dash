@@ -48,6 +48,8 @@ export class UserRepairComponent implements OnInit {
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
+        } else {
+            this.index2 = this.setNum;
         }
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
@@ -148,5 +150,11 @@ export class UserRepairComponent implements OnInit {
         }
         console.log('items: ');
         console.log(this.items);
+    }
+
+    numChange(value) {
+        console.log(value);
+        this.setNum = value;
+        this._initPage(this.repairsRep);
     }
 }

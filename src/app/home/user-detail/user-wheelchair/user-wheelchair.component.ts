@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 import * as alasql from 'alasql';
 import { FilterPipe} from '../../filter.pipe';
+import {v} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-user-wheelchair',
@@ -47,6 +48,8 @@ export class UserWheelchairComponent implements OnInit {
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
+        } else {
+            this.index2 = this.setNum;
         }
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
@@ -112,5 +115,9 @@ export class UserWheelchairComponent implements OnInit {
         const setNum = this.setNum;
         this.wheelchairs = this.wheelchairsRep.slice(i * setNum, i * setNum + setNum);
     }
-
+    numChange(value) {
+        console.log(value);
+        this.setNum = value;
+        this._initPage(this.wheelchairsRep);
+    }
 }
