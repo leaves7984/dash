@@ -81,12 +81,14 @@ export class UserWheelchairComponent implements OnInit {
     }
     _downloadAll() {
         const end = [{value: 'null'}];
-        Array.prototype.push.apply(this.items, end);
-        const opts = [
-            {sheetid: 'WheelchairData', header: true},
-        ];
-        const report = alasql('SELECT INTO XLSX("' + this.userId + '_wheelchair.xlsx",?) FROM ?',
-            [opts, [this.items]]);
+        if (this.items.length > 0) {
+            const opts = [
+                {sheetid: 'WheelchairData', header: true},
+            ];
+            const report = alasql('SELECT INTO XLSX("' + this.userId + '_wheelchair.xlsx",?) FROM ?',
+                [opts, [this.items]]);
+        }
+        // Array.prototype.push.apply(this.items, end);
     }
 
     getAlldata() {

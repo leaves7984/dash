@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import {GPS, Info, Log, Repair, Tracking, User, Vendor, Wheelchair} from './user.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable} from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  // rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
-  rootUrl = 'http://localhost:8787';
+  rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
+  // rootUrl = 'http://localhost:8787';
   constructor(private http: HttpClient) {}
 
   registerUser(user: User) {
@@ -75,6 +76,10 @@ export class UserService {
 
   getAll(userId) {
     return this.http.get(this.rootUrl + '/rest/getData/' + userId);
+  }
+
+  getCategories(): Observable<any> {
+    return this.http.get('../../assets/repair_categories.json');
   }
 }
 

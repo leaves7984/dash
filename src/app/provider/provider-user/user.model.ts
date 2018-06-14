@@ -70,9 +70,9 @@ export class Repair {
     userId: String;
     wheelchair: String;
     date: String;
-    category: String;
-    subCategory: String;
-    detail: String;
+    category: string;
+    subCategory: string;
+    detail: string;
     resource: String;
     dateRepairNeeded: String;
     dateRepairCompleted: String;

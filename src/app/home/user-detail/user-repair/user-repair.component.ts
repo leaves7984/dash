@@ -56,11 +56,38 @@ export class UserRepairComponent implements OnInit {
         }
     }
     fetchData() {
+        let idx;
+        let idx2;
+        let idx3;
+        let categories = [];
+        this.userService.getCategories().subscribe(data => {
+            console.log('---categories---');
+            console.log(data);
+            categories = data;
+        }, err => {
+            console.log(err);
+        });
         this.userService.getRepair(this.userId).subscribe(data => {
             this.repairsRep = data;
             for (let i = 0; i < data.length ; i++ ) {
                 this.repairsRep[i].consequncesArray = JSON.parse(this.repairsRep[i].consequences.toString());
                 console.log(this.repairsRep[i].consequncesArray);
+
+                if (this.repairsRep[i].category != null) {
+                    idx = parseInt(this.repairsRep[i].category, 10);
+                    this.repairsRep[i].category = categories[idx - 1].label;
+                }
+                if (this.repairsRep[i].subCategory != null) {
+                    idx2 = parseInt(this.repairsRep[i].subCategory, 10);
+                    console.log('idx ' + idx + 'idx2' + idx2);
+                    this.repairsRep[i].subCategory = categories[idx - 1].subCategory[idx2 - 1].label;
+                }
+                if (this.repairsRep[i].detail != null) {
+                    idx3 = parseInt(this.repairsRep[i].detail, 10);
+                    console.log(idx3 + 'idx3' + idx2 + 'idx2' + idx);
+                    this.repairsRep[i].detail = categories[idx - 1].subCategory[idx2 - 1].subCategory[idx3 - 1].label;
+                }
+
                 this.userService.getTracking(this.repairsRep[i].id).subscribe(res => {
                     this.repairsRep[i].hasTracking = true;
                 }, error => {
@@ -89,12 +116,14 @@ export class UserRepairComponent implements OnInit {
     }
     _downloadAll() {
         const end = [{value: 'null'}];
-        Array.prototype.push.apply(this.items, end);
-        const opts = [
-            {sheetid: 'VendorData', header: true},
-        ];
-        const report = alasql('SELECT INTO XLSX("' + this.userId + '_repairs.xlsx",?) FROM ?',
-            [opts, [this.items]]);
+        if (this.items.length > 0) {
+            // Array.prototype.push.apply(this.items, end);
+            const opts = [
+                {sheetid: 'RepairData', header: true},
+            ];
+            const report = alasql('SELECT INTO XLSX("' + this.userId + '_repairs.xlsx",?) FROM ?',
+                [opts, [this.items]]);
+        }
     }
 
     getAlldata() {

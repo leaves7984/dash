@@ -88,12 +88,14 @@ export class UserTrackingComponent implements OnInit {
     }
     _downloadAll() {
         const end = [{value: 'null'}];
-        Array.prototype.push.apply(this.items, end);
-        const opts = [
-            {sheetid: 'RepairTracking Data', header: true},
-        ];
-        const report = alasql('SELECT INTO XLSX("' + this.userId + '_repairsTracking.xlsx",?) FROM ?',
-            [opts, [this.items]]);
+        // Array.prototype.push.apply(this.items, end);
+        if (this.items.length > 0) {
+            const opts = [
+                {sheetid: 'RepairTracking Data', header: true},
+            ];
+            const report = alasql('SELECT INTO XLSX("' + this.userId + '_repairsTracking.xlsx",?) FROM ?',
+                [opts, [this.items]]);
+        }
     }
 
     getAlldata() {
