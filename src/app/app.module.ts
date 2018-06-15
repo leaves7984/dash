@@ -52,8 +52,9 @@ import { FilterPipe} from './home/filter.pipe';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, {useHash: true})
   ],
+  exports: [RouterModule],
   providers: [
     UserService,
     CreateService,

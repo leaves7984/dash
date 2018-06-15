@@ -456,8 +456,9 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_10__["RouterModule"].forRoot(_routes__WEBPACK_IMPORTED_MODULE_11__["appRoutes"])
+                _angular_router__WEBPACK_IMPORTED_MODULE_10__["RouterModule"].forRoot(_routes__WEBPACK_IMPORTED_MODULE_11__["appRoutes"], { useHash: true })
             ],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_10__["RouterModule"]],
             providers: [
                 _provider_provider_user_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"],
                 _provider_provider_create_create_service__WEBPACK_IMPORTED_MODULE_6__["CreateService"],
@@ -505,7 +506,7 @@ var AuthGuard = /** @class */ (function () {
         if (localStorage.getItem('userToken') != null) {
             return true;
         }
-        this.router.navigate(['/login']);
+        this.router.navigate(['']);
         return false;
     };
     AuthGuard = __decorate([
@@ -567,7 +568,7 @@ var AuthIntercepter = /** @class */ (function () {
             return next.handle(clonedreq).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (event) {
                 if (event instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
                     if (event.status === 500) {
-                        _this.router.navigateByUrl('/login');
+                        _this.router.navigateByUrl('');
                     }
                 }
             }, function (error) {
@@ -737,7 +738,7 @@ module.exports = ".bsx {\n    padding-left: 30px;\n}\n.bpy {\n    position: abso
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div role=\"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Display Users</h2>\n\n</div>\n<div>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <div>\n    <table class=\"table\">\n      <thead class=\"thead-dark\">\n      <tr>\n        <th scope=\"col\"><input type=\"checkbox\"></th>\n        <th scope=\"col\">Name</th>\n        <th scope=\"col\">Operations</th>\n        <th scope=\"col\">Download</th>\n      </tr>\n      </thead>\n      <tbody *ngFor = \"let item of users | filter: searchText\" >\n      <tr>\n        <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\"></th>\n        <th scope=\"row\">{{item}}</th>\n        <th scope=\"row\">\n          <ul class=\"nav\">\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/info/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'info'}\">\n                Info\n              </button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/wheelchair/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'wheelchair'}\">\n                Wheelchair\n              </button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/vendor/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'vendor'}\">\n                Vendor</button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/repair/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'repair'}\">Repair\n              </button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/gps/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'gps'}\">GPS</button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/log/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'log'}\">Log</button>\n            </li>\n          </ul>\n        </th>\n        <th scope=\"row\">\n          <button type=\"button\" class=\"btn\" (click)=\"downloadOne(item)\">\n            <i class=\"fas fa-download\"></i>\n          </button>\n        </th>\n      </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n<div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap \">\n  <div>\n    <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n  </div>\n  <div>\n    <nav aria-label=\"Page navigation example\">\n      <ul class=\"pagination\">\n        <li class=\"page-item\">\n          <button class=\"page-link\" aria-label=\"Previous\">\n            <span aria-hidden=\"true\">&laquo;</span>\n            <span class=\"sr-only\">Previous</span>\n          </button>\n        </li>\n        <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n          <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n        </li>\n        <li class=\"page-item\">\n          <button class=\"page-link\" aria-label=\"Next\">\n            <span aria-hidden=\"true\">&raquo;</span>\n            <span class=\"sr-only\">Next</span>\n          </button>\n        </li>\n      </ul>\n    </nav>\n  </div>\n</div>\n"
+module.exports = "<div role=\"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Display Users</h2>\n\n</div>\n<div>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\"\n               (keyup)=\"search()\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <label>Show\n      <select (change)=\"numChange($event.target.value)\">\n        <option value=\"10\">10</option>\n        <option value=\"25\">25</option>\n        <option value=\"50\">50</option>\n        <option value=\"100\">100</option>\n      </select> entries\n    </label>\n  </div>\n\n  <div>\n    <table class=\"table\">\n      <thead class=\"thead-dark\">\n      <tr>\n        <th scope=\"col\"><input type=\"checkbox\" [ngModel]=\"selectAll\" (change)=\"selectAllboxes()\"></th>\n        <th scope=\"col\">Name</th>\n        <th scope=\"col\">Operations</th>\n        <th scope=\"col\">Download</th>\n      </tr>\n      </thead>\n      <tbody *ngFor = \"let item of users\" >\n      <tr>\n        <th scope=\"row\"><input type=\"checkbox\" [checked]=\"selectAll\" (click)=\"updateSelection(item)\"></th>\n        <th scope=\"row\">{{item}}</th>\n        <th scope=\"row\">\n          <ul class=\"nav\">\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/info/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'info'}\">\n                Info\n              </button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/wheelchair/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'wheelchair'}\">\n                Wheelchair\n              </button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/vendor/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'vendor'}\">\n                Vendor</button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/repair/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'repair'}\">Repair\n              </button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/gps/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'gps'}\">GPS</button>\n            </li>\n            <li class=\"nav-item\">\n              <button class=\"btn btn-outline-secondary nav-link\" routerLink='/detail/log/{{item}}'\n                      [queryParams] = \"{userId: item, state: 'log'}\">Log</button>\n            </li>\n          </ul>\n        </th>\n        <th scope=\"row\">\n          <button type=\"button\" class=\"btn\" (click)=\"downloadOne(item)\">\n            <i class=\"fas fa-download\"></i>\n          </button>\n        </th>\n      </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n<div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap \">\n  <div>\n    <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n  </div>\n  <div>\n    <nav aria-label=\"Page navigation example\">\n      <ul class=\"pagination\">\n        <li class=\"page-item\">\n          <button class=\"page-link\" aria-label=\"Previous\">\n            <span aria-hidden=\"true\">&laquo;</span>\n            <span class=\"sr-only\">Previous</span>\n          </button>\n        </li>\n        <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n          <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n        </li>\n        <li class=\"page-item\">\n          <button class=\"page-link\" aria-label=\"Next\">\n            <span aria-hidden=\"true\">&raquo;</span>\n            <span class=\"sr-only\">Next</span>\n          </button>\n        </li>\n      </ul>\n    </nav>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -755,6 +756,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _provider_provider_user_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../provider/provider-user/user.service */ "./src/app/provider/provider-user/user.service.ts");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! alasql */ "./node_modules/alasql/dist/alasql.min.js");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(alasql__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _filter_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../filter.pipe */ "./src/app/home/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -767,10 +769,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var MainPageComponent = /** @class */ (function () {
     function MainPageComponent(userService) {
         this.userService = userService;
         this.page = 0;
+        this.selectAll = false;
+        this.filter = new _filter_pipe__WEBPACK_IMPORTED_MODULE_3__["FilterPipe"]();
+        // data: Object;
         this.users = [];
         this.userRep = [];
         this.items = [];
@@ -788,25 +794,34 @@ var MainPageComponent = /** @class */ (function () {
         this.fetchData();
     };
     MainPageComponent.prototype._initPage = function (data) {
-        this.userRep = data;
-        this.len = this.userRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
         }
+        else {
+            this.index2 = this.setNum;
+        }
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if (this.len < this.setNum) {
-            this.users = this.userRep;
+            this.users = data;
         }
         else {
-            this.users = this.userRep.slice(0, this.setNum);
+            this.users = data.slice(0, this.setNum);
         }
+    };
+    MainPageComponent.prototype.search = function () {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.userRep, this.searchText));
     };
     MainPageComponent.prototype.fetchData = function () {
         var _this = this;
         this.userService.getUsers().subscribe(function (data) {
-            _this._initPage(data);
+            console.log(data);
+            Array.prototype.push.apply(_this.userRep, data);
+            _this._initPage(_this.userRep);
             // const setNum = this.setNum;
             // console.log(data);
             // Array.prototype.push.apply(this.userRep, data);
@@ -966,6 +981,21 @@ var MainPageComponent = /** @class */ (function () {
     };
     MainPageComponent.prototype.downloadOne = function (userId) {
         this._getData(userId, 0, 1);
+    };
+    MainPageComponent.prototype.numChange = function (value) {
+        console.log(value);
+        this.setNum = value;
+        this._initPage(this.userRep);
+    };
+    MainPageComponent.prototype.selectAllboxes = function () {
+        var i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.users.length; i++) {
+                this.updateSelection(this.users[i]);
+            }
+        }
     };
     MainPageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1514,7 +1544,7 @@ module.exports = ".bsx {\n    padding-left: 30px;\n    margin-bottom: 15px;\n}\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\"></th>\n      <th scope=\"col\">CreatedAt</th>\n      <th scope=\"col\">ModifiedAt</th>\n      <th scope=\"col\">LogTitle</th>\n      <th scope=\"col\">Description</th>\n      <th scope=\"col\">NewValue</th>\n      <th scope=\"col\">OldValue</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of loggers | filter : searchText\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\"></th>\n      <td>{{item.createdAt|date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.logTitle}}</td>\n      <td>{{item.description}}</td>\n      <td>{{item.newValue}}</td>\n      <td>{{item.oldValue}}</td>\n\n    </tr>\n    </tbody>\n  </table>\n\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\"\n               (keyup)=\"search()\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <label>Show\n      <select (change)=\"numChange($event.target.value)\">\n        <option value=\"10\">10</option>\n        <option value=\"25\">25</option>\n        <option value=\"50\">50</option>\n        <option value=\"100\">100</option>\n      </select> entries\n    </label>\n  </div>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\" [ngModel]=\"selectAll\" (change)=\"selectAllboxes()\"></th>\n      <th scope=\"col\">CreatedAt</th>\n      <th scope=\"col\">ModifiedAt</th>\n      <th scope=\"col\">LogTitle</th>\n      <th scope=\"col\">Description</th>\n      <th scope=\"col\">NewValue</th>\n      <th scope=\"col\">OldValue</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of loggers\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\" [checked]=\"selectAll\"></th>\n      <td>{{item.createdAt|date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.logTitle}}</td>\n      <td>{{item.description}}</td>\n      <td>{{item.newValue}}</td>\n      <td>{{item.oldValue}}</td>\n\n    </tr>\n    </tbody>\n  </table>\n\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1533,6 +1563,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _provider_provider_user_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../provider/provider-user/user.service */ "./src/app/provider/provider-user/user.service.ts");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! alasql */ "./node_modules/alasql/dist/alasql.min.js");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(alasql__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _filter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../filter.pipe */ "./src/app/home/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1546,6 +1577,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UserLogComponent = /** @class */ (function () {
     function UserLogComponent(route, userService) {
         var _this = this;
@@ -1553,6 +1585,8 @@ var UserLogComponent = /** @class */ (function () {
         this.userService = userService;
         this.items = [];
         this.page = 0;
+        this.filter = new _filter_pipe__WEBPACK_IMPORTED_MODULE_4__["FilterPipe"]();
+        this.selectAll = false;
         this.route.params.subscribe(function (res) {
             console.log(res.userId + ' Detail');
             _this.userId = res.userId;
@@ -1565,25 +1599,33 @@ var UserLogComponent = /** @class */ (function () {
     };
     UserLogComponent.prototype._initPage = function (data) {
         console.log(data);
-        this.loggersRep = data;
-        this.len = this.loggersRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
         }
+        else {
+            this.index2 = this.setNum;
+        }
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if (this.len < this.setNum) {
-            this.loggers = this.loggersRep;
+            this.loggers = data;
         }
         else {
-            this.loggers = this.loggersRep.slice(0, this.setNum);
+            this.loggers = data.slice(0, this.setNum);
         }
+    };
+    UserLogComponent.prototype.search = function () {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.loggersRep, this.searchText));
     };
     UserLogComponent.prototype.fetchData = function () {
         var _this = this;
         this.userService.getLog(this.userId).subscribe(function (data) {
-            _this._initPage(data);
+            _this.loggersRep = data;
+            _this._initPage(_this.loggersRep);
             _this.isShow = false;
         }, function (error) {
             _this.isShow = true;
@@ -1625,6 +1667,21 @@ var UserLogComponent = /** @class */ (function () {
         console.log('items: ');
         console.log(this.items);
     };
+    UserLogComponent.prototype.numChange = function (value) {
+        console.log(value);
+        this.setNum = value;
+        this._initPage(this.loggersRep);
+    };
+    UserLogComponent.prototype.selectAllboxes = function () {
+        var i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.loggers.length; i++) {
+                this.updateSelection(this.loggers[i]);
+            }
+        }
+    };
     UserLogComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-user-log',
@@ -1659,7 +1716,7 @@ module.exports = ".bsx {\n    padding-left: 30px;\n    margin-bottom: 15px;\n}\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\"></th>\n      <th scope=\"col\">RepairNeeded Date</th>\n      <!--<th scope=\"col\">DateRepairCompleted</th>-->\n      <th scope=\"col\">Wheelchair</th>\n      <th scope=\"col\">Purpose</th>\n      <!--<th scope=\"col\">Category</th>-->\n      <!--<th scope=\"col\">Subcategory</th>-->\n      <!--<th scope=\"col\">Detail</th>-->\n      <th scope=\"col\">Consequences</th>\n      <!--<th scope=\"col\">DateVendorContacted</th>-->\n      <th scope=\"col\">RepairCost</th>\n      <!--<th scope=\"col\">Resource</th>-->\n      <th scope=\"col\">IsComplete</th>\n      <!--<th scope=\"col\">WhoComplete</th>-->\n      <th scope=\"col\">More</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of repairs | filter : searchText\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\"></th>\n      <td>{{item.dateRepairNeeded|date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.wheelchair}}</td>\n      <td>{{item.purpose}}</td>\n      <td>\n        <li *ngFor=\"let consequence of item.consequncesArray\">\n          {{consequence}}\n        </li>\n      </td>\n      <td>{{item.repairCost}}</td>\n      <td>{{item.isCompleted}}</td>\n      <td>\n        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\"\n                (click)=\"getRepair(item)\">\n          <i class=\"material-icons\">visibility</i>\n        </button>\n        <div *ngIf=\"item.hasTracking\">\n          <button type=\"button\" class=\"btn btn-danger\" routerLink='/tracking/{{item.id}}'\n                  [queryParams] = \"{userId: userId, state: 'repair'}\">\n            <i class=\"material-icons\">library_books</i>\n          </button>\n        </div>\n        <div *ngIf=\"!item.hasTracking\">\n          <button type=\"button\" class=\"btn btn-secondary\" disabled>\n            <i class=\"material-icons\">library_books</i>\n          </button>\n        </div>\n      </td>\n    </tr>\n\n    <!-- Modal -->\n    <div class=\"modal fade  bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n         aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-lg\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Repair Information</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            <table class=\"table table-striped\">\n              <tbody>\n              <tr>\n                <th scope=\"row\">Wheelchair</th>\n                <td colspan=\"3\">{{repair?.wheelchair}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Created at</th>\n                <td>{{repair?.createdAt | date: 'MM/dd/yyyy'}}</td>\n                <th>Modified at</th>\n                <td>{{repair?.modifiedAt | date: 'MM/dd/yyyy'}}</td>\n              </tr>\n\n              <tr>\n                <th scope=\"row\">IsCompleted</th>\n                <td>{{repair?.isCompleted}}</td>\n                <th>Who Complete</th>\n                <td>{{repair?.whoComplete}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">DateRepairNeeded</th>\n                <td>{{repair?.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>\n                <th>Date</th>\n                <td>{{repair?.date | date: 'MM/dd/yyyy'}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Category</th>\n                <td>{{repair?.category}}</td>\n                <th>SubCategory</th>\n                <td>{{repair?.subCategory}}</td>\n              </tr>\n              <tr>\n              <th scope=\"row\">Detail</th>\n              <td>{{repair?.detail}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Resource</th>\n                <td colspan=\"3\">{{repair?.resource}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Purpose</th>\n                <td colspan=\"3\">{{repair?.purpose}}</td>\n              </tr>\n\n              <tr>\n                <th scope=\"row\">Consequences</th>\n                <td colspan=\"3\">\n                  <li *ngFor=\"let consequence of repair?.consequncesArray\">\n                    {{consequence}}\n                  </li>\n                </td>\n                <!--<td colspan=\"3\">{{repair?.consequences}}</td>-->\n              </tr>\n              <tr>\n                <th scope=\"row\">Date Vendor Contacted</th>\n                <td>{{repair?.dateVendorContacted}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Reason Not Complete</th>\n                <td colspan=\"3\">{{repair?.reasonNotComplete}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Repair Cost</th>\n                <td>{{repair?.repairCost}}</td>\n              </tr>\n              </tbody>\n            </table>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    </tbody>\n  </table>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\"\n               (keyup)=\"search()\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <label>Show\n      <select (change)=\"numChange($event.target.value)\">\n        <option value=\"10\">10</option>\n        <option value=\"25\">25</option>\n        <option value=\"50\">50</option>\n        <option value=\"100\">100</option>\n      </select> entries\n    </label>\n  </div>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\" [ngModel]=\"selectAll\" (change)=\"selectAllboxes()\"></th>\n      <th scope=\"col\">RepairNeeded Date</th>\n      <!--<th scope=\"col\">DateRepairCompleted</th>-->\n      <th scope=\"col\">Wheelchair</th>\n      <th scope=\"col\">Purpose</th>\n      <!--<th scope=\"col\">Category</th>-->\n      <!--<th scope=\"col\">Subcategory</th>-->\n      <!--<th scope=\"col\">Detail</th>-->\n      <th scope=\"col\">Consequences</th>\n      <!--<th scope=\"col\">DateVendorContacted</th>-->\n      <th scope=\"col\">RepairCost</th>\n      <!--<th scope=\"col\">Resource</th>-->\n      <th scope=\"col\">IsComplete</th>\n      <!--<th scope=\"col\">WhoComplete</th>-->\n      <th scope=\"col\">More</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of repairs\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\" [checked]=\"selectAll\"></th>\n      <td>{{item.dateRepairNeeded|date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.wheelchair}}</td>\n      <td>{{item.purpose}}</td>\n      <td>\n        <li *ngFor=\"let consequence of item.consequncesArray\">\n          {{consequence}}\n        </li>\n      </td>\n      <td>{{item.repairCost}}</td>\n      <td>{{item.isCompleted}}</td>\n      <td>\n        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\"\n                (click)=\"getRepair(item)\">\n          <i class=\"material-icons\">visibility</i>\n        </button>\n        <div *ngIf=\"item.hasTracking\">\n          <button type=\"button\" class=\"btn btn-danger\" routerLink='/tracking/{{item.id}}'\n                  [queryParams] = \"{userId: userId, state: 'repair'}\">\n            <i class=\"material-icons\">library_books</i>\n          </button>\n        </div>\n        <div *ngIf=\"!item.hasTracking\">\n          <button type=\"button\" class=\"btn btn-secondary\" disabled>\n            <i class=\"material-icons\">library_books</i>\n          </button>\n        </div>\n      </td>\n    </tr>\n\n    <!-- Modal -->\n    <div class=\"modal fade  bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n         aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-lg\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Repair Information</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            <table class=\"table table-striped\">\n              <tbody>\n              <tr>\n                <th scope=\"row\">Wheelchair</th>\n                <td colspan=\"3\">{{repair?.wheelchair}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Created at</th>\n                <td>{{repair?.createdAt | date: 'MM/dd/yyyy'}}</td>\n                <th>Modified at</th>\n                <td>{{repair?.modifiedAt | date: 'MM/dd/yyyy'}}</td>\n              </tr>\n\n              <tr>\n                <th scope=\"row\">IsCompleted</th>\n                <td>{{repair?.isCompleted}}</td>\n                <th>Who Complete</th>\n                <td>{{repair?.whoComplete}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">DateRepairNeeded</th>\n                <td>{{repair?.dateRepairNeeded | date: 'MM/dd/yyyy'}}</td>\n                <th>Date</th>\n                <td>{{repair?.date | date: 'MM/dd/yyyy'}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Category</th>\n                <td>{{repair?.category}}</td>\n                <th>SubCategory</th>\n                <td>{{repair?.subCategory}}</td>\n              </tr>\n              <tr>\n              <th scope=\"row\">Detail</th>\n              <td>{{repair?.detail}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Resource</th>\n                <td colspan=\"3\">{{repair?.resource}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Purpose</th>\n                <td colspan=\"3\">{{repair?.purpose}}</td>\n              </tr>\n\n              <tr>\n                <th scope=\"row\">Consequences</th>\n                <td colspan=\"3\">\n                  <li *ngFor=\"let consequence of repair?.consequncesArray\">\n                    {{consequence}}\n                  </li>\n                </td>\n                <!--<td colspan=\"3\">{{repair?.consequences}}</td>-->\n              </tr>\n              <tr>\n                <th scope=\"row\">Date Vendor Contacted</th>\n                <td>{{repair?.dateVendorContacted}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Reason Not Complete</th>\n                <td colspan=\"3\">{{repair?.reasonNotComplete}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Repair Cost</th>\n                <td>{{repair?.repairCost}}</td>\n              </tr>\n              </tbody>\n            </table>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    </tbody>\n  </table>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1678,6 +1735,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _provider_provider_user_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../provider/provider-user/user.service */ "./src/app/provider/provider-user/user.service.ts");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! alasql */ "./node_modules/alasql/dist/alasql.min.js");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(alasql__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _filter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../filter.pipe */ "./src/app/home/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1691,6 +1749,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UserRepairComponent = /** @class */ (function () {
     function UserRepairComponent(route, userService, router) {
         var _this = this;
@@ -1699,6 +1758,8 @@ var UserRepairComponent = /** @class */ (function () {
         this.router = router;
         this.items = [];
         this.page = 0;
+        this.filter = new _filter_pipe__WEBPACK_IMPORTED_MODULE_4__["FilterPipe"]();
+        this.selectAll = false;
         this.route.queryParams.subscribe(function (res) {
             console.log(res.userId + ' Detail');
             _this.userId = res.userId;
@@ -1711,19 +1772,33 @@ var UserRepairComponent = /** @class */ (function () {
     };
     UserRepairComponent.prototype._initPage = function (data) {
         console.log(data);
-        this.len = this.repairsRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
         }
+        else {
+            this.index2 = this.setNum;
+        }
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if (this.len < this.setNum) {
-            this.repairs = this.repairsRep;
+            this.repairs = data;
         }
         else {
-            this.repairs = this.repairsRep.slice(0, this.setNum);
+            this.repairs = data.slice(0, this.setNum);
         }
+    };
+    UserRepairComponent.prototype.search = function () {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.repairsRep, this.searchText));
+    };
+    UserRepairComponent.prototype._getCategories = function () {
+        var str = '[{"label":"Seat/Back/Positioning (supports' +
+            ' arms/legs/feet/head)","description":["","","",""],' +
+            '"subCategory":[{"label":"Seat back","description":["","The seat back can be either rigid plastic or fabric. Problems include ripped, torn, or sagging fabric; sharp edges or cracks in plastic","The seat back can be either rigid plastic or fabric. Problems include ripped, torn, or sagging fabric; sharp edges or cracks in plastic",""],"subCategory":[{"label":"Crack in rigid seat back","description":["","","",""],"subCategory":[],"type":"3","idx":1,"images":["","","",""]},{"label":"Backrest cane","description":["","","",""],"subCategory":[],"type":"3","idx":2,"images":["","","",""]},{"label":"Sagging backrest upholstery","description":["","","",""],"subCategory":[],"type":"3","idx":3,"images":["","","",""]},{"label":"Torn backrest upholstery","description":["","","",""],"subCategory":[],"type":"3","idx":4,"images":["","","",""]},{"label":"Back cushion deteriorating/cracked","description":["","","",""],"subCategory":[],"type":"3","idx":5,"images":["","","",""]},{"label":"Torn/worn/holes in back cushion cover","description":["","","",""],"subCategory":[],"type":"3","idx":6,"images":["","","",""]},{"label":"I’m not sure/other","description":["","","",""],"subCategory":[],"type":"3","idx":7,"images":["","","",""]}],"type":"3","idx":1,"images":["","pwc_back.jpg","mwc_seat_back.jpg",""]},{"label":"Seat base","description":["","Problems include sharp edges or cracks in seat base","The seat base can be either rigid plastic or fabric. Problems include ripped, torn, or sagging fabric; sharp edges or cracks in plastic",""],"subCategory":[{"label":"Crack rigid seat base","description":["","","",""],"subCategory":[],"type":"3","idx":1,"images":["","","",""]},{"label":"Sagging seat upholstery","description":["","","",""],"subCategory":[],"type":"2","idx":2,"images":["","","",""]},{"label":"Torn seat upholstery","description":["","","",""],"subCategory":[],"type":"3","idx":3,"images":["","","",""]},{"label":"I’m not sure/ other","description":["","","",""],"subCategory":[],"type":"3","idx":4,"images":["","","",""]}],"type":"3","idx":2,"images":["","pwc_base.jpg","mwc_seat_base.jpg",""]},{"label":"Cushion","description":["","The seat cushion can be made of a combination of foam, gel, or air pockets. Problems include tears, punctures, deflated air cells, or otherwise damaged foam or gel.","The seat cushion can be made of a combination of foam, gel, or air pockets. Problems include tears, punctures, deflated air cells, or otherwise damaged foam or gel.",""],"subCategory":[{"label":"Leaking gel","description":["","","",""],"subCategory":[],"type":"3","idx":1,"images":["","","",""]},{"label":"Leaking/won’t hold air","description":["","","",""],"subCategory":[],"type":"3","idx":2,"images":["","","",""]},{"label":"Deteriorating foam","description":["","","",""],"subCategory":[],"type":"3","idx":3,"images":["","","",""]},{"label":"Torn cushion cover","description":["","","",""],"subCategory":[],"type":"3","idx":4,"images":["","","",""]},{"label":"I’m not sure/ other","description":["","","",""],"subCategory":[],"type":"3","idx":5,"images":["","","",""]}],"type":"3","idx":3,"images":["","pwc_cushion.jpg","mwc_cushion.jpg",""]},{"label":"Positioning support (arm/legs/feet/head)","description":["","Positioning supports should be appropriately aligned and have intact surface (fabric or plastic). Problems include sharp edges, torn fabric, loose or missing bolts.","Positioning supports should be appropriately aligned and have intact surface (fabric or plastic). Problems include sharp edges, torn fabric, loose or missing bolts.",""],"subCategory":[{"label":"Head support/head rest","description":["","","",""],"subCategory":[],"type":"1","idx":1,"images":["","","",""]},{"label":"Arm rest","description":["","","",""],"subCategory":[],"type":"3","idx":2,"images":["","","",""]},{"label":"Lateral/trunk support","description":["","","",""],"subCategory":[],"type":"3","idx":3,"images":["","","",""]},{"label":"Clothing guard","description":["","","",""],"subCategory":[],"type":"2","idx":4,"images":["","","",""]},{"label":"Thigh support","description":["","","",""],"subCategory":[],"type":"1","idx":5,"images":["","","",""]},{"label":"Calf (lower leg) support","description":["","","",""],"subCategory":[],"type":"3","idx":6,"images":["","","",""]},{"label":"Foot rest","description":["","","",""],"subCategory":[],"type":"3","idx":7,"images":["","","",""]},{"label":"I’m not sure/ other","description":["","","",""],"subCategory":[],"type":"3","idx":8,"images":["","","",""]}],"type":"3","idx":4,"images":["","pwc_supports.jpg","mwc_supports.jpg",""]},{"label":"Power Seating Functions","description":["","Problems include power seating functions that do not move through range of motion smoothly or grinding or scraping noises while using power seating functions.","",""],"subCategory":[{"label":"Tilt","description":["","","",""],"subCategory":[],"type":"1","idx":1,"images":["","","",""]},{"label":"Recline","description":["","","",""],"subCategory":[],"type":"1","idx":2,"images":["","","",""]},{"label":"Elevating leg rest","description":["","","",""],"subCategory":[],"type":"1","idx":3,"images":["","","",""]},{"label":"Seat elevator","description":["","","",""],"subCategory":[],"type":"1","idx":4,"images":["","","",""]},{"label":"Standing","description":["","","",""],"subCategory":[],"type":"1","idx":5,"images":["","","",""]},{"label":"I’m not sure/ other","description":["","","",""],"subCategory":[],"type":"1","idx":6,"images":["","","",""]}],"type":"1","idx":5,"images":["","power_seating.jpg","",""]},{"label":"Seat belt","description":["","Seat belt should be tightly fastened to frame and able to easily be fastened and removed.","Seat belt should be tightly fastened to frame and able to easily be fastened and removed.",""],"subCategory":[],"type":"3","idx":6,"images":["","mwc_seatbelt.png","mwc_seatbelt.png",""]}],"type":"3","idx":1,"images":["","","",""]},{"label":"Wheels","description":["","","",""],"subCategory":[{"label":"Drive wheels (larger wheel)","description":["","Maintenance is needed if wheels do not hold pressure, have cracks, or tread is bald or has bulges.","",""],"subCategory":[{"label":"Worn tire (flat spots, insufficient/uneven tread, bald)","description":["","","",""],"subCategory":[],"type":"1","idx":1,"images":["","","",""]},{"label":"Flat tire (won’t hold air)","description":["","","",""],"subCategory":[],"type":"1","idx":2,"images":["","","",""]},{"label":"Bearing","description":["","","",""],"subCategory":[],"type":"1","idx":3,"images":["","","",""]},{"label":"I’m not sure/ other","description":["","","",""],"subCategory":[],"type":"1","idx":4,"images":["","","",""]}],"type":"1","idx":1,"images":["","pwc_drive_wheel.jpg","",""]},{"label":"Rear wheel (used to push)","description":["","","",""],"subCategory":[{"label":"Worn tire (flat spots, insufficient/uneven tread, bald)","description":["","","Problems include tires that do not inflate, have cracks, are bald or significantly worn",""],"subCategory":[],"type":"2","idx":1,"images":["","","mwc_tire.jpg",""]},{"label":"Flat tire (won’t hold air)","description":["","","",""],"subCategory":[],"type":"2","idx":2,"images":["","","",""]},{"label":"Handrim","description":["","","Problems include handrims that are loose from wheel or have sharp edges",""],"subCategory":[],"type":"2","idx":3,"images":["","","mwc_handrim.jpg",""]},{"label":"Bearing","description":["","","",""],"subCategory":[],"type":"2","idx":4,"images":["","","",""]},{"label":"Spoke","description":["","","Problems include spokes that are not uniformly tight or have deep scratches, cracks, or distortions.",""],"subCategory":[],"type":"2","idx":5,"images":["","","mwc_spokes.jpg",""]},{"label":"Axle","description":["","","Problems include axles that do not engage or have excessive play require maintenance or quick release axles that are tight or stuck.",""],"subCategory":[],"type":"2","idx":6,"images":["","","mwc_axle.jpg",""]},{"label":"Quick release mechanism","description":["","","",""],"subCategory":[],"type":"2","idx":7,"images":["","","",""]},{"label":"Alignment (pulls to one side)","description":["","","",""],"subCategory":[],"type":"2","idx":8,"images":["","","",""]},{"label":"I’m not sure/ other","description":["","","",""],"subCategory":[],"type":"2","idx":9,"images":["","","",""]}],"type":"2","idx":2,"images":["","","",""]},{"label":"Casters (smaller wheels)","description":["","Maintenance is needed if caster wheels do not swivel freely. Problems include: loose caps on caster forks, bulges, cracks or flattened areas on caster tires, or misalignment that causes caster to flutter or not spin freely","Problems include casters that do not swivel or spin freely, float, flutter, or have excessive play or stem is not perpendicular to the floor.",""],"subCategory":[{"label":"Fork","description":["","","",""],"subCategory":[],"type":"3","idx":1,"images":["","","",""]},{"label":"Stem","description":["","","",""],"subCategory":[],"type":"3","idx":2,"images":["","","",""]},{"label":"Bearing","description":["","","",""],"subCategory":[],"type":"3","idx":3,"images":["","","",""]},{"label":"Wheel","description":["","","",""],"subCategory":[],"type":"3","idx":4,"images":["","","",""]},{"label":"I’m not sure/other","description":["","","",""],"subCategory":[],"type":"3","idx":5,"images":["","","",""]}],"type":"3","idx":3,"images":["","pwc_caster.jpg","mwc_casters.jpg",""]}],"type":"3","idx":2,"images":["","","",""]},{"label":"Brakes","description":["","The brakes should hold the chair in place. Motors should be disengaged and chair should be able to be manually pushed when these levers are disengaged. Problems include cracked levers, chair that can be driven even with motors disengaged.","Wheel locks should hold wheels firmly. Problems include brakes that do not engage, allow wheel to turn freely when engaged, or interfere with pushing the wheel when not engaged",""],"subCategory":[],"type":"3","idx":3,"images":["","pwc_manual_drive.jpg","mwc_brakes1.jpg",""]},{"label":"Frame","description":["","","Frame should not have rust, sharp edges, or cracks",""],"subCategory":[{"label":"Weld point (where two pieces of the frame come together)","description":["","Problems include rust, cracks, distortions, or sharp edges.","",""],"subCategory":[],"type":"3","idx":1,"images":["","pwc_weld.jpg","",""]},{"label":"Shroud (plastic covering on base)","description":["","Problems include cracks, distortions, or loose shroud.","",""],"subCategory":[],"type":"1","idx":2,"images":["","pwc_shroud.jpg","",""]},{"label":"Chassis (underpart/base of wheelchair)","description":["","Problems include rust, cracks, distortions, or sharp edges.","",""],"subCategory":[],"type":"1","idx":3,"images":["","pwc_chassis.jpg","",""]},{"label":"I’m not sure/other","description":["","","",""],"subCategory":[],"type":"3","idx":4,"images":["","","",""]}],"type":"3","idx":4,"images":["","","mwc_frame.jpg",""]},{"label":"Suspension","description":["","Problems include abnormal sounds when driving over obstacles, anti-tip casters contacting ground and becoming stuck, or wheelchair tipping.","Problems include suspension that has cracks or does not compress when loaded.",""],"subCategory":[],"type":"3","idx":5,"images":["","suspension.jpg","mwc_suspension.jpg",""]},{"label":"Joystick/Controller/Cables","description":["","","",""],"subCategory":[{"label":"Joystick","description":["","Problems include poor seal around joystick, difficulty moving joystick, or loose joystick.","",""],"subCategory":[],"type":"1","idx":1,"images":["","controller_box.png","",""]},{"label":"Control box","description":["","Problems include cracked or broken case of control box","",""],"subCategory":[],"type":"1","idx":2,"images":["","controller_box.png","",""]},{"label":"Control panel (buttons, LED display, indicator lights)","description":["","Problems include inputs not functioning properly.","",""],"subCategory":[],"type":"1","idx":3,"images":["","controller_box.png","",""]},{"label":"Cables, wires or connectors","description":["","Problems include loose or frayed wires, damaged connections to control box or back shroud of chair.","",""],"subCategory":[],"type":"1","idx":4,"images":["","cables.jpg","",""]},{"label":"Charging socket","description":["","Problems include broken or cracked socket, inability to charge chair","",""],"subCategory":[],"type":"1","idx":5,"images":["","charging_socket.jpg","",""]},{"label":"Attendant control","description":["","Problems include inability to drive chair through attendant control, loose fasteners attaching to backrest, or loose cables connecting attendant control to power wheelchair.","",""],"subCategory":[],"type":"1","idx":6,"images":["","attendant_control.jpg","",""]},{"label":"Alignment (veers when joystick pointed straight)","description":["","Problem identified when chair drifts to one side when control and joystick are pointed straight.","",""],"subCategory":[],"type":"1","idx":7,"images":["","","",""]},{"label":"I’m not sure/ other","description":["","","",""],"subCategory":[],"type":"1","idx":8,"images":["","","",""]}],"type":"1","idx":6,"images":["","","",""]},{"label":"Battery","description":["","Problems include needing to charge multiple times during the day, battery not holding charge, or any leaking substance from battery box","",""],"subCategory":[],"type":"1","idx":7,"images":["","","",""]},{"label":"Motors and Gear Boxes","description":["","Problems include grinding or scraping noises while driving or utilizing power seating functions.","",""],"subCategory":[],"type":"1","idx":8,"images":["","","",""]},{"label":"Power Assist element (wheels, e-motion, etc)","description":["","","Problems requiring maintenance include power assist devices that do not hold adequate charge, when the motors scrape or grind, or the controls do not work properly.",""],"subCategory":[],"type":"2","idx":9,"images":["","","paw.jpg",""]},{"label":"Anti-tippers","description":["","","Problems requiring maintenance include anti-tip devices that are cracked, the wheels do not turn, or they do not touch the ground evenly.",""],"subCategory":[],"type":"2","idx":10,"images":["","","mwc_anti_tips.jpg",""]},{"label":"Push handles","description":["","","Problems include push handles that have cracks, sharp edges, or are significantly distorted.",""],"subCategory":[],"type":"2","idx":11,"images":["","","mwc_push_handles.jpg",""]},{"label":"Folding Mechanism","description":["","","Problems occur when the chair does not stay secure when expanded or does not move when attempting to fold.",""],"subCategory":[],"type":"2","idx":12,"images":["","","mwc_folded.png",""]}]';
+        return str;
     };
     UserRepairComponent.prototype.fetchData = function () {
         var _this = this;
@@ -1731,13 +1806,14 @@ var UserRepairComponent = /** @class */ (function () {
         var idx2;
         var idx3;
         var categories = [];
-        this.userService.getCategories().subscribe(function (data) {
-            console.log('---categories---');
-            console.log(data);
-            categories = data;
-        }, function (err) {
-            console.log(err);
-        });
+        categories = JSON.parse(this._getCategories());
+        // this.userService.getCategories().subscribe(data => {
+        //     console.log('---categories---');
+        //     console.log(data);
+        //     categories = data;
+        // }, err => {
+        //     console.log(err);
+        // });
         this.userService.getRepair(this.userId).subscribe(function (data) {
             _this.repairsRep = data;
             var _loop_1 = function (i) {
@@ -1767,7 +1843,7 @@ var UserRepairComponent = /** @class */ (function () {
             for (var i = 0; i < data.length; i++) {
                 _loop_1(i);
             }
-            _this._initPage(data);
+            _this._initPage(_this.repairsRep);
             _this.isShow = false;
         }, function (error) {
             _this.isShow = true;
@@ -1812,6 +1888,21 @@ var UserRepairComponent = /** @class */ (function () {
         console.log('items: ');
         console.log(this.items);
     };
+    UserRepairComponent.prototype.numChange = function (value) {
+        console.log(value);
+        this.setNum = value;
+        this._initPage(this.repairsRep);
+    };
+    UserRepairComponent.prototype.selectAllboxes = function () {
+        var i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.repairs.length; i++) {
+                this.updateSelection(this.repairs[i]);
+            }
+        }
+    };
     UserRepairComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-user-repair',
@@ -1847,7 +1938,7 @@ module.exports = ".bsx {\n    padding-left: 30px;\n    margin-bottom: 15px;\n}\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div role=\"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Tracking Data</h2>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <a class=\"btn btn-sm btn-outline-secondary\"\n       routerLink='/detail/repair/{{userId}}'\n       [queryParams] = \"{userId: userId, state: state}\">Back\n    </a>\n  </div>\n</div>\n<div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n  <div>\n    <div class=\"bpy\">\n      <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n      <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\">\n      <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n    </div>\n  </div>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n  </div>\n</div>\n<br>\n<div>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\"></th>\n      <th scope=\"col\">Date</th>\n      <th scope=\"col\">Update Tracking</th>\n      <th scope=\"col\">Consequences</th>\n      <th scope=\"col\">CreatedAt</th>\n      <th scope=\"col\">ModifiedAt</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of trackings | filter : searchText\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\"></th>\n      <td>{{item.date}}</td>\n      <td>{{item.updateTracking}}</td>\n      <td>\n        <li *ngFor=\"let consequence of item.consequncesArray\">\n          {{consequence}}\n        </li>\n      </td>\n      <td>{{item.createdAt |date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>\n    </tr>\n    </tbody>\n  </table>\n\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n\n\n\n"
+module.exports = "<div role=\"main\"\n     class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n  <h2>Tracking Data</h2>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <a class=\"btn btn-sm btn-outline-secondary\"\n       routerLink='/detail/repair/{{userId}}'\n       [queryParams] = \"{userId: userId, state: state}\">Back\n    </a>\n  </div>\n</div>\n<div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n  <div>\n    <div class=\"bpy\">\n      <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n      <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\"\n             (keyup)=\"search()\">\n      <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n    </div>\n  </div>\n  <div class=\"btn-toolbar mb-2 mb-md-0\">\n    <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n  </div>\n</div>\n<br>\n<div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n  <label>Show\n    <select (change)=\"numChange($event.target.value)\">\n      <option value=\"10\">10</option>\n      <option value=\"25\">25</option>\n      <option value=\"50\">50</option>\n      <option value=\"100\">100</option>\n    </select> entries\n  </label>\n</div>\n<div>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\" [ngModel]=\"selectAll\" (change)=\"selectAllboxes()\" ></th>\n      <th scope=\"col\">Date</th>\n      <th scope=\"col\">Update Tracking</th>\n      <th scope=\"col\">Consequences</th>\n      <th scope=\"col\">CreatedAt</th>\n      <th scope=\"col\">ModifiedAt</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of trackings\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\" [checked]=\"selectAll\"></th>\n      <td>{{item.date}}</td>\n      <td>{{item.updateTracking}}</td>\n      <td>\n        <li *ngFor=\"let consequence of item.consequncesArray\">\n          {{consequence}}\n        </li>\n      </td>\n      <td>{{item.createdAt |date: 'MM/dd/yyyy'}}</td>\n      <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>\n    </tr>\n    </tbody>\n  </table>\n\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -1866,6 +1957,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _provider_provider_user_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../provider/provider-user/user.service */ "./src/app/provider/provider-user/user.service.ts");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! alasql */ "./node_modules/alasql/dist/alasql.min.js");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(alasql__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _filter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../filter.pipe */ "./src/app/home/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1879,6 +1971,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UserTrackingComponent = /** @class */ (function () {
     function UserTrackingComponent(route, userService) {
         var _this = this;
@@ -1886,6 +1979,8 @@ var UserTrackingComponent = /** @class */ (function () {
         this.userService = userService;
         this.items = [];
         this.page = 0;
+        this.filter = new _filter_pipe__WEBPACK_IMPORTED_MODULE_4__["FilterPipe"]();
+        this.selectAll = false;
         this.route.params.subscribe(function (res) {
             console.log(res.id + ' Tracking ID');
             _this.trackingId = res.id;
@@ -1903,19 +1998,27 @@ var UserTrackingComponent = /** @class */ (function () {
     };
     UserTrackingComponent.prototype._initPage = function (data) {
         console.log(data);
-        this.len = this.trackingsRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
         }
+        else {
+            this.index2 = this.setNum;
+        }
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if (this.len < this.setNum) {
-            this.trackings = this.trackingsRep;
+            this.trackings = data;
         }
         else {
-            this.trackings = this.trackingsRep.slice(0, this.setNum);
+            this.trackings = data.slice(0, this.setNum);
         }
+    };
+    UserTrackingComponent.prototype.search = function () {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.trackingsRep, this.searchText));
     };
     UserTrackingComponent.prototype.fetchData = function () {
         var _this = this;
@@ -1929,7 +2032,7 @@ var UserTrackingComponent = /** @class */ (function () {
                 _this.trackingsRep[i].consequncesArray = JSON.parse(_this.trackingsRep[i].consequences.toString());
                 console.log(_this.trackingsRep[i].consequncesArray);
             }
-            _this._initPage(data);
+            _this._initPage(_this.trackingsRep);
         }, function (error) { });
     };
     UserTrackingComponent.prototype.setPage = function (i) {
@@ -1968,6 +2071,21 @@ var UserTrackingComponent = /** @class */ (function () {
         console.log('items: ');
         console.log(this.items);
     };
+    UserTrackingComponent.prototype.numChange = function (value) {
+        console.log(value);
+        this.setNum = value;
+        this._initPage(this.trackingsRep);
+    };
+    UserTrackingComponent.prototype.selectAllboxes = function () {
+        var i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.trackings.length; i++) {
+                this.updateSelection(this.trackings[i]);
+            }
+        }
+    };
     UserTrackingComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-user-tracking',
@@ -2002,7 +2120,7 @@ module.exports = ".bsx {\n    padding-left: 30px;\n    margin-bottom: 15px;\n}\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\"></th>\n      <th scope=\"col\">CreatedAt</th>\n      <th scope=\"col\">Name</th>\n      <th scope=\"col\">Phone</th>\n      <th scope=\"col\">Email</th>\n      <th scope=\"col\">Street</th>\n      <th scope=\"col\">City</th>\n      <th scope=\"col\">State</th>\n      <th scope=\"col\">Zipcode</th>\n      <th scope=\"col\">More</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of vendors | filter : searchText\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\"></th>\n      <td>{{item.createdAt|date: 'MM/dd/yyyy '}}</td>\n      <td>{{item.name}}</td>\n      <td>{{item.phone}}</td>\n      <td>{{item.email}}</td>\n      <td>{{item.street}}</td>\n      <td>{{item.city}}</td>\n      <td>{{item.state}}</td>\n      <td>{{item.zipcode}}</td>\n      <td>\n        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\"\n                (click)=\"getVendor(item)\">\n          <i class=\"material-icons\">visibility</i>\n        </button>\n      </td>\n      <!-- Modal -->\n      <div class=\"modal fade  bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n           aria-hidden=\"true\">\n        <div class=\"modal-dialog modal-lg\" role=\"document\">\n          <div class=\"modal-content\">\n            <div class=\"modal-header\">\n              <h5 class=\"modal-title\" id=\"exampleModalLabel\">Repair Information</h5>\n              <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span aria-hidden=\"true\">&times;</span>\n              </button>\n            </div>\n            <div class=\"modal-body\">\n              <table class=\"table table-striped\">\n                <thead class=\"thead-dark\">\n                <tr>\n                  <th scope=\"col\">Basic Information</th>\n                  <th scope=\"col\"></th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr>\n                  <th scope=\"row\">Name</th>\n                  <td>{{vendor?.name}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Created at</th>\n                  <td>{{vendor?.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Modified at</th>\n                  <td>{{vendor?.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Phone Number</th>\n                  <td>{{vendor?.phone}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Email Address</th>\n                  <td>{{vendor?.email}}</td>\n                </tr>\n                </tbody>\n                <thead class=\"thead-dark\">\n                <tr>\n                  <th scope=\"col\">Address</th>\n                  <th scope=\"col\"></th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr>\n                  <th scope=\"row\">Street</th>\n                  <td>{{vendor?.street}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">City</th>\n                  <td>{{vendor?.city}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">State</th>\n                  <td>{{vendor?.state}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Zipcode</th>\n                  <td>{{vendor?.zipcode}}</td>\n                </tr>\n                </tbody>\n              </table>\n            </div>\n            <div class=\"modal-footer\">\n              <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--Modal-->\n    </tr>\n    </tbody>\n  </table>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n\n\n\n\n<!--<div class=\"row\">-->\n  <!--<div class=\"col-4\">-->\n    <!--<div class=\"card\">-->\n      <!--<div class=\"card-header\">-->\n        <!--Vendor-->\n      <!--</div>-->\n      <!--<div class=\"list-group\" *ngFor=\"let item of vendors\">-->\n        <!--<button type=\"button\" *ngIf=\"item.type.toString() == 'Vendor'\" class=\"list-group-item list-group-item-action\" (click) =-->\n                <!--\"isShow(item)\">-->\n          <!--{{item?.name}}-->\n        <!--</button>-->\n      <!--</div>-->\n      <!--<div class=\"card-header\">-->\n        <!--Contact-->\n      <!--</div>-->\n      <!--<div class=\"list-group\" *ngFor=\"let item of vendors\">-->\n        <!--<button type=\"button\" *ngIf=\"item.type.toString() !== 'Vendor'\"-->\n                <!--class=\"list-group-item list-group-item-action\" (click) =-->\n                <!--\"isShow(item)\">-->\n          <!--{{item?.name}}-->\n        <!--</button>-->\n      <!--</div>-->\n    <!--</div>-->\n  <!--</div>-->\n  <!--<div class=\"col-8\" *ngIf=\"isClick\">-->\n    <!--<table class=\"table table-striped\">-->\n      <!--<thead class=\"thead-dark\">-->\n      <!--<tr>-->\n        <!--<th scope=\"col\">Basic Information</th>-->\n        <!--<th scope=\"col\"></th>-->\n      <!--</tr>-->\n      <!--</thead>-->\n      <!--<tbody>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Name</th>-->\n        <!--<td>{{item.name}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Created at</th>-->\n        <!--<td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Modified at</th>-->\n        <!--<td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Phone Number</th>-->\n        <!--<td>{{item.phone}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Email Address</th>-->\n        <!--<td>{{item.email}}</td>-->\n      <!--</tr>-->\n      <!--</tbody>-->\n      <!--<thead class=\"thead-dark\">-->\n      <!--<tr>-->\n        <!--<th scope=\"col\">Address</th>-->\n        <!--<th scope=\"col\"></th>-->\n      <!--</tr>-->\n      <!--</thead>-->\n      <!--<tbody>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Street</th>-->\n        <!--<td>{{item.street}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">City</th>-->\n        <!--<td>{{item.city}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">State</th>-->\n        <!--<td>{{item.state}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Zipcode</th>-->\n        <!--<td>{{item.zipcode}}</td>-->\n      <!--</tr>-->\n      <!--</tbody>-->\n    <!--</table>-->\n  <!--</div>-->\n<!--</div>-->"
+module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\"\n               (keyup)=\"search()\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <label>Show\n      <select (change)=\"numChange($event.target.value)\">\n        <option value=\"10\">10</option>\n        <option value=\"25\">25</option>\n        <option value=\"50\">50</option>\n        <option value=\"100\">100</option>\n      </select> entries\n    </label>\n  </div>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\" [ngModel]=\"selectAll\" (change)=\"selectAllboxes()\"></th>\n      <th scope=\"col\">CreatedAt</th>\n      <th scope=\"col\">Name</th>\n      <th scope=\"col\">Phone</th>\n      <th scope=\"col\">Email</th>\n      <th scope=\"col\">Street</th>\n      <th scope=\"col\">City</th>\n      <th scope=\"col\">State</th>\n      <th scope=\"col\">Zipcode</th>\n      <th scope=\"col\">More</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of vendors\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\" [checked]=\"selectAll\"></th>\n      <td>{{item.createdAt|date: 'MM/dd/yyyy '}}</td>\n      <td>{{item.name}}</td>\n      <td>{{item.phone}}</td>\n      <td>{{item.email}}</td>\n      <td>{{item.street}}</td>\n      <td>{{item.city}}</td>\n      <td>{{item.state}}</td>\n      <td>{{item.zipcode}}</td>\n      <td>\n        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\"\n                (click)=\"getVendor(item)\">\n          <i class=\"material-icons\">visibility</i>\n        </button>\n      </td>\n      <!-- Modal -->\n      <div class=\"modal fade  bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n           aria-hidden=\"true\">\n        <div class=\"modal-dialog modal-lg\" role=\"document\">\n          <div class=\"modal-content\">\n            <div class=\"modal-header\">\n              <h5 class=\"modal-title\" id=\"exampleModalLabel\">Repair Information</h5>\n              <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span aria-hidden=\"true\">&times;</span>\n              </button>\n            </div>\n            <div class=\"modal-body\">\n              <table class=\"table table-striped\">\n                <thead class=\"thead-dark\">\n                <tr>\n                  <th scope=\"col\">Basic Information</th>\n                  <th scope=\"col\"></th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr>\n                  <th scope=\"row\">Name</th>\n                  <td>{{vendor?.name}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Created at</th>\n                  <td>{{vendor?.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Modified at</th>\n                  <td>{{vendor?.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Phone Number</th>\n                  <td>{{vendor?.phone}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Email Address</th>\n                  <td>{{vendor?.email}}</td>\n                </tr>\n                </tbody>\n                <thead class=\"thead-dark\">\n                <tr>\n                  <th scope=\"col\">Address</th>\n                  <th scope=\"col\"></th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr>\n                  <th scope=\"row\">Street</th>\n                  <td>{{vendor?.street}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">City</th>\n                  <td>{{vendor?.city}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">State</th>\n                  <td>{{vendor?.state}}</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">Zipcode</th>\n                  <td>{{vendor?.zipcode}}</td>\n                </tr>\n                </tbody>\n              </table>\n            </div>\n            <div class=\"modal-footer\">\n              <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--Modal-->\n    </tr>\n    </tbody>\n  </table>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n\n\n\n\n<!--<div class=\"row\">-->\n  <!--<div class=\"col-4\">-->\n    <!--<div class=\"card\">-->\n      <!--<div class=\"card-header\">-->\n        <!--Vendor-->\n      <!--</div>-->\n      <!--<div class=\"list-group\" *ngFor=\"let item of vendors\">-->\n        <!--<button type=\"button\" *ngIf=\"item.type.toString() == 'Vendor'\" class=\"list-group-item list-group-item-action\" (click) =-->\n                <!--\"isShow(item)\">-->\n          <!--{{item?.name}}-->\n        <!--</button>-->\n      <!--</div>-->\n      <!--<div class=\"card-header\">-->\n        <!--Contact-->\n      <!--</div>-->\n      <!--<div class=\"list-group\" *ngFor=\"let item of vendors\">-->\n        <!--<button type=\"button\" *ngIf=\"item.type.toString() !== 'Vendor'\"-->\n                <!--class=\"list-group-item list-group-item-action\" (click) =-->\n                <!--\"isShow(item)\">-->\n          <!--{{item?.name}}-->\n        <!--</button>-->\n      <!--</div>-->\n    <!--</div>-->\n  <!--</div>-->\n  <!--<div class=\"col-8\" *ngIf=\"isClick\">-->\n    <!--<table class=\"table table-striped\">-->\n      <!--<thead class=\"thead-dark\">-->\n      <!--<tr>-->\n        <!--<th scope=\"col\">Basic Information</th>-->\n        <!--<th scope=\"col\"></th>-->\n      <!--</tr>-->\n      <!--</thead>-->\n      <!--<tbody>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Name</th>-->\n        <!--<td>{{item.name}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Created at</th>-->\n        <!--<td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Modified at</th>-->\n        <!--<td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Phone Number</th>-->\n        <!--<td>{{item.phone}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Email Address</th>-->\n        <!--<td>{{item.email}}</td>-->\n      <!--</tr>-->\n      <!--</tbody>-->\n      <!--<thead class=\"thead-dark\">-->\n      <!--<tr>-->\n        <!--<th scope=\"col\">Address</th>-->\n        <!--<th scope=\"col\"></th>-->\n      <!--</tr>-->\n      <!--</thead>-->\n      <!--<tbody>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Street</th>-->\n        <!--<td>{{item.street}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">City</th>-->\n        <!--<td>{{item.city}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">State</th>-->\n        <!--<td>{{item.state}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Zipcode</th>-->\n        <!--<td>{{item.zipcode}}</td>-->\n      <!--</tr>-->\n      <!--</tbody>-->\n    <!--</table>-->\n  <!--</div>-->\n<!--</div>-->"
 
 /***/ }),
 
@@ -2021,6 +2139,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _provider_provider_user_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../provider/provider-user/user.service */ "./src/app/provider/provider-user/user.service.ts");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! alasql */ "./node_modules/alasql/dist/alasql.min.js");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(alasql__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _filter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../filter.pipe */ "./src/app/home/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2034,6 +2153,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UserVendorComponent = /** @class */ (function () {
     function UserVendorComponent(route, userService) {
         var _this = this;
@@ -2041,6 +2161,8 @@ var UserVendorComponent = /** @class */ (function () {
         this.userService = userService;
         this.items = [];
         this.page = 0;
+        this.filter = new _filter_pipe__WEBPACK_IMPORTED_MODULE_4__["FilterPipe"]();
+        this.selectAll = false;
         this.route.params.subscribe(function (res) {
             console.log(res.userId + ' Detail');
             _this.userId = res.userId;
@@ -2053,25 +2175,33 @@ var UserVendorComponent = /** @class */ (function () {
     };
     UserVendorComponent.prototype._initPage = function (data) {
         console.log(data);
-        this.vendorsRep = data;
-        this.len = this.vendorsRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
         }
+        else {
+            this.index2 = this.setNum;
+        }
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if (this.len < this.setNum) {
-            this.vendors = this.vendorsRep;
+            this.vendors = data;
         }
         else {
-            this.vendors = this.vendorsRep.slice(0, this.setNum);
+            this.vendors = data.slice(0, this.setNum);
         }
+    };
+    UserVendorComponent.prototype.search = function () {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.vendorsRep, this.searchText));
     };
     UserVendorComponent.prototype.fetchData = function () {
         var _this = this;
         this.userService.getVendor(this.userId).subscribe(function (data) {
-            _this._initPage(data);
+            _this.vendorsRep = data;
+            _this._initPage(_this.vendorsRep);
             _this.isShow = false;
         }, function (error) {
             _this.isShow = true;
@@ -2116,6 +2246,21 @@ var UserVendorComponent = /** @class */ (function () {
         console.log('items: ');
         console.log(this.items);
     };
+    UserVendorComponent.prototype.numChange = function (value) {
+        console.log(value);
+        this.setNum = value;
+        this._initPage(this.vendorsRep);
+    };
+    UserVendorComponent.prototype.selectAllboxes = function () {
+        var i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.vendors.length; i++) {
+                this.updateSelection(this.vendors[i]);
+            }
+        }
+    };
     UserVendorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-user-vendor',
@@ -2150,7 +2295,7 @@ module.exports = ".bsx {\n    padding-left: 30px;\n    margin-bottom: 15px;\n}\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" [(ngModel)]=\"searchText\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\"></th>\n      <th scope=\"col\">CreatedAt</th>\n      <th scope=\"col\">Name</th>\n      <th scope=\"col\">Type</th>\n      <th scope=\"col\">Manufacturer</th>\n      <th scope=\"col\">Model</th>\n      <th scope=\"col\">SerialNumber</th>\n      <th scope=\"col\">Age</th>\n      <th scope=\"col\">More</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of wheelchairs | filter : searchText\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\"></th>\n      <td>{{item.createdAt|date: 'MM/dd/yyyy '}}</td>\n      <td>{{item.name}}</td>\n      <td>{{item.type}}</td>\n      <td>{{item.manufacturer}}</td>\n      <td>{{item.model}}</td>\n      <td>{{item.serialNumber}}</td>\n      <td>{{item.age}}</td>\n      <td>\n        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\"\n                (click)=\"getWheelchair(item)\">\n          <i class=\"material-icons\">visibility</i>\n        </button>\n      </td>\n    </tr>\n\n    <!-- Modal -->\n    <div class=\"modal fade  bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n         aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-lg\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Repair Information</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            <table class=\"table table-striped\">\n              <thead class=\"thead-dark\">\n              <tr>\n                <th scope=\"col\">Basic Information</th>\n                <th scope=\"col\"></th>\n              </tr>\n              </thead>\n              <tbody>\n              <tr>\n                <th scope=\"row\">Name</th>\n                <td>{{wheelchair?.name}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Created at</th>\n                <td>{{wheelchair?.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Modified at</th>\n                <td>{{wheelchair?.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Type</th>\n                <td>{{wheelchair?.type}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Manufacturer</th>\n                <td>{{wheelchair?.manufacturer}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Model</th>\n                <td>{{wheelchair?.model}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Serial Number</th>\n                <td>{{wheelchair?.serialNumber}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Age of Wheelchair</th>\n                <td>{{wheelchair?.age}}</td>\n              </tr>\n              </tbody>\n              <thead class=\"thead-dark\">\n              <tr>\n                <th scope=\"col\">Other Information</th>\n                <th scope=\"col\"></th>\n              </tr>\n              </thead>\n              <tbody>\n              <tr>\n                <th scope=\"row\">Usage Per Day</th>\n                <td>{{wheelchair?.hoursPerDay}} hours</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Performance</th>\n                <td>{{wheelchair?.performance}} of 5 stars</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Repairs Done</th>\n                <td>{{wheelchair?.repairs}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Funding by</th>\n                <td>{{wheelchair?.funding}}</td>\n              </tr>\n              </tbody>\n            </table>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    </tbody>\n  </table>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n\n\n\n\n\n<!--<div class=\"row\">-->\n  <!--<div class=\"col-4\">-->\n    <!--<div class=\"card\">-->\n      <!--<div class=\"card-header\">-->\n        <!--My Wheelchairs-->\n      <!--</div>-->\n      <!--<div class=\"list-group\" *ngFor=\"let item of wheelchairs\">-->\n        <!--<button type=\"button\" class=\"list-group-item list-group-item-action\" (click) = \"isShow(item)\">-->\n          <!--{{item?.name}}-->\n        <!--</button>-->\n      <!--</div>-->\n\n    <!--</div>-->\n  <!--</div>-->\n  <!--<div class=\"col-8\" *ngIf=\"isClick\">-->\n    <!--<table class=\"table table-striped\">-->\n      <!--<thead class=\"thead-dark\">-->\n      <!--<tr>-->\n        <!--<th scope=\"col\">Basic Information</th>-->\n        <!--<th scope=\"col\"></th>-->\n      <!--</tr>-->\n      <!--</thead>-->\n      <!--<tbody>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Name</th>-->\n        <!--<td>{{item.name}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Created at</th>-->\n        <!--<td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Modified at</th>-->\n        <!--<td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Type</th>-->\n        <!--<td>{{item.type}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Manufacturer</th>-->\n        <!--<td>{{item.manufacturer}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Model</th>-->\n        <!--<td>{{item.model}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Serial Number</th>-->\n        <!--<td>{{item.serialNumber}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Age of Wheelchair</th>-->\n        <!--<td>{{item.age}}</td>-->\n      <!--</tr>-->\n      <!--</tbody>-->\n      <!--<thead class=\"thead-dark\">-->\n      <!--<tr>-->\n        <!--<th scope=\"col\">Other Information</th>-->\n        <!--<th scope=\"col\"></th>-->\n      <!--</tr>-->\n      <!--</thead>-->\n      <!--<tbody>-->\n        <!--<tr>-->\n          <!--<th scope=\"row\">Usage Per Day</th>-->\n          <!--<td>{{item.hoursPerDay}} hours</td>-->\n        <!--</tr>-->\n        <!--<tr>-->\n          <!--<th scope=\"row\">Performance</th>-->\n          <!--<td>{{item.performance}} of 5 stars</td>-->\n        <!--</tr>-->\n        <!--<tr>-->\n          <!--<th scope=\"row\">Repairs Done</th>-->\n          <!--<td>{{item.repairs}}</td>-->\n        <!--</tr>-->\n        <!--<tr>-->\n          <!--<th scope=\"row\">Funding by</th>-->\n          <!--<td>{{item.funding}}</td>-->\n        <!--</tr>-->\n      <!--</tbody>-->\n    <!--</table>-->\n  <!--</div>-->\n<!--</div>-->"
+module.exports = "<div class=\"row justify-content-md-center\" *ngIf=\"isShow\">\n  <div class=\"col-8\">\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Warning\n      </div>\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">No data available</h5>\n        <p class=\"card-text\">Please check other data!</p>\n        <button class=\"btn btn-primary\">Go somewhere</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"!isShow\">\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <div class=\"bpy\">\n        <span class=\"bi\"><i class=\"fas fa-search\"></i></span>\n        <input class=\"form-control mr-sm-2 bsx\" type= \"search\" placeholder=\"Search..\" (keyup)=\"search()\"\n               [(ngModel)]=\"searchText\">\n        <!--<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>-->\n      </div>\n    </div>\n    <div class=\"btn-toolbar mb-2 mb-md-0\">\n      <button class=\"btn btn-sm btn-outline-secondary\" (click)=\"getAlldata()\" >Download</button>\n    </div>\n  </div>\n  <br>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <label>Show\n      <select (change)=\"numChange($event.target.value)\">\n        <option value=\"10\">10</option>\n        <option value=\"25\">25</option>\n        <option value=\"50\">50</option>\n        <option value=\"100\">100</option>\n      </select> entries\n    </label>\n  </div>\n  <table class=\"table\">\n    <thead class=\"thead-dark\">\n    <tr>\n      <th scope=\"col\"><input type=\"checkbox\" [ngModel]=\"selectAll\" (change)=\"selectAllboxes()\"></th>\n      <th scope=\"col\">CreatedAt</th>\n      <th scope=\"col\">Name</th>\n      <th scope=\"col\">Type</th>\n      <th scope=\"col\">Manufacturer</th>\n      <th scope=\"col\">Model</th>\n      <th scope=\"col\">SerialNumber</th>\n      <th scope=\"col\">Age</th>\n      <th scope=\"col\">More</th>\n    </tr>\n    </thead>\n    <tbody *ngFor=\"let item of wheelchairs\">\n    <tr>\n      <th scope=\"row\"><input type=\"checkbox\" (click)=\"updateSelection(item)\" [checked]=\"selectAll\"></th>\n      <td>{{item.createdAt|date: 'MM/dd/yyyy '}}</td>\n      <td>{{item.name}}</td>\n      <td>{{item.type}}</td>\n      <td>{{item.manufacturer}}</td>\n      <td>{{item.model}}</td>\n      <td>{{item.serialNumber}}</td>\n      <td>{{item.age}}</td>\n      <td>\n        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\"\n                (click)=\"getWheelchair(item)\">\n          <i class=\"material-icons\">visibility</i>\n        </button>\n      </td>\n    </tr>\n\n    <!-- Modal -->\n    <div class=\"modal fade  bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n         aria-hidden=\"true\">\n      <div class=\"modal-dialog modal-lg\" role=\"document\">\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Repair Information</h5>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n              <span aria-hidden=\"true\">&times;</span>\n            </button>\n          </div>\n          <div class=\"modal-body\">\n            <table class=\"table table-striped\">\n              <thead class=\"thead-dark\">\n              <tr>\n                <th scope=\"col\">Basic Information</th>\n                <th scope=\"col\"></th>\n              </tr>\n              </thead>\n              <tbody>\n              <tr>\n                <th scope=\"row\">Name</th>\n                <td>{{wheelchair?.name}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Created at</th>\n                <td>{{wheelchair?.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Modified at</th>\n                <td>{{wheelchair?.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Type</th>\n                <td>{{wheelchair?.type}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Manufacturer</th>\n                <td>{{wheelchair?.manufacturer}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Model</th>\n                <td>{{wheelchair?.model}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Serial Number</th>\n                <td>{{wheelchair?.serialNumber}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Age of Wheelchair</th>\n                <td>{{wheelchair?.age}}</td>\n              </tr>\n              </tbody>\n              <thead class=\"thead-dark\">\n              <tr>\n                <th scope=\"col\">Other Information</th>\n                <th scope=\"col\"></th>\n              </tr>\n              </thead>\n              <tbody>\n              <tr>\n                <th scope=\"row\">Usage Per Day</th>\n                <td>{{wheelchair?.hoursPerDay}} hours</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Performance</th>\n                <td>{{wheelchair?.performance}} of 5 stars</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Repairs Done</th>\n                <td>{{wheelchair?.repairs}}</td>\n              </tr>\n              <tr>\n                <th scope=\"row\">Funding by</th>\n                <td>{{wheelchair?.funding}}</td>\n              </tr>\n              </tbody>\n            </table>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    </tbody>\n  </table>\n  <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap\">\n    <div>\n      <p>Showing {{index1}} to {{index2}} of {{len}} entries </p>\n    </div>\n    <div>\n      <nav aria-label=\"Page navigation example\">\n        <ul class=\"pagination\">\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Previous\">\n              <span aria-hidden=\"true\">&laquo;</span>\n              <span class=\"sr-only\">Previous</span>\n            </button>\n          </li>\n          <li class=\"page-item\" *ngFor=\"let p of pages; let i=index\">\n            <button class=\"page-link\" (click)=\"setPage(i)\" >{{i+1}}</button>\n          </li>\n          <li class=\"page-item\">\n            <button class=\"page-link\" aria-label=\"Next\">\n              <span aria-hidden=\"true\">&raquo;</span>\n              <span class=\"sr-only\">Next</span>\n            </button>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n\n\n\n\n\n<!--<div class=\"row\">-->\n  <!--<div class=\"col-4\">-->\n    <!--<div class=\"card\">-->\n      <!--<div class=\"card-header\">-->\n        <!--My Wheelchairs-->\n      <!--</div>-->\n      <!--<div class=\"list-group\" *ngFor=\"let item of wheelchairs\">-->\n        <!--<button type=\"button\" class=\"list-group-item list-group-item-action\" (click) = \"isShow(item)\">-->\n          <!--{{item?.name}}-->\n        <!--</button>-->\n      <!--</div>-->\n\n    <!--</div>-->\n  <!--</div>-->\n  <!--<div class=\"col-8\" *ngIf=\"isClick\">-->\n    <!--<table class=\"table table-striped\">-->\n      <!--<thead class=\"thead-dark\">-->\n      <!--<tr>-->\n        <!--<th scope=\"col\">Basic Information</th>-->\n        <!--<th scope=\"col\"></th>-->\n      <!--</tr>-->\n      <!--</thead>-->\n      <!--<tbody>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Name</th>-->\n        <!--<td>{{item.name}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Created at</th>-->\n        <!--<td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Modified at</th>-->\n        <!--<td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Type</th>-->\n        <!--<td>{{item.type}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Manufacturer</th>-->\n        <!--<td>{{item.manufacturer}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Model</th>-->\n        <!--<td>{{item.model}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Serial Number</th>-->\n        <!--<td>{{item.serialNumber}}</td>-->\n      <!--</tr>-->\n      <!--<tr>-->\n        <!--<th scope=\"row\">Age of Wheelchair</th>-->\n        <!--<td>{{item.age}}</td>-->\n      <!--</tr>-->\n      <!--</tbody>-->\n      <!--<thead class=\"thead-dark\">-->\n      <!--<tr>-->\n        <!--<th scope=\"col\">Other Information</th>-->\n        <!--<th scope=\"col\"></th>-->\n      <!--</tr>-->\n      <!--</thead>-->\n      <!--<tbody>-->\n        <!--<tr>-->\n          <!--<th scope=\"row\">Usage Per Day</th>-->\n          <!--<td>{{item.hoursPerDay}} hours</td>-->\n        <!--</tr>-->\n        <!--<tr>-->\n          <!--<th scope=\"row\">Performance</th>-->\n          <!--<td>{{item.performance}} of 5 stars</td>-->\n        <!--</tr>-->\n        <!--<tr>-->\n          <!--<th scope=\"row\">Repairs Done</th>-->\n          <!--<td>{{item.repairs}}</td>-->\n        <!--</tr>-->\n        <!--<tr>-->\n          <!--<th scope=\"row\">Funding by</th>-->\n          <!--<td>{{item.funding}}</td>-->\n        <!--</tr>-->\n      <!--</tbody>-->\n    <!--</table>-->\n  <!--</div>-->\n<!--</div>-->"
 
 /***/ }),
 
@@ -2169,6 +2314,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _provider_provider_user_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../provider/provider-user/user.service */ "./src/app/provider/provider-user/user.service.ts");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! alasql */ "./node_modules/alasql/dist/alasql.min.js");
 /* harmony import */ var alasql__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(alasql__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _filter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../filter.pipe */ "./src/app/home/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2182,6 +2328,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UserWheelchairComponent = /** @class */ (function () {
     function UserWheelchairComponent(route, userService) {
         var _this = this;
@@ -2189,6 +2336,8 @@ var UserWheelchairComponent = /** @class */ (function () {
         this.userService = userService;
         this.items = [];
         this.page = 0;
+        this.filter = new _filter_pipe__WEBPACK_IMPORTED_MODULE_4__["FilterPipe"]();
+        this.selectAll = false;
         this.route.params.subscribe(function (res) {
             console.log(res.userId + ' Detail');
             _this.userId = res.userId;
@@ -2200,26 +2349,34 @@ var UserWheelchairComponent = /** @class */ (function () {
         this.fetchData();
     };
     UserWheelchairComponent.prototype._initPage = function (data) {
-        this.wheelchairsRep = data;
-        this.len = this.wheelchairsRep.length;
+        this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
             this.index2 = this.len;
         }
+        else {
+            this.index2 = this.setNum;
+        }
         console.log(Math.ceil(this.len / this.setNum));
         this.pages = new Array(Math.ceil(this.len / this.setNum));
         if (this.len < this.setNum) {
-            this.wheelchairs = this.wheelchairsRep;
+            this.wheelchairs = data;
         }
         else {
-            this.wheelchairs = this.wheelchairsRep.slice(0, this.setNum);
+            this.wheelchairs = data.slice(0, this.setNum);
         }
+    };
+    UserWheelchairComponent.prototype.search = function () {
+        // console.log('search content');
+        // console.log(this.searchText);
+        this._initPage(this.filter.transform(this.wheelchairsRep, this.searchText));
     };
     UserWheelchairComponent.prototype.fetchData = function () {
         var _this = this;
         this.userService.getWheelchair(this.userId).subscribe(function (data) {
             console.log(data);
-            _this._initPage(data);
+            _this.wheelchairsRep = data;
+            _this._initPage(_this.wheelchairsRep);
             _this.isShow = false;
         }, function (error) {
             _this.isShow = true;
@@ -2263,6 +2420,21 @@ var UserWheelchairComponent = /** @class */ (function () {
         }
         var setNum = this.setNum;
         this.wheelchairs = this.wheelchairsRep.slice(i * setNum, i * setNum + setNum);
+    };
+    UserWheelchairComponent.prototype.numChange = function (value) {
+        console.log(value);
+        this.setNum = value;
+        this._initPage(this.wheelchairsRep);
+    };
+    UserWheelchairComponent.prototype.selectAllboxes = function () {
+        var i;
+        this.selectAll = !this.selectAll;
+        this.items = [];
+        if (this.selectAll) {
+            for (i = 0; i < this.wheelchairs.length; i++) {
+                this.updateSelection(this.wheelchairs[i]);
+            }
+        }
     };
     UserWheelchairComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
