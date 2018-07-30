@@ -67,6 +67,7 @@ export class MainPageComponent implements OnInit {
       this.userService.getUsers().subscribe(data => {
           console.log(data);
           Array.prototype.push.apply(this.userRep, data);
+          this.userRep.sort();
           this._initPage(this.userRep);
           // const setNum = this.setNum;
           // console.log(data);
@@ -159,14 +160,14 @@ export class MainPageComponent implements OnInit {
                   Array.prototype.push.apply(this.wheelchairs, res['wheelchairData']);
               }
               i++;
-              if (i >= len || len === 1) {
+              if (i >= len) {
                   this._downloadAll();
               } else {
                   this._getData(this.items[i], i, len);
               }
           }, err => {
               i++;
-              if (i >= len || len === 1) {
+              if (i > len || len === 1) {
                   this._downloadAll();
               } else {
                   this._getData(this.items[i], i, len);

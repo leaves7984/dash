@@ -8,8 +8,8 @@ import { Observable} from 'rxjs/internal/Observable';
 })
 export class UserService {
 
-  rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
-  // rootUrl = 'http://localhost:8787';
+  // rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
+  rootUrl = 'http://localhost:8787';
   constructor(private http: HttpClient) {}
 
   registerUser(user: User) {
@@ -36,15 +36,6 @@ export class UserService {
   getAdminClaims() {
     return this.http.get(this.rootUrl + '/rest/isadmin');
   }
-
-  postFile(fileToUpload: File) {
-
-    const formData: FormData = new FormData();
-    formData.append('file', fileToUpload);
-    return this.http
-      .post(this.rootUrl + '/rest/upload', formData);
-  }
-
   getUsers() {
     return this.http.get(this.rootUrl + '/rest/users');
   }
@@ -81,6 +72,24 @@ export class UserService {
   getCategories(): Observable<any> {
     return this.http.get('../../assets/repair_categories.json');
   }
+
+  // upload multiple users
+    postFile(fileToUpload: File) {
+
+        const formData: FormData = new FormData();
+        formData.append('file', fileToUpload);
+        return this.http
+            .post(this.rootUrl + '/rest/upload', formData);
+    }
+//    add one user
+    uploadOne(username, password) {
+        const body = {
+            username: username,
+            password: password
+        };
+        return this.http.post(this.rootUrl + '/rest/sign-up', body);
+    }
+
 }
 
 

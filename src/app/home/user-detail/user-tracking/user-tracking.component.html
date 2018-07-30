@@ -33,21 +33,21 @@
   </label>
 </div>
 <div>
-  <table class="table">
+  <table class="table table-bordered">
     <thead class="thead-dark">
     <tr>
       <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()" ></th>
       <th scope="col">Date</th>
       <th scope="col">Update Tracking</th>
       <th scope="col">Consequences</th>
-      <th scope="col">CreatedAt</th>
-      <th scope="col">ModifiedAt</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Modified At</th>
     </tr>
     </thead>
     <tbody *ngFor="let item of trackings">
     <tr>
       <th scope="row"><input type="checkbox" (click)="updateSelection(item)" [checked]="selectAll"></th>
-      <td>{{item.date}}</td>
+      <td>{{item.date |date: 'MM/dd/yyyy'}}</td>
       <td>{{item.updateTracking}}</td>
       <td>
         <li *ngFor="let consequence of item.consequncesArray">

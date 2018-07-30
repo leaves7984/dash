@@ -67,6 +67,13 @@ export class UserLogComponent implements OnInit {
     fetchData() {
         this.userService.getLog(this.userId).subscribe(data => {
             this.loggersRep = data;
+            this.loggersRep.sort( function (a, b) {
+                if (a.createdAt < b.createdAt) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            });
             this._initPage(this.loggersRep);
             this.isShow = false;
         }, error => {

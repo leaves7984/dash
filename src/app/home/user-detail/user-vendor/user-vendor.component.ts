@@ -69,6 +69,13 @@ export class UserVendorComponent implements OnInit {
     fetchData() {
         this.userService.getVendor(this.userId).subscribe(data => {
             this.vendorsRep = data;
+            this.vendorsRep.sort( function (a, b) {
+                if (a.createdAt < b.createdAt) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            });
             this._initPage(this.vendorsRep);
             this.isShow = false;
         }, error => {

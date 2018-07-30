@@ -69,6 +69,13 @@ export class UserWheelchairComponent implements OnInit {
         this.userService.getWheelchair(this.userId).subscribe(data => {
             console.log(data);
             this.wheelchairsRep = data;
+            this.wheelchairsRep.sort( function (a, b) {
+                if (a.createdAt < b.createdAt) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            });
             this._initPage(this.wheelchairsRep);
             this.isShow = false;
         }, error => {

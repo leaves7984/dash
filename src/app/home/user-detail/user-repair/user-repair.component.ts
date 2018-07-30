@@ -87,6 +87,13 @@ export class UserRepairComponent implements OnInit {
         // });
         this.userService.getRepair(this.userId).subscribe(data => {
             this.repairsRep = data;
+            this.repairsRep.sort( function (a, b) {
+                if (a.createdAt < b.createdAt) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            });
             for (let i = 0; i < data.length ; i++ ) {
                 this.repairsRep[i].consequncesArray = JSON.parse(this.repairsRep[i].consequences.toString());
                 console.log(this.repairsRep[i].consequncesArray);

@@ -7,7 +7,6 @@
       <div class="card-body">
         <h5 class="card-title">No data available</h5>
         <p class="card-text">Please check other data!</p>
-        <button class="btn btn-primary">Go somewhere</button>
       </div>
     </div>
   </div>
@@ -38,12 +37,12 @@
       </select> entries
     </label>
   </div>
-  <table class="table">
+  <table class="table table-bordered">
     <thead class="thead-dark">
     <tr>
       <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
-      <th scope="col">CreatedAt</th>
-      <th scope="col">ModifiedAt</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Modified At</th>
       <th scope="col">LogTitle</th>
       <th scope="col">Description</th>
       <th scope="col">NewValue</th>

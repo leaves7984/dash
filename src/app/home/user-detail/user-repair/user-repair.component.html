@@ -7,7 +7,6 @@
       <div class="card-body">
         <h5 class="card-title">No data available</h5>
         <p class="card-text">Please check other data!</p>
-        <button class="btn btn-primary">Go somewhere</button>
       </div>
     </div>
   </div>
@@ -37,11 +36,11 @@
       </select> entries
     </label>
   </div>
-  <table class="table">
+  <table class="table table-bordered">
     <thead class="thead-dark">
     <tr>
       <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
-      <th scope="col">RepairNeeded Date</th>
+      <th scope="col">Created At</th>
       <!--<th scope="col">DateRepairCompleted</th>-->
       <th scope="col">Wheelchair</th>
       <th scope="col">Purpose</th>
@@ -60,7 +59,7 @@
     <tbody *ngFor="let item of repairs">
     <tr>
       <th scope="row"><input type="checkbox" (click)="updateSelection(item)" [checked]="selectAll"></th>
-      <td>{{item.dateRepairNeeded|date: 'MM/dd/yyyy'}}</td>
+      <td>{{item.createdAt|date: 'MM/dd/yyyy'}}</td>
       <td>{{item.wheelchair}}</td>
       <td>{{item.purpose}}</td>
       <td>
@@ -68,7 +67,7 @@
           {{consequence}}
         </li>
       </td>
-      <td>{{item.repairCost}}</td>
+      <td>${{item.repairCost}}</td>
       <td>{{item.isCompleted}}</td>
       <td>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
@@ -95,7 +94,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Repair Information</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Wheelchair Information</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -134,7 +133,7 @@
               </tr>
               <tr>
               <th scope="row">Detail</th>
-              <td>{{repair?.detail}}</td>
+              <td colspan="3">{{repair?.detail}}</td>
               </tr>
               <tr>
                 <th scope="row">Resource</th>
@@ -156,7 +155,7 @@
               </tr>
               <tr>
                 <th scope="row">Date Vendor Contacted</th>
-                <td>{{repair?.dateVendorContacted}}</td>
+                <td colspan="3">{{repair?.dateVendorContacted}}</td>
               </tr>
               <tr>
                 <th scope="row">Reason Not Complete</th>
@@ -164,7 +163,7 @@
               </tr>
               <tr>
                 <th scope="row">Repair Cost</th>
-                <td>{{repair?.repairCost}}</td>
+                <td colspan="3">${{repair?.repairCost}}</td>
               </tr>
               </tbody>
             </table>

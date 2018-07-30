@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Injectable} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 import {GPS} from '../../../provider/provider-user/user.model';
@@ -18,6 +18,9 @@ export class UserGpsComponent implements OnInit {
     weekData = [];
     weekLabel = [];
     chart = [];
+    model1 = new Date();
+    model2 = new Date();
+    toDay = new Date();
     constructor(private route: ActivatedRoute,
                 private userService: UserService,
                 private elementRef: ElementRef) {
@@ -35,6 +38,9 @@ export class UserGpsComponent implements OnInit {
         this.fetchData();
 
     }
+    // get today() {
+    //     return new Date();
+    // }
     drawChart(ctx, data, label) {
         this.chart = new Chart(ctx, {
             type: 'bar',
@@ -84,9 +90,8 @@ export class UserGpsComponent implements OnInit {
             console.log('--Log gps data--');
             console.log(data);
             this.dayData = this.getDayData(data, null);
-            this.weekData = this.getWeekData(data);
+            this.weekData = this.getWeekData(data, null, ctx2);
             this.drawChart(ctx1, this.dayData, this.dayLabel);
-            this.drawChart(ctx2, this.weekData, this.weekLabel);
             this.gps = data;
         }, error => {
             this.drawChart(ctx1, this.dayData, this.dayLabel);
@@ -94,18 +99,22 @@ export class UserGpsComponent implements OnInit {
         });
     }
 
-    getWeekData(data) {
+    getWeekData(data, trackingDate, ctx2) {
         const weekData = [0, 0, 0, 0, 0, 0, 0];
         const weekLabel = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const todayDate = moment();
+        let todayDate = moment();
+        if ( trackingDate ) {
+            todayDate = trackingDate;
+        }
         let d;
         for ( d = 0; d < 7; d++) {
-            weekLabel[d] = moment().subtract((6 - d), 'day').format('dddd');
-            weekData[d] = this.getTotalDayData(data, moment().subtract((6 - d), 'day'));
+            weekLabel[d] = moment(todayDate).subtract((6 - d), 'day').format('dddd MMM Do YY');
+            weekData[d] = this.getTotalDayData(data, moment(todayDate).subtract((6 - d), 'day'));
         }
 
         console.log('gpsdata::weekLabel', weekLabel);
         console.log('gpsdata::weekData', weekData);
+        this.drawChart(ctx2, weekData, weekLabel);
         return weekData;
     }
     getTotalDayData(data, trackingDate) {
@@ -117,7 +126,19 @@ export class UserGpsComponent implements OnInit {
         }
         return total;
     }
-
+    ChangeDate() {
+        console.log(this.gps);
+        console.log(this.model1);
+        const ctx1 = this.elementRef.nativeElement.querySelector('#dayChart').getContext('2d');
+        this.dayData = this.getDayData(this.gps, moment(this.model1).subtract(1, 'month'));
+        this.drawChart(ctx1, this.dayData, this.dayLabel);
+    }
+    ChangeWeekDate() {
+        console.log(this.gps);
+        console.log(this.model2);
+        const ctx2 = this.elementRef.nativeElement.querySelector('#weekChart').getContext('2d');
+        this.weekData = this.getWeekData(this.gps, moment(this.model2).subtract(1, 'month'), ctx2);
+    }
     getDayData(data, trackingDate) {
         let i;
         let trackLog;
@@ -139,7 +160,7 @@ export class UserGpsComponent implements OnInit {
                 isSameDay = dataDate.isSame(todayDate, 'day');
 
                 // console.log('gpsdata::trackLog', trackLog);
-
+                // console.log(isSameDay + ' ' + dataDate.toDate() + ' ' + todayDate.toDate() );
                 if (isSameDay) {
                     if (dataUpdate[0] && 0 <= trackLog.period && 3 > trackLog.period) {
                         dayData[0] = dayData[0] + trackLog.distance;

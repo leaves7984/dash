@@ -7,7 +7,6 @@
       <div class="card-body">
         <h5 class="card-title">No data available</h5>
         <p class="card-text">Please check other data!</p>
-        <button class="btn btn-primary">Go somewhere</button>
       </div>
     </div>
   </div>
@@ -38,11 +37,11 @@
       </select> entries
     </label>
   </div>
-  <table class="table">
+  <table class="table table-bordered">
     <thead class="thead-dark">
     <tr>
       <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
-      <th scope="col">CreatedAt</th>
+      <th scope="col">Created At</th>
       <th scope="col">Name</th>
       <th scope="col">Phone</th>
       <th scope="col">Email</th>
@@ -76,7 +75,7 @@
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Repair Information</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Vendor Information</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

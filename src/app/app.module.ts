@@ -1,21 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { UserService} from './provider/provider-user/user.service';
-import { CreateService} from './provider/provider-create/create.service';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { RouterModule} from '@angular/router';
 import { appRoutes} from './routes';
 import { HomeComponent } from './home/home.component';
-import {AuthGuard} from './auth/auth.guard';
-import {AuthIntercepter} from './auth/auth.intercepter';
+import { AuthGuard} from './auth/auth.guard';
+import { AuthIntercepter} from './auth/auth.intercepter';
 import { PatchUsersComponent } from './home/patch-users/patch-users.component';
 import { MainPageComponent } from './home/main-page/main-page.component';
 import { UserDetailComponent } from './home/user-detail/user-detail.component';
@@ -52,12 +51,12 @@ import { FilterPipe} from './home/filter.pipe';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, {useHash: true})
+    RouterModule.forRoot(appRoutes, {useHash: true}),
+    NgbModule.forRoot()
   ],
   exports: [RouterModule],
   providers: [
     UserService,
-    CreateService,
     AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true}
     ],

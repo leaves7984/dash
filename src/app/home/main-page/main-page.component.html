@@ -1,6 +1,6 @@
 <div role="main"
      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-  <h2>Display Users</h2>
+  <h2>User List</h2>
 
 </div>
 <div>
@@ -30,7 +30,7 @@
   </div>
 
   <div>
-    <table class="table">
+    <table class="table table-bordered">
       <thead class="thead-dark">
       <tr>
         <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
@@ -39,7 +39,7 @@
         <th scope="col">Download</th>
       </tr>
       </thead>
-      <tbody *ngFor = "let item of users" >
+      <tbody *ngFor = "let item of users " >
       <tr>
         <th scope="row"><input type="checkbox" [checked]="selectAll" (click)="updateSelection(item)"></th>
         <th scope="row">{{item}}</th>

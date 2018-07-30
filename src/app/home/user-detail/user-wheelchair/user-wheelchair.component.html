@@ -7,7 +7,6 @@
       <div class="card-body">
         <h5 class="card-title">No data available</h5>
         <p class="card-text">Please check other data!</p>
-        <button class="btn btn-primary">Go somewhere</button>
       </div>
     </div>
   </div>
@@ -38,11 +37,11 @@
       </select> entries
     </label>
   </div>
-  <table class="table">
+  <table class="table table-bordered">
     <thead class="thead-dark">
     <tr>
       <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
-      <th scope="col">CreatedAt</th>
+      <th scope="col">Created At</th>
       <th scope="col">Name</th>
       <th scope="col">Type</th>
       <th scope="col">Manufacturer</th>
@@ -120,7 +119,7 @@
               </tr>
               <tr>
                 <th scope="row">Age of Wheelchair</th>
-                <td>{{wheelchair?.age}}</td>
+                <td>{{wheelchair?.age}} years old</td>
               </tr>
               </tbody>
               <thead class="thead-dark">
@@ -140,7 +139,7 @@
               </tr>
               <tr>
                 <th scope="row">Repairs Done</th>
-                <td>{{wheelchair?.repairs}}</td>
+                <td>{{wheelchair?.repairs}} times</td>
               </tr>
               <tr>
                 <th scope="row">Funding by</th>
