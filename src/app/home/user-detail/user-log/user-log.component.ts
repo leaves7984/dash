@@ -4,6 +4,7 @@ import {UserService} from '../../../provider/provider-user/user.service';
 import {Log} from '../../../provider/provider-user/user.model';
 import * as alasql from 'alasql';
 import {FilterPipe} from '../../filter.pipe';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-log',
@@ -18,8 +19,9 @@ export class UserLogComponent implements OnInit {
     isShow: Boolean;
 
     items = [];
-    pages: Array<Number>;
-    page: Number = 0;
+    pages = [];
+    page: number;
+    pmax: number;
     len: number;
     index1: number;
     index2: number;
@@ -37,6 +39,7 @@ export class UserLogComponent implements OnInit {
         });
         this.setNum = 10;
         this.searchText = '';
+        this.page = 0;
     }
 
     ngOnInit() {
@@ -51,8 +54,12 @@ export class UserLogComponent implements OnInit {
         } else {
             this.index2 = this.setNum;
         }
-        console.log(Math.ceil(this.len / this.setNum));
-        this.pages = new Array(Math.ceil(this.len / this.setNum));
+        // console.log(Math.ceil(this.len / this.setNum));
+        // this.pages = new Array(Math.ceil(this.len / this.setNum));
+        this.pmax = Math.ceil(this.len / this.setNum);
+        for (let i = this.page; i < this.pmax; i++) {
+            this.pages.push(i);
+        }
         if ( this.len < this.setNum) {
             this.loggers = data ;
         } else {
@@ -93,6 +100,10 @@ export class UserLogComponent implements OnInit {
     }
     _downloadAll() {
         const end = [{value: 'null'}];
+        this.items.forEach(e => {
+            e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+            e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+        });
         if (this.items.length > 0) {
             const opts = [
                 {sheetid: 'VendorData', header: true},
@@ -134,5 +145,19 @@ export class UserLogComponent implements OnInit {
                 this.updateSelection(this.loggers[i]);
             }
         }
+    }
+
+    previous() {
+        if (this.page > 0)
+            this.setPage(this.page - 1);
+    }
+
+    next() {
+        if (this.page < this.pmax - 1)
+            this.setPage(this.page + 1);
+    }
+
+    isActive(page) {
+        return this.page === page;
     }
 }

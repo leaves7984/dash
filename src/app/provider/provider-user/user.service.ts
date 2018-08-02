@@ -8,8 +8,8 @@ import { Observable} from 'rxjs/internal/Observable';
 })
 export class UserService {
 
-  // rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
-  rootUrl = 'http://localhost:8787';
+  rootUrl = 'https://shrsft6029himb.shrs.pitt.edu/keepmvn/api';
+  // rootUrl = 'http://localhost:8787';
   constructor(private http: HttpClient) {}
 
   registerUser(user: User) {
@@ -18,7 +18,7 @@ export class UserService {
       password: user.password
     };
     const reqHeader = new HttpHeaders({'No-Auth': 'True'});
-    return this.http.post(this.rootUrl + '/dash/auth/sign-up', body, {headers: reqHeader});
+    return this.http.post(this.rootUrl + '/auth/clinic/sign-up', body, {headers: reqHeader});
   }
 
   userAuthentication(username, password) {
@@ -27,17 +27,14 @@ export class UserService {
       password: password
     };
     const reqHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'No-Auth': 'True'});
-    return this.http.post(this.rootUrl + '/dash/auth/login', body, { headers: reqHeader , observe: 'response'});
+    return this.http.post(this.rootUrl + '/auth/manager/login', body, { headers: reqHeader , observe: 'response'});
 
-  }
-  getUserClaims() {
-    return this.http.get(this.rootUrl + '/rest/user');
   }
   getAdminClaims() {
     return this.http.get(this.rootUrl + '/rest/isadmin');
   }
-  getUsers() {
-    return this.http.get(this.rootUrl + '/rest/users');
+  getUsers(role) {
+    return this.http.get(this.rootUrl + '/rest/' + role);
   }
 
   getUserInfo(userId) {
@@ -69,10 +66,6 @@ export class UserService {
     return this.http.get(this.rootUrl + '/rest/getData/' + userId);
   }
 
-  getCategories(): Observable<any> {
-    return this.http.get('../../assets/repair_categories.json');
-  }
-
   // upload multiple users
     postFile(fileToUpload: File) {
 
@@ -90,7 +83,20 @@ export class UserService {
         return this.http.post(this.rootUrl + '/rest/sign-up', body);
     }
 
+    changePassword(username, password) {
+        const body = {
+            username: username,
+            password: password
+        };
+        return this.http.post(this.rootUrl + '/rest/changepwd', body);
+    }
+
+    enableUser(username, status) {
+        return this.http.post(this.rootUrl + '/rest/enableUser/' + username + '/' + status, null);
+    }
 }
+
+
 
 
 

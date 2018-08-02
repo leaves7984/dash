@@ -88,6 +88,9 @@
                 <th scope="col"></th>
               </tr>
               </thead>
+                <tr >
+                    <td colspan="2"><img src="{{wheelchair?.manufacturerPicture}}" class="center"></td>
+                </tr>
               <tbody>
               <tr>
                 <th scope="row">Name</th>
@@ -98,7 +101,7 @@
                 <td>{{wheelchair?.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
               </tr>
               <tr>
-                <th scope="row">Modified at</th>
+                <th scope="row">Last Modified at</th>
                 <td>{{wheelchair?.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
               </tr>
               <tr>
@@ -165,16 +168,16 @@
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item">
-            <button class="page-link" aria-label="Previous">
+            <button class="page-link" aria-label="Previous" (click)="previous()">
               <span aria-hidden="true">&laquo;</span>
               <span class="sr-only">Previous</span>
             </button>
           </li>
-          <li class="page-item" *ngFor="let p of pages; let i=index">
-            <button class="page-link" (click)="setPage(i)" >{{i+1}}</button>
-          </li>
+            <li class="page-item" *ngFor="let p of pages" [ngClass]="{active: isActive(p)}">
+                <button class="page-link" (click)="setPage(p)">{{p + 1}}</button>
+            </li>
           <li class="page-item">
-            <button class="page-link" aria-label="Next">
+            <button class="page-link" aria-label="Next" (click)="next()">
               <span aria-hidden="true">&raquo;</span>
               <span class="sr-only">Next</span>
             </button>
@@ -184,91 +187,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<!--<div class="row">-->
-  <!--<div class="col-4">-->
-    <!--<div class="card">-->
-      <!--<div class="card-header">-->
-        <!--My Wheelchairs-->
-      <!--</div>-->
-      <!--<div class="list-group" *ngFor="let item of wheelchairs">-->
-        <!--<button type="button" class="list-group-item list-group-item-action" (click) = "isShow(item)">-->
-          <!--{{item?.name}}-->
-        <!--</button>-->
-      <!--</div>-->
-
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="col-8" *ngIf="isClick">-->
-    <!--<table class="table table-striped">-->
-      <!--<thead class="thead-dark">-->
-      <!--<tr>-->
-        <!--<th scope="col">Basic Information</th>-->
-        <!--<th scope="col"></th>-->
-      <!--</tr>-->
-      <!--</thead>-->
-      <!--<tbody>-->
-      <!--<tr>-->
-        <!--<th scope="row">Name</th>-->
-        <!--<td>{{item.name}}</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<th scope="row">Created at</th>-->
-        <!--<td>{{createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<th scope="row">Modified at</th>-->
-        <!--<td>{{modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<th scope="row">Type</th>-->
-        <!--<td>{{item.type}}</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<th scope="row">Manufacturer</th>-->
-        <!--<td>{{item.manufacturer}}</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<th scope="row">Model</th>-->
-        <!--<td>{{item.model}}</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<th scope="row">Serial Number</th>-->
-        <!--<td>{{item.serialNumber}}</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<th scope="row">Age of Wheelchair</th>-->
-        <!--<td>{{item.age}}</td>-->
-      <!--</tr>-->
-      <!--</tbody>-->
-      <!--<thead class="thead-dark">-->
-      <!--<tr>-->
-        <!--<th scope="col">Other Information</th>-->
-        <!--<th scope="col"></th>-->
-      <!--</tr>-->
-      <!--</thead>-->
-      <!--<tbody>-->
-        <!--<tr>-->
-          <!--<th scope="row">Usage Per Day</th>-->
-          <!--<td>{{item.hoursPerDay}} hours</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-          <!--<th scope="row">Performance</th>-->
-          <!--<td>{{item.performance}} of 5 stars</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-          <!--<th scope="row">Repairs Done</th>-->
-          <!--<td>{{item.repairs}}</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-          <!--<th scope="row">Funding by</th>-->
-          <!--<td>{{item.funding}}</td>-->
-        <!--</tr>-->
-      <!--</tbody>-->
-    <!--</table>-->
-  <!--</div>-->
-<!--</div>-->

@@ -4,6 +4,7 @@ import {UserService} from '../../../provider/provider-user/user.service';
 import {GPS} from '../../../provider/provider-user/user.model';
 import * as moment from 'moment';
 import * as Chart from 'chart.js';
+import * as alasql from 'alasql';
 
 @Component({
   selector: 'app-user-gps',
@@ -216,5 +217,27 @@ export class UserGpsComponent implements OnInit {
         }
         console.log('gpsdata::dayData', dayData);
         return dayData;
+    }
+
+    _downloadAll() {
+        const end = [{value: 'null'}];
+        let data = [];
+        if (this.gps.length > 0) {
+            data = this.gps;
+            data.forEach(e => {
+                e.date = moment(e.date).format('MM-DD-YYYY');
+                e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+            });
+            const opts = [
+                {sheetid: 'GPSTrackingData', header: true},
+            ];
+            const report = alasql('SELECT INTO XLSX("' + this.userId + '_gpsTracking.xlsx",?) FROM ?',
+                [opts, [this.gps]]);
+        }
+    }
+
+    getAlldata() {
+        this._downloadAll();
     }
 }

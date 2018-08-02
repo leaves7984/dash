@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Repair, Vendor} from '../../../provider/provider-user/user.model';
 import {UserService} from '../../../provider/provider-user/user.service';
-import * as alasql from "alasql";
+import * as alasql from 'alasql';
 import {FilterPipe} from '../../filter.pipe';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-repair',
@@ -19,8 +20,9 @@ export class UserRepairComponent implements OnInit {
     isShow: Boolean;
 
     items = [];
-    pages: Array<Number>;
-    page: Number = 0;
+    pages = [];
+    page: number;
+    pmax: number;
     len: number;
     index1: number;
     index2: number;
@@ -39,6 +41,7 @@ export class UserRepairComponent implements OnInit {
         });
         this.setNum = 10;
         this.searchText = '';
+        this.page = 0;
     }
 
     ngOnInit() {
@@ -53,8 +56,12 @@ export class UserRepairComponent implements OnInit {
         } else {
             this.index2 = this.setNum;
         }
-        console.log(Math.ceil(this.len / this.setNum));
-        this.pages = new Array(Math.ceil(this.len / this.setNum));
+        // console.log(Math.ceil(this.len / this.setNum));
+        // this.pages = new Array(Math.ceil(this.len / this.setNum));
+        this.pmax = Math.ceil(this.len / this.setNum);
+        for (let i = this.page; i < this.pmax; i++) {
+            this.pages.push(i);
+        }
         if ( this.len < this.setNum) {
             this.repairs = data ;
         } else {
@@ -62,8 +69,7 @@ export class UserRepairComponent implements OnInit {
         }
     }
     search() {
-        // console.log('search content');
-        // console.log(this.searchText);
+
         this._initPage(this.filter.transform(this.repairsRep, this.searchText));
     }
     _getCategories() {
@@ -141,8 +147,15 @@ export class UserRepairComponent implements OnInit {
     }
     _downloadAll() {
         const end = [{value: 'null'}];
+        this.items.forEach(e => {
+            e.date = moment(e.date).format('MM-DD-YYYY');
+            e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+            e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+            e.dateRepairNeeded = moment(e.dateRepairNeeded).format('MM-DD-YYYY');
+            e.dateRepairCompleted = moment(e.dateRepairCompleted).format('MM-DD-YYYY');
+            e.consequences = JSON.parse(e.consequences);
+        });
         if (this.items.length > 0) {
-            // Array.prototype.push.apply(this.items, end);
             const opts = [
                 {sheetid: 'RepairData', header: true},
             ];
@@ -183,5 +196,19 @@ export class UserRepairComponent implements OnInit {
                 this.updateSelection(this.repairs[i]);
             }
         }
+    }
+
+    previous() {
+        if (this.page > 0)
+            this.setPage(this.page - 1);
+    }
+
+    next() {
+        if (this.page < this.pmax - 1)
+            this.setPage(this.page + 1);
+    }
+
+    isActive(page) {
+        return this.page === page;
     }
 }

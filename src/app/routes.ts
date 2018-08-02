@@ -1,10 +1,10 @@
 import {Routes} from '@angular/router';
 import {UserComponent} from './user/user.component';
-import {SignUpComponent} from './user/sign-up/sign-up.component';
+import {SignUpComponent} from './home/management/sign-up/sign-up.component';
 import {SignInComponent} from './user/sign-in/sign-in.component';
 import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './auth/auth.guard';
-import {PatchUsersComponent} from './home/patch-users/patch-users.component';
+import {PatchUsersComponent} from './home/management/patch-users/patch-users.component';
 import {MainPageComponent} from './home/main-page/main-page.component';
 import {UserDetailComponent} from './home/user-detail/user-detail.component';
 import {UserInfoComponent} from './home/user-detail/user-info/user-info.component';
@@ -43,14 +43,14 @@ export const appRoutes: Routes = [
         children: [{path: '', component: UserTrackingComponent}]
     },
   {
-    path: 'patch-users', component: HomeComponent,
+    path: 'manage', component: HomeComponent,
     canActivate: [AuthGuard],
-    children: [{path: '', component: PatchUsersComponent}]
+    children: [{path: 'user', component: PatchUsersComponent},
+               {path: 'clinician', component: SignUpComponent}]
   },
     {
         path: 'auth', component: UserComponent,
         children: [
-            {path: 'signup', component: SignUpComponent},
             {path: 'signin', component: SignInComponent}
             ]
     },

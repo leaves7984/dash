@@ -4,6 +4,7 @@ import { Angular5Csv} from 'angular5-csv/Angular5-csv';
 import * as alasql from 'alasql';
 import {Info, Repair, Tracking} from '../../provider/provider-user/user.model';
 import {FilterPipe} from '../filter.pipe';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-main-page',
@@ -11,8 +12,8 @@ import {FilterPipe} from '../filter.pipe';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-    pages: Array<Number>;
-    page: Number = 0;
+    page: number;
+    pmax: number;
     setNum: number;
     len: number;
     index1: number;
@@ -24,6 +25,7 @@ export class MainPageComponent implements OnInit {
     // data: Object;
     users = [];
     userRep = [];
+    pages = [];
 
     items = [];
     info = [];
@@ -37,6 +39,7 @@ export class MainPageComponent implements OnInit {
   constructor(private userService: UserService) {
       this.setNum = 10;
       this.searchText = '';
+      this.page = 0;
   }
 
   ngOnInit() {
@@ -51,7 +54,11 @@ export class MainPageComponent implements OnInit {
           this.index2 = this.setNum;
       }
       console.log(Math.ceil(this.len / this.setNum));
-      this.pages = new Array(Math.ceil(this.len / this.setNum));
+      this.pmax = Math.ceil(this.len / this.setNum);
+      for (let i = this.page; i < this.pmax && i < 5; i++) {
+          this.pages.push(i);
+      }
+      // this.pages = new Array(Math.ceil(this.len / this.setNum));
       if ( this.len < this.setNum) {
           this.users = data;
       } else {
@@ -59,36 +66,52 @@ export class MainPageComponent implements OnInit {
       }
   }
     search() {
-        // console.log('search content');
-        // console.log(this.searchText);
         this._initPage(this.filter.transform(this.userRep, this.searchText));
     }
   fetchData() {
-      this.userService.getUsers().subscribe(data => {
+      this.userService.getUsers('user').subscribe(data => {
           console.log(data);
-          Array.prototype.push.apply(this.userRep, data);
+          const tmp = [];
+          Array.prototype.push.apply(tmp, data);
+          tmp.forEach(e => {
+              this.userRep.push(e[0]);
+          });
           this.userRep.sort();
           this._initPage(this.userRep);
-          // const setNum = this.setNum;
-          // console.log(data);
-          // Array.prototype.push.apply(this.userRep, data);
-          // this.len = this.userRep.length;
-          // this.index1 = 1;
-          // if (this.len < this.setNum) {
-          //     this.index2 = this.len;
-          // }
-          // const len = this.len;
-          // console.log(Math.ceil(len / setNum));
-          // this.pages = new Array(Math.ceil(len / setNum));
-          // if ( len < setNum) {
-          //     this.users = this.userRep;
-          // } else {
-          //     this.users = this.userRep.slice(0, setNum);
-          // }
       }, error => {});
   }
+
+    previous() {
+        if (this.page > 0)
+            this.setPage(this.page - 1);
+    }
+
+    next() {
+        if (this.page < this.pmax - 1)
+            this.setPage(this.page + 1);
+    }
+
+    isActive(page) {
+        return this.page === page;
+    }
   setPage(i) {
       this.page = i;
+      const distance = this.pmax - this.page - 5;
+      let j;
+      this.pages = [];
+      if (distance < 0) {
+          for (j = this.page + distance; j < this.pmax; j++) {
+              this.pages.push(j);
+          }
+      } else if (distance > 0) {
+          for (j = this.page; j < this.page + 5; j++) {
+              this.pages.push(j);
+          }
+      } else {
+          for (j = this.page; j < this.pmax; j++) {
+              this.pages.push(j);
+          }
+      }
       this.index1 = i * this.setNum + 1;
       this.index2 = (i + 1) * this.setNum;
       if (this.index2 > this.len) {
@@ -101,62 +124,62 @@ export class MainPageComponent implements OnInit {
   _getData(userId, i, len) {
       return this.userService.getAll(userId)
           .subscribe(res => {
+              if (res['isExist'] === false && len === 1) {
+                  alert('no data exist');
+                  return;
+              }
               if (res['gpsTracking'] != null) {
-                  // if (this.trackings.length === 1) {
-                  //     this.trackings = res.gpsTracking;
-                  // } else {
-                  //     this.trackings.push(res.gpsTracking);
-                  //     console.log(res.gpsTracking);
-                  // }
+                  res['gpsTracking'].forEach(e => {
+                      e.date = moment(e.date).format('MM-DD-YYYY');
+                      e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                      e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+                  });
                   Array.prototype.push.apply(this.trackings, res['gpsTracking']);
-                  console.log(this.trackings);
               }
               if (res['repairData'] != null) {
-                  // if (this.repairs.length === 1) {
-                  //     this.repairs = res.repairData;
-                  // } else {
-                  //     this.repairs.push(res.repairData);
-                  // }
+                  res['repairData'].forEach(e => {
+                      e.date = moment(e.date).format('MM-DD-YYYY');
+                      e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                      e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+                      e.dateRepairNeeded = moment(e.dateRepairNeeded).format('MM-DD-YYYY');
+                      e.dateRepairCompleted = moment(e.dateRepairCompleted).format('MM-DD-YYYY');
+                      e.consequences = JSON.parse(e.consequences);
+                  });
                   Array.prototype.push.apply(this.repairs, res['repairData']);
               }
               if (res['infoData'] != null) {
-                  // if (this.info.length === 1) {
-                  //     this.info = [res.infoData];
-                  // } else {
-                  //     this.info.push([res.infoData]);
-                  // }
-                  Array.prototype.push.apply(this.info, [res['infoData']]);
+                  const e = res['infoData'];
+                  e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                  e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+                  e.wheelchairUsage = JSON.parse(JSON.parse(e.wheelchairUsage));
+                  Array.prototype.push.apply(this.info, [e]);
               }
               if (res['logData'] != null) {
-                  // if (this.logger.length === 1) {
-                  //     this.logger = res.logData;
-                  // } else {
-                  //     this.logger.push(res.logData);
-                  // }
+                  res['logData'].forEach(e => {
+                      e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                      e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+                  });
                   Array.prototype.push.apply(this.logger, res['logData'] );
               }
-              if (res['repairTrackings'] != null) {
-                  // if (this.repairTrackings.length === 1) {
-                  //     this.repairTrackings = res.repairTrackings;
-                  // } else {
-                  //     this.repairTrackings.push(res.repairTrackings);
-                  // }
+              if (res['repairTracking'] != null) {
+                  res['repairTracking'].forEach(e => {
+                      e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                      e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+                  });
                   Array.prototype.push.apply(this.repairTrackings, res['repairTrackings']);
               }
               if (res['vendorAndContact'] != null) {
-                  // if (this.vendors.length === 1) {
-                  //     this.vendors = res.vendorAndContact;
-                  // } else {
-                  //     this.vendors.push(res.vendorAndContact);
-                  // }
+                  res['vendorAndContact'].forEach(e => {
+                      e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                      e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+                  });
                   Array.prototype.push.apply(this.vendors, res['vendorAndContact']);
               }
               if (res['wheelchairData'] != null) {
-                  // if (this.wheelchairs.length === 1) {
-                  //     this.wheelchairs = res.wheelchairData;
-                  // } else {
-                  //     this.wheelchairs.push(res.wheelchairData);
-                  // }
+                  res['wheelchairData'].forEach(e => {
+                      e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                      e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+                  });
                   Array.prototype.push.apply(this.wheelchairs, res['wheelchairData']);
               }
               i++;

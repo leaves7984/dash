@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ng build
-docker build -t parmantolab2/keepmvn-portal:0.0.9 .
-docker tag "parmantolab2/keepmvn-portal:0.0.9" "parmantolab2/keepmvn-portal:latest"
-docker push parmantolab2/keepmvn-portal:0.0.9
-docker push parmantolab2/keepmvn-portal:latest
+docker build -t harilab/keepmvn-portal:0.0.2 .
+docker tag "harilab/keepmvn-portal:0.0.2" "harilab/keepmvn-portal:latest"
+docker push harilab/keepmvn-portal:0.0.2
+docker push harilab/keepmvn-portal:latest

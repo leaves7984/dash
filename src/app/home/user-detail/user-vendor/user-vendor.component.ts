@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 import {Vendor} from '../../../provider/provider-user/user.model';
-import * as alasql from "alasql";
+import * as alasql from 'alasql';
 import {FilterPipe} from '../../filter.pipe';
+import {VendorFilterPipe} from './vendor.filter.pipe';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-vendor',
@@ -17,10 +19,12 @@ export class UserVendorComponent implements OnInit {
     vendor: Vendor;
     userId: String;
     isShow: Boolean;
+    type: string;
 
     items = [];
-    pages: Array<Number>;
-    page: Number = 0;
+    pages = [];
+    page: number;
+    pmax: number;
     len: number;
     index1: number;
     index2: number;
@@ -28,6 +32,7 @@ export class UserVendorComponent implements OnInit {
 
     searchText: string;
     filter: FilterPipe = new FilterPipe();
+    vendorFilter: VendorFilterPipe = new VendorFilterPipe();
     selectAll: Boolean = false;
 
     constructor(private route: ActivatedRoute,
@@ -36,16 +41,16 @@ export class UserVendorComponent implements OnInit {
             console.log(res.userId + ' Detail');
             this.userId = res.userId;
         });
-
+        this.type = 'Vendor';
         this.setNum = 10;
         this.searchText = '';
+        this.page = 0;
     }
 
     ngOnInit() {
         this.fetchData();
     }
     _initPage(data) {
-        console.log(data);
         this.len = data.length;
         this.index1 = 1;
         if (this.len < this.setNum) {
@@ -53,8 +58,13 @@ export class UserVendorComponent implements OnInit {
         } else {
             this.index2 = this.setNum;
         }
-        console.log(Math.ceil(this.len / this.setNum));
-        this.pages = new Array(Math.ceil(this.len / this.setNum));
+        // console.log(Math.ceil(this.len / this.setNum));
+        // this.pages = new Array(Math.ceil(this.len / this.setNum));
+        this.pages = [];
+        this.pmax = Math.ceil(this.len / this.setNum);
+        for (let i = this.page; i < this.pmax; i++) {
+            this.pages.push(i);
+        }
         if ( this.len < this.setNum) {
             this.vendors = data ;
         } else {
@@ -62,9 +72,7 @@ export class UserVendorComponent implements OnInit {
         }
     }
     search() {
-        // console.log('search content');
-        // console.log(this.searchText);
-        this._initPage(this.filter.transform(this.vendorsRep, this.searchText));
+        this._initPage(this.filter.transform(this.vendorFilter.transform(this.vendorsRep, this.type), this.searchText));
     }
     fetchData() {
         this.userService.getVendor(this.userId).subscribe(data => {
@@ -76,7 +84,7 @@ export class UserVendorComponent implements OnInit {
                     return -1;
                 }
             });
-            this._initPage(this.vendorsRep);
+            this._initPage(this.vendorFilter.transform(this.vendorsRep, this.type));
             this.isShow = false;
         }, error => {
             this.isShow = true;
@@ -99,7 +107,10 @@ export class UserVendorComponent implements OnInit {
 
     _downloadAll() {
         const end = [{value: 'null'}];
-        // Array.prototype.push.apply(this.items, end);
+        this.items.forEach(e => {
+            e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+            e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+        });
         if (this.items.length > 0) {
             const opts = [
                 {sheetid: 'VendorData', header: true},
@@ -131,6 +142,10 @@ export class UserVendorComponent implements OnInit {
         this.setNum = value;
         this._initPage(this.vendorsRep);
     }
+    typeChange(value) {
+        this.type = value;
+        this._initPage(this.vendorFilter.transform(this.vendorsRep, value));
+    }
     selectAllboxes() {
         let i;
         this.selectAll = !this.selectAll;
@@ -140,5 +155,19 @@ export class UserVendorComponent implements OnInit {
                 this.updateSelection(this.vendors[i]);
             }
         }
+    }
+
+    previous() {
+        if (this.page > 0)
+            this.setPage(this.page - 1);
+    }
+
+    next() {
+        if (this.page < this.pmax - 1)
+            this.setPage(this.page + 1);
+    }
+
+    isActive(page) {
+        return this.page === page;
     }
 }

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 import {Repair, Tracking} from '../../../provider/provider-user/user.model';
-import * as alasql from "alasql";
+import * as alasql from 'alasql';
 import {FilterPipe} from '../../filter.pipe';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-tracking',
@@ -99,7 +100,11 @@ export class UserTrackingComponent implements OnInit {
     }
     _downloadAll() {
         const end = [{value: 'null'}];
-        // Array.prototype.push.apply(this.items, end);
+        this.items.forEach(e => {
+            e.date = moment(e.date).format('MM-DD-YYYY');
+            e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+            e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+        });
         if (this.items.length > 0) {
             const opts = [
                 {sheetid: 'RepairTracking Data', header: true},

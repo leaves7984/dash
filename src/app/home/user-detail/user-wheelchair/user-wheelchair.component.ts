@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../provider/provider-user/user.service';
 import * as alasql from 'alasql';
 import { FilterPipe} from '../../filter.pipe';
-import {v} from '@angular/core/src/render3';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-wheelchair',
@@ -20,8 +20,9 @@ export class UserWheelchairComponent implements OnInit {
     isShow: Boolean;
 
     items = [];
-    pages: Array<Number>;
-    page: Number = 0;
+    pages = [];
+    page: number;
+    pmax: number;
     len: number;
     index1: number;
     index2: number;
@@ -39,6 +40,7 @@ export class UserWheelchairComponent implements OnInit {
         });
         this.setNum = 10;
         this.searchText = '';
+        this.page = 0;
     }
 
     ngOnInit() {
@@ -53,7 +55,11 @@ export class UserWheelchairComponent implements OnInit {
             this.index2 = this.setNum;
         }
         console.log(Math.ceil(this.len / this.setNum));
-        this.pages = new Array(Math.ceil(this.len / this.setNum));
+        // this.pages = new Array(Math.ceil(this.len / this.setNum));
+        this.pmax = Math.ceil(this.len / this.setNum);
+        for (let i = this.page; i < this.pmax; i++) {
+            this.pages.push(i);
+        }
         if ( this.len < this.setNum) {
             this.wheelchairs = data;
         } else {
@@ -61,8 +67,6 @@ export class UserWheelchairComponent implements OnInit {
         }
     }
     search() {
-        // console.log('search content');
-        // console.log(this.searchText);
         this._initPage(this.filter.transform(this.wheelchairsRep, this.searchText));
     }
     fetchData() {
@@ -99,6 +103,10 @@ export class UserWheelchairComponent implements OnInit {
     }
     _downloadAll() {
         const end = [{value: 'null'}];
+        this.items.forEach(e => {
+            e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+            e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+        });
         if (this.items.length > 0) {
             const opts = [
                 {sheetid: 'WheelchairData', header: true},
@@ -106,7 +114,6 @@ export class UserWheelchairComponent implements OnInit {
             const report = alasql('SELECT INTO XLSX("' + this.userId + '_wheelchair.xlsx",?) FROM ?',
                 [opts, [this.items]]);
         }
-        // Array.prototype.push.apply(this.items, end);
     }
 
     getAlldata() {
@@ -137,5 +144,19 @@ export class UserWheelchairComponent implements OnInit {
                 this.updateSelection(this.wheelchairs[i]);
             }
         }
+    }
+
+    previous() {
+        if (this.page > 0)
+            this.setPage(this.page - 1);
+    }
+
+    next() {
+        if (this.page < this.pmax - 1)
+            this.setPage(this.page + 1);
+    }
+
+    isActive(page) {
+        return this.page === page;
     }
 }

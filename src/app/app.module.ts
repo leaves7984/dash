@@ -4,7 +4,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignUpComponent } from './home/management/sign-up/sign-up.component';
 import { UserService} from './provider/provider-user/user.service';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './user/user.component';
@@ -15,7 +15,7 @@ import { appRoutes} from './routes';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard} from './auth/auth.guard';
 import { AuthIntercepter} from './auth/auth.intercepter';
-import { PatchUsersComponent } from './home/patch-users/patch-users.component';
+import { PatchUsersComponent } from './home/management/patch-users/patch-users.component';
 import { MainPageComponent } from './home/main-page/main-page.component';
 import { UserDetailComponent } from './home/user-detail/user-detail.component';
 import { UserInfoComponent } from './home/user-detail/user-info/user-info.component';
@@ -26,6 +26,7 @@ import { UserTrackingComponent } from './home/user-detail/user-tracking/user-tra
 import { UserGpsComponent } from './home/user-detail/user-gps/user-gps.component';
 import { UserLogComponent } from './home/user-detail/user-log/user-log.component';
 import { FilterPipe} from './home/filter.pipe';
+import { VendorFilterPipe} from './home/user-detail/user-vendor/vendor.filter.pipe';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { FilterPipe} from './home/filter.pipe';
     UserTrackingComponent,
     UserGpsComponent,
     UserLogComponent,
-    FilterPipe
+    FilterPipe,
+    VendorFilterPipe
   ],
   imports: [
     BrowserModule,
