@@ -56,8 +56,9 @@ export class UserLogComponent implements OnInit {
         }
         // console.log(Math.ceil(this.len / this.setNum));
         // this.pages = new Array(Math.ceil(this.len / this.setNum));
+        this.pages = [];
         this.pmax = Math.ceil(this.len / this.setNum);
-        for (let i = this.page; i < this.pmax; i++) {
+        for (let i = this.page; i < this.pmax && i < 5; i++) {
             this.pages.push(i);
         }
         if ( this.len < this.setNum) {
@@ -90,6 +91,22 @@ export class UserLogComponent implements OnInit {
 
     setPage(i) {
         this.page = i;
+        const distance = this.pmax - this.page - 5;
+        let j;
+        this.pages = [];
+        if (distance < 0) {
+            for (j = this.page + distance; j < this.pmax; j++) {
+                this.pages.push(j);
+            }
+        } else if (distance > 0) {
+            for (j = this.page; j < this.page + 5; j++) {
+                this.pages.push(j);
+            }
+        } else {
+            for (j = this.page; j < this.pmax; j++) {
+                this.pages.push(j);
+            }
+        }
         this.index1 = i * this.setNum + 1;
         this.index2 = (i + 1) * this.setNum;
         if (this.index2 > this.len) {
