@@ -71,10 +71,10 @@
       <td>{{item.state}}</td>
       <td>{{item.zipcode}}</td>
       <td>
-        <div *ngIf="item.deleted == true">
+        <div *ngIf="item.deleted == false">
           <i class="material-icons" style="color: green">check</i>
         </div>
-        <div *ngIf="item.deleted == false">
+        <div *ngIf="item.deleted == true">
           <i class="material-icons" style="color: red">clear</i>
         </div>
       </td>
