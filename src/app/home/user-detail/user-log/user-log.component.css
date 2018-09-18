@@ -12,3 +12,17 @@
     top: 7px;
     left: 10px;
 }
+.log-main td {
+    max-width: 100px;
+    /*word-wrap: break-word;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.modal td {
+    max-width: 150px;
+    word-wrap: break-word;
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+}

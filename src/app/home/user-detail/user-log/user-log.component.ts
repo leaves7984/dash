@@ -15,11 +15,14 @@ export class UserLogComponent implements OnInit {
 
     loggers: Log[];
     loggersRep: Log[];
+    log: Log;
     userId: String;
     isShow: Boolean;
 
     items = [];
     pages = [];
+    newValue = {};
+    oldValue = {};
     page: number;
     pmax: number;
     len: number;
@@ -54,8 +57,6 @@ export class UserLogComponent implements OnInit {
         } else {
             this.index2 = this.setNum;
         }
-        // console.log(Math.ceil(this.len / this.setNum));
-        // this.pages = new Array(Math.ceil(this.len / this.setNum));
         this.pages = [];
         this.pmax = Math.ceil(this.len / this.setNum);
         for (let i = this.page; i < this.pmax && i < 5; i++) {
@@ -135,6 +136,9 @@ export class UserLogComponent implements OnInit {
         this._downloadAll();
     }
 
+    getLog(item) {
+        this.log = item;
+    }
     updateSelection(item) {
         const index = this.items.indexOf(item);
         if (index !== -1) {
@@ -176,5 +180,18 @@ export class UserLogComponent implements OnInit {
 
     isActive(page) {
         return this.page === page;
+    }
+
+    isVlaueJson(data, flag) {
+        try {
+            if (flag) {
+                this.newValue = JSON.parse(data);
+            } else {
+                this.oldValue = JSON.parse(data);
+            }
+        } catch (e) {
+            return false;
+        }
+        return true;
     }
 }

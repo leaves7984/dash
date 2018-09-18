@@ -37,31 +37,402 @@
       </select> entries
     </label>
   </div>
-  <table class="table table-bordered">
+  <table class="table table-bordered log-main">
     <thead class="thead-dark">
     <tr>
       <th scope="col"><input type="checkbox" [ngModel]="selectAll" (change)="selectAllboxes()"></th>
       <th scope="col">Created At</th>
-      <th scope="col">Last Modified At</th>
+      <!--<th scope="col">Modified At</th>-->
       <th scope="col">LogTitle</th>
       <th scope="col">Description</th>
       <th scope="col">NewValue</th>
       <th scope="col">OldValue</th>
+      <th scope="col">More</th>
     </tr>
     </thead>
     <tbody *ngFor="let item of loggers">
     <tr>
       <th scope="row"><input type="checkbox" (click)="updateSelection(item)" [checked]="selectAll"></th>
       <td>{{item.createdAt|date: 'MM/dd/yyyy'}}</td>
-      <td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>
+      <!--<td>{{item.modifiedAt|date: 'MM/dd/yyyy'}}</td>-->
       <td>{{item.logTitle}}</td>
       <td>{{item.description}}</td>
       <td>{{item.newValue}}</td>
       <td>{{item.oldValue}}</td>
-
+      <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+                (click)="getLog(item)">
+          <i class="material-icons">visibility</i>
+        </button>
+      </td>
     </tr>
     </tbody>
   </table>
+  <!-- Modal -->
+  <div class="modal fade  bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Log Information</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Created at</th>
+              <td>{{log?.createdAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Last Modified at</th>
+              <td>{{log?.modifiedAt | date: 'MM/dd/yy HH:mm:ss'}}</td>
+            </tr>
+            <tr>
+              <th scope="row">LogTitle</th>
+              <td>{{log?.logTitle}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Description</th>
+              <td>{{log?.description}}</td>
+            </tr>
+            <tr>
+              <th scope="row">NewValue</th>
+              <td>{{log?.newValue}}</td>
+            </tr>
+            <tr>
+              <th scope="row">OldValue</th>
+              <td>{{log?.oldValue}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <table class="table table-striped" *ngIf="isVlaueJson(log?.newValue, true)">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">New value</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Id</th>
+              <td>{{newValue?.id}}</td>
+            </tr>
+            <!--Vendor and Contanct-->
+            <tr *ngIf="newValue?.name">
+              <th scope="row">Name</th>
+              <td>{{newValue?.name}}</td>
+            </tr>
+            <tr *ngIf="newValue?.type">
+              <th scope="row">type</th>
+              <td>{{newValue?.type}}</td>
+            </tr>
+            <tr *ngIf="newValue?.phone">
+              <th scope="row">phone</th>
+              <td>{{newValue?.phone}}</td>
+            </tr>
+            <tr *ngIf="newValue?.email">
+              <th scope="row">email</th>
+              <td>{{newValue?.email}}</td>
+            </tr>
+            <tr *ngIf="newValue?.city">
+              <th scope="row">city</th>
+              <td>{{newValue?.city}}</td>
+            </tr>
+            <tr *ngIf="newValue?.state">
+              <th scope="row">state</th>
+              <td>{{newValue?.state}}</td>
+            </tr>
+            <tr *ngIf="newValue?.zipcode">
+              <th scope="row">zipcode</th>
+              <td>{{newValue?.zipcode}}</td>
+            </tr>
+            <!--My Gps-->
+            <tr *ngIf="newValue?.period">
+              <th scope="row">Period</th>
+              <td>{{newValue?.period}}</td>
+            </tr>
+            <tr *ngIf="newValue?.distance">
+              <th scope="row">Distance</th>
+              <td>{{newValue?.distance}}</td>
+            </tr>
+            <!--My Repair-->
+            <tr *ngIf="newValue?.repairId">
+              <th scope="row">RepairId</th>
+              <td>{{newValue?.repairId}}</td>
+            </tr>
+            <tr *ngIf="newValue?.updateTracking">
+              <th scope="row">updateTracking</th>
+              <td>{{newValue?.updateTracking}}</td>
+            </tr>
+            <tr *ngIf="newValue?.consequences">
+              <th scope="row">consequences</th>
+              <td>{{newValue?.consequences}}</td>
+            </tr>
+            <!--My Wheelchair-->
+            <tr *ngIf="newValue?.name">
+              <th scope="row">Name</th>
+              <td>{{newValue?.name}}</td>
+            </tr>
+            <tr *ngIf="newValue?.manufacturer">
+              <th scope="row">Manufacturer</th>
+              <td>{{newValue?.manufacturer}}</td>
+            </tr>
+            <tr *ngIf="newValue?.model">
+              <th scope="row">Model</th>
+              <td>{{newValue?.model}}</td>
+            </tr>
+            <tr *ngIf="newValue?.serialNumber">
+              <th scope="row">Serial Number</th>
+              <td>{{newValue?.serialNumber}}</td>
+            </tr>
+            <tr *ngIf="newValue?.age">
+              <th scope="row">Age of year</th>
+              <td>{{newValue?.age}} years old</td>
+            </tr>
+            <tr *ngIf="oldValue?.hoursPerDay">
+              <th scope="row">Usage Per Day</th>
+              <td>{{newValue?.hoursPerDay}} hours</td>
+            </tr>
+            <tr *ngIf="newValue?.performance">
+              <th scope="row">Performance</th>
+              <td>{{newValue?.performance}} of 5 stars</td>
+            </tr>
+            <tr *ngIf="newValue?.repairs">
+              <th scope="row">Repairs Done</th>
+              <td>{{newValue?.repairs}} times</td>
+            </tr>
+            <tr *ngIf="newValue?.funding">
+              <th scope="row">Funding by</th>
+              <td>{{newValue?.funding}}</td>
+            </tr>
+            <!--My Info-->
+            <tr *ngIf="newValue?.gender">
+              <th scope="row">Gender</th>
+              <td>{{newValue?.gender}}</td>
+            </tr>
+            <tr *ngIf="newValue?.diagnosis">
+              <th scope="row">Diagnosis</th>
+              <td>{{newValue?.diagnosis}}</td>
+            </tr>
+            <tr *ngIf="newValue?.zipcode">
+              <th scope="row">Zipcode</th>
+              <td>{{newValue?.zipcode}}</td>
+            </tr>
+            <tr *ngIf="newValue?.wheelchairUsageAge">
+              <th scope="row">Wheelchair Usage Age</th>
+              <td>{{newValue?.wheelchairUsageAge}} years old</td>
+            </tr>
+            <tr *ngIf="newValue?.wheelchairUsage">
+              <th scope="row">Wheelchair Usage</th>
+              <td>
+                <li *ngFor="let usage of newValue?.wheelchairUsage">
+                  {{usage}}
+                </li>
+              </td>
+            </tr>
+            <tr *ngIf="newValue?.negotiateSoft">
+              <th scope="row">Negotiate soft</th>
+              <td>{{newValue?.negotiateSoft}}</td>
+            </tr>
+            <tr *ngIf="newValue?.negotiateSteep">
+              <th scope="row">Negotiate steep</th>
+              <td>{{newValue?.negotiateSteep}}</td>
+            </tr>
+            <tr *ngIf="newValue?.negotiateCurb">
+              <th scope="row">Negotiate curb</th>
+              <td>{{newValue?.negotiateCurb}}</td>
+            </tr>
+            <tr *ngIf="newValue?.weekdayHours">
+              <th scope="row">Numbers of hours per day</th>
+              <td>{{newValue?.weekdayHours}} hours</td>
+            </tr>
+            <tr *ngIf="newValue?.weekdayHoursOutside">
+              <th scope="row">Numbers of hours outside house per day</th>
+              <td>{{newValue?.weekdayHoursOutside}} hours</td>
+            </tr>
+            <tr *ngIf="newValue?.weekdayDistance">
+              <th scope="row">Average distance per day</th>
+              <td>{{newValue?.weekdayDistance}} miles</td>
+            </tr>
+            <tr>
+              <th scope="row">ModifiedAt</th>
+              <td>{{newValue?.modifiedAt| date: 'MM/dd/yy HH:mm:ss'}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <table class="table table-striped" *ngIf="isVlaueJson(log?.oldValue, false)">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Old value</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Id</th>
+              <td>{{oldValue?.id}}</td>
+            </tr>
+            <!--Vendor and Contanct-->
+            <tr *ngIf="oldValue?.name">
+              <th scope="row">Name</th>
+              <td>{{oldValue?.name}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.type">
+              <th scope="row">type</th>
+              <td>{{oldValue?.type}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.phone">
+              <th scope="row">phone</th>
+              <td>{{oldValue?.phone}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.email">
+              <th scope="row">email</th>
+              <td>{{oldValue?.email}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.city">
+              <th scope="row">city</th>
+              <td>{{oldValue?.city}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.state">
+              <th scope="row">state</th>
+              <td>{{oldValue?.state}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.zipcode">
+              <th scope="row">zipcode</th>
+              <td>{{oldValue?.zipcode}}</td>
+            </tr>
+            <!--My Gps-->
+            <tr *ngIf="oldValue?.period">
+              <th scope="row">Period</th>
+              <td>{{oldValue?.period}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.distance">
+              <th scope="row">Distance</th>
+              <td>{{oldValue?.distance}}</td>
+            </tr>
+            <!--My Repair-->
+            <tr *ngIf="oldValue?.repairId">
+              <th scope="row">RepairId</th>
+              <td>{{oldValue?.repairId}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.updateTracking">
+              <th scope="row">updateTracking</th>
+              <td>{{oldValue?.updateTracking}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.consequences">
+              <th scope="row">consequences</th>
+              <td>{{oldValue?.consequences}}</td>
+            </tr>
+            <!--My Wheelchair-->
+            <tr *ngIf="oldValue?.manufacturer">
+              <th scope="row">Manufacturer</th>
+              <td>{{oldValue?.manufacturer}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.model">
+              <th scope="row">Model</th>
+              <td>{{oldValue?.model}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.serialNumber">
+              <th scope="row">Serial Number</th>
+              <td>{{oldValue?.serialNumber}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.age">
+              <th scope="row">Age of year</th>
+              <td>{{oldValue?.age}} years old</td>
+            </tr>
+            <tr *ngIf="oldValue?.hoursPerDay">
+              <th scope="row">Usage Per Day</th>
+              <td>{{oldValue?.hoursPerDay}} hours</td>
+            </tr>
+            <tr *ngIf="oldValue?.performance">
+              <th scope="row">Performance</th>
+              <td>{{oldValue?.performance}} of 5 stars</td>
+            </tr>
+            <tr *ngIf="oldValue?.repairs">
+              <th scope="row">Repairs Done</th>
+              <td>{{oldValue?.repairs}} times</td>
+            </tr>
+            <tr *ngIf="oldValue?.funding">
+              <th scope="row">Funding by</th>
+              <td>{{oldValue?.funding}}</td>
+            </tr>
+            <!--My Info-->
+            <tr *ngIf="oldValue?.age">
+              <th scope="row">Age</th>
+              <td>{{oldValue?.age}} years old</td>
+            </tr>
+            <tr *ngIf="oldValue?.gender">
+              <th scope="row">Gender</th>
+              <td>{{oldValue?.gender}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.diagnosis">
+              <th scope="row">Diagnosis</th>
+              <td>{{oldValue?.diagnosis}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.zipcode">
+              <th scope="row">Zipcode</th>
+              <td>{{oldValue?.zipcode}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.wheelchairUsageAge">
+              <th scope="row">Wheelchair Usage Age</th>
+              <td>{{oldValue?.wheelchairUsageAge}} years old</td>
+            </tr>
+            <tr *ngIf="oldValue?.wheelchairUsage">
+              <th scope="row">Wheelchair Usage</th>
+              <td>
+                <li *ngFor="let usage of oldValue?.wheelchairUsage">
+                  {{usage}}
+                </li>
+              </td>
+            </tr>
+            <tr *ngIf="oldValue?.negotiateSoft">
+              <th scope="row">Negotiate soft</th>
+              <td>{{oldValue?.negotiateSoft}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.negotiateSteep">
+              <th scope="row">Negotiate steep</th>
+              <td>{{oldValue?.negotiateSteep}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.negotiateCurb">
+              <th scope="row">Negotiate curb</th>
+              <td>{{oldValue?.negotiateCurb}}</td>
+            </tr>
+            <tr *ngIf="oldValue?.weekdayHours">
+              <th scope="row">Numbers of hours per day</th>
+              <td>{{oldValue?.weekdayHours}} hours</td>
+            </tr>
+            <tr *ngIf="oldValue?.weekdayHoursOutside">
+              <th scope="row">Numbers of hours outside house per day</th>
+              <td>{{oldValue?.weekdayHoursOutside}} hours</td>
+            </tr>
+            <tr *ngIf="oldValue?.weekdayDistance">
+              <th scope="row">Average distance per day</th>
+              <td>{{oldValue?.weekdayDistance}} miles</td>
+            </tr>
+
+            <tr *ngIf="oldValue?.modifiedAt">
+              <th scope="row">ModifiedAt</th>
+              <td>{{oldValue?.modifiedAt| date: 'MM/dd/yy HH:mm:ss'}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
     <div>
@@ -69,24 +440,24 @@
     </div>
     <div>
       <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item">
-            <button class="page-link" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </button>
-          </li>
-            <li class="page-item" *ngFor="let p of pages" [ngClass]="{active: isActive(p)}">
-                <button class="page-link" (click)="setPage(p)">{{p + 1}}</button>
+          <ul class="pagination">
+            <li class="page-item">
+              <button class="page-link" aria-label="Previous" (click)="previous()">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </button>
             </li>
-          <li class="page-item">
-            <button class="page-link" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
+              <li class="page-item" *ngFor="let p of pages" [ngClass]="{active: isActive(p)}">
+                  <button class="page-link" (click)="setPage(p)">{{p + 1}}</button>
+              </li>
+            <li class="page-item">
+              <button class="page-link" aria-label="Next" (click)="next()">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
     </div>
   </div>
 </div>
