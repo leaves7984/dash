@@ -48,8 +48,15 @@ export class UserInfoComponent implements OnInit {
   fetchData() {
         this.userService.getUserInfo(this.userId).subscribe(data => {
             console.log(data);
-            data.wheelchairUsage = JSON.parse(data.wheelchairUsage.toString());
-            this.infosRep = [data];
+            // data.wheelchairUsage = JSON.parse(data.wheelchairUsage.toString());
+            data.forEach(function(info) {
+                try {
+                    info.wheelchairUsage = JSON.parse(info.wheelchairUsage.toString());
+                } catch (e) {
+                    console.log(e.toString());
+                }
+            });
+            this.infosRep = data;
             this.infosRep.sort( function (a, b) {
                 if (a.createdAt < b.createdAt) {
                     return 1;

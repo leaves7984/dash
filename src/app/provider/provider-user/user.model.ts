@@ -27,6 +27,7 @@ export class Info {
     createdAt: String;
     modifiedAt: String;
     avgDistancePerDay: String;
+    deleted: Boolean;
 }
 export class Wheelchair {
     id: String;
@@ -46,6 +47,7 @@ export class Wheelchair {
     funding: String;
     createdAt: String;
     modifiedAt: String;
+    deleted: Boolean;
 }
 export class Vendor {
     id: String;
@@ -61,6 +63,7 @@ export class Vendor {
     zipcode: String;
     createdAt: String;
     modifiedAt: String;
+    deleted: Boolean;
 }
 export class Repair {
     id: String;

@@ -38,7 +38,7 @@ export class UserService {
   }
 
   getUserInfo(userId) {
-      return this.http.get<Info>(this.rootUrl + '/rest/infoData/' + userId);
+      return this.http.get<Info[]>(this.rootUrl + '/rest/infoData/' + userId);
   }
   getWheelchair(userId) {
       return this.http.get<Wheelchair[]>(this.rootUrl + '/rest/wheelchair/' + userId);
