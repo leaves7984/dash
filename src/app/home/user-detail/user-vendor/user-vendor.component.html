@@ -55,6 +55,7 @@
       <th scope="col">City</th>
       <th scope="col">State</th>
       <th scope="col">Zipcode</th>
+      <th scope="col">isExist</th>
       <th scope="col">More</th>
     </tr>
     </thead>
@@ -69,6 +70,14 @@
       <td>{{item.city}}</td>
       <td>{{item.state}}</td>
       <td>{{item.zipcode}}</td>
+      <td>
+        <div *ngIf="item.deleted == true">
+          <i class="material-icons" style="color: green">check</i>
+        </div>
+        <div *ngIf="item.deleted == false">
+          <i class="material-icons" style="color: red">clear</i>
+        </div>
+      </td>
       <td>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
                 (click)="getVendor(item)">
