@@ -149,11 +149,12 @@ export class MainPageComponent implements OnInit {
                   Array.prototype.push.apply(this.repairs, res['repairData']);
               }
               if (res['infoData'] != null) {
-                  const e = res['infoData'];
-                  e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
-                  e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
-                  e.wheelchairUsage = JSON.parse(JSON.parse(e.wheelchairUsage));
-                  Array.prototype.push.apply(this.info, [e]);
+                  res['infoData'].forEach(e => {
+                      e.createdAt = moment(e.createdAt).format('MM-DD-YYYY');
+                      e.modifiedAt = moment(e.modifiedAt).format('MM-DD-YYYY');
+                      e.wheelchairUsage = JSON.parse(JSON.parse(e.wheelchairUsage));
+                  });
+                  Array.prototype.push.apply(this.info, res['infoData']);
               }
               if (res['logData'] != null) {
                   res['logData'].forEach(e => {
