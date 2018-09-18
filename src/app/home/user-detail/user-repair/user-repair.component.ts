@@ -58,6 +58,7 @@ export class UserRepairComponent implements OnInit {
         }
         // console.log(Math.ceil(this.len / this.setNum));
         // this.pages = new Array(Math.ceil(this.len / this.setNum));
+        this.pages = [];
         this.pmax = Math.ceil(this.len / this.setNum);
         for (let i = this.page; i < this.pmax; i++) {
             this.pages.push(i);

@@ -132,6 +132,7 @@ export class PatchUsersComponent implements OnInit {
             this.index2 = this.setNum;
         }
         // console.log(Math.ceil(this.len / this.setNum));
+        this.pages = [];
         this.pmax = Math.ceil(this.len / this.setNum);
         for(let i = this.page; i < this.pmax && i < 5; i++) {
             this.pages.push(i);
